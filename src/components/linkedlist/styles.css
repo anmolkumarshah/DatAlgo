@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+.controller {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 100px;
+  background-color: rgba(247, 234, 210, 0.938);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  padding: 1% 50px;
+  overflow-y: scroll;
+}
+
+.title {
+  background-color: rgba(255, 0, 0, 0.5);
+  width: 100vw;
+  text-align: center;
+  padding: 2px 0px;
+  font-weight: 400;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}

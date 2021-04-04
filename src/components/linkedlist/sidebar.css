@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+.vertical-nav {
+  min-width: 18rem;
+  width: 18rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s;
+}
+.custom-input {
+  display: flex;
+  align-items: baseline;
+}
+.custom-input input[type="text"] {
+  padding: 5px;
+  border: none;
+  background: transparent;
+  outline: none;
+  border-bottom: 1px solid grey;
+}
+.custom-input input[type="text"]:focus {
+  border-bottom: 1px solid #599fd9;
+}
+
+.submitInput {
+  padding: 5px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.submitInput:hover {
+  color: tomato;
+  border: none;
+  outline: none;
+}
+.Go {
+}
+.page-contnet {
+  width: calc(100vw - 18rem);
+  margin-left: 18rem;
+  transition: all 0.5s;
+}
+
+/* Widhs after active and toggle */
+.text-uppercase {
+  letter-spacing: 0.1rem;
+}
+
+/* ----------------- */
+.seperator {
+  margin: 3rem 0;
+  border-bottom: 1px dashed #fff;
+}
+
+#sidebarCollapse {
+  display: none;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  /* Styles */
+  #sidebarCollapse {
+    display: block;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+  }
+
+  .vertical-nav {
+    min-width: 18rem;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100%;
+  }
+  #sidebar.active {
+    left: 0;
+  }
+  /* #content.active {
+      width: 100%;
+      margin: 0;
+    } */
+  .page-contnet {
+    width: 100vw;
+    margin: 0;
+    transition: all 0.5s;
+  }
+}
+
+/* ipads */
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  /* Styles */
+  #sidebarCollapse {
+    display: block;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+  }
+
+  .vertical-nav {
+    min-width: 18rem;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100%;
+  }
+  #sidebar.active {
+    left: 0;
+  }
+
+  .page-contnet {
+    max-width: 100%;
+    margin: 0;
+    transition: all 0.5s;
+  }
+}
