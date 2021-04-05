@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import Xarrow from "react-xarrows";
 import Draggable from "react-draggable";
+import { toast } from "react-toastify";
 import "./styles.css";
 
 const Node = (props) => {
   const boxStyle = {
     position: "absolute",
-    border: "grey solid 5px",
+    border: "grey solid 2px",
     borderRadius: "10px",
-    padding: "5px",
+    padding: "2px",
     textAlign: "center",
-    cursor: "pointer",
+    cursor: "grab",
   };
   const newRef = useRef(null);
   useEffect(() => {
@@ -63,6 +64,9 @@ const LinkedList = () => {
   };
 
   const [nodes, setNodes] = useState([]);
+  const [findVal, setFindVal] = useState("");
+  const [nodeVal, setNodeVal] = useState("");
+  const [findPointer, setFindPointer] = useState(null);
   const tempRef = useRef(null);
   const headRef = useRef(null);
 
@@ -83,6 +87,9 @@ const LinkedList = () => {
   const handleAdd = (e) => {
     e.preventDefault();
     // console.log(nodes);
+    nodes.length === 0 && toast.info(`Good Job!, You Created your first node`);
+    nodes.length === 0 &&
+      toast(`You can move any of node whereelse you want, isn't it good`);
 
     if (nodeVal && nodes.length >= 0) {
       const newNode = {
@@ -99,8 +106,20 @@ const LinkedList = () => {
           nodes.length === 0 ? headRef : nodes[nodes.length - 1].currentRef,
       };
 
-      const lastNode = {
+      const headPointer = {
         length: nodes.length,
+        id:
+          (nodes.length + 1).toString() + random(100, 400).toString() + "head",
+        data: "Head Pointer",
+        x: size.width < 450 ? 50 : size.width - 200,
+        y: size.height - 200,
+        currentRef: tempRef,
+        prevRef:
+          nodes.length === 0 ? headRef : nodes[nodes.length - 1].currentRef,
+      };
+
+      const lastNode = {
+        length: -1,
         id:
           (nodes.length + 1).toString() + random(100, 400).toString() + "temp",
         data: "Last Pointer",
@@ -111,13 +130,50 @@ const LinkedList = () => {
           nodes.length === 0 ? headRef : nodes[nodes.length - 1].currentRef,
       };
       nodes.length === 0
-        ? setNodes([...nodes, lastNode, newNode])
+        ? setNodes([...nodes, lastNode, headPointer, newNode])
         : setNodes([...nodes, newNode]);
       setNodeVal("");
+      nodes.length > 2 && setFindPointer(nodes[2].currentRef);
     }
   };
 
-  const [nodeVal, setNodeVal] = useState("");
+  let headPointerProps;
+  if (nodes.length > 2) {
+    headPointerProps = {
+      start: nodes[1].currentRef,
+      end: findPointer,
+      dashness: true ? { animation: Number(1) } : false,
+      curveness: Number(0),
+      color: "gray",
+      strokeWidth: 2,
+    };
+  }
+
+  const handleFind = (e) => {
+    e.preventDefault();
+    const fun = (i) => {
+      toast.success(`Element found at index ${i - 2}`);
+      clearInterval(traverseList);
+    };
+    const exitFun = () => {
+      toast.error(`Sorry !!! Element Not found`);
+      clearInterval(traverseList);
+    };
+    let i = 1;
+    const traverseList = setInterval(() => {
+      i++;
+      if (i < nodes.length) {
+        setFindPointer(nodes[i].currentRef);
+        toast(`Searching... ${findVal}`);
+        if (nodes[i].data === findVal) {
+          fun(i);
+        }
+      }
+      if (nodes.length === i) {
+        exitFun();
+      }
+    }, 1000);
+  };
 
   return (
     <div
@@ -125,31 +181,42 @@ const LinkedList = () => {
     >
       {nodes.map((node) => {
         var props = {
-          start: node.prevRef, //  can be string
-          end: node.currentRef, //  or reference
+          start: node.prevRef,
+          end: node.currentRef,
           dashness: true ? { animation: Number(2) } : false,
           curveness: Number(1),
         };
         let lastProps = {
-          start: nodes[0].currentRef, //  can be string
+          start: nodes[0].currentRef,
           end:
             nodes.length > 1
               ? nodes[nodes.length - 1].currentRef
-              : nodes[0].currentRef, //  or reference
+              : nodes[0].currentRef,
           dashness: true ? { animation: Number(1) } : false,
           curveness: Number(0.5),
           color: "gray",
           strokeWidth: 2,
         };
+        // let headPointerProps = {
+        //   start: nodes[1].currentRef,
+        //   end: nodes.length > 2 ? nodes[2].currentRef : nodes[1].currentRef,
+        //   dashness: true ? { animation: Number(1) } : false,
+        //   curveness: Number(0.5),
+        //   color: "gray",
+        //   strokeWidth: 2,
+        // };
         return (
           <>
             <Xarrow {...props} />
+            <Xarrow {...lastProps} />
+
             <Node
               box={node}
               update={updateNode}
               forceRerender={forceRerender}
             />
-            <Xarrow {...lastProps} />
+
+            {findVal && <Xarrow {...headPointerProps} />}
           </>
         );
       })}
@@ -186,6 +253,7 @@ const LinkedList = () => {
                 <button
                   type="submit"
                   onClick={handleClear}
+                  disabled={nodes.length === 0 ? true : false}
                   className="btn btn-danger btn-block"
                 >
                   Clear All
@@ -202,17 +270,17 @@ const LinkedList = () => {
                 <div className="col-9">
                   <input
                     className="form-control"
-                    value={nodeVal}
-                    onChange={(e) => setNodeVal(e.target.value)}
+                    value={findVal}
+                    onChange={(e) => setFindVal(e.target.value)}
                   ></input>
                 </div>
                 <div className="col-3">
                   <button
                     type="submit"
-                    onClick={handleAdd}
+                    onClick={handleFind}
                     className="btn btn-primary"
                   >
-                    Add
+                    Find Node
                   </button>
                 </div>
               </div>
