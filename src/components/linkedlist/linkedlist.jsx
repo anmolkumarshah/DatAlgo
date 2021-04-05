@@ -222,10 +222,15 @@ const LinkedList = () => {
       })}
 
       <div className="title">Linked List</div>
+
+      {/* Controller Here */}
+
       <div className="controller">
         <form>
-          <div className="row ">
+          <div className="row">
             <div className="col-sm-4"></div>
+
+            {/* Node Adding Button */}
 
             <div className="col-sm-4">
               <div className="row form-group">
@@ -248,6 +253,8 @@ const LinkedList = () => {
               </div>
             </div>
 
+            {/* Clear Button */}
+
             <div className="col-sm-4">
               <div className="row form-group">
                 <button
@@ -264,6 +271,8 @@ const LinkedList = () => {
 
           <div className="row ">
             <div className="col-sm-4"></div>
+
+            {/* Node Finding Button */}
 
             <div className="col-sm-4">
               <div className="row form-group">
