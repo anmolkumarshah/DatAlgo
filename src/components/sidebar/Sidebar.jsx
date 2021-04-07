@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import LinkedList from "../linkedlist/linkedlist";
 import BinarySearch from "../search-algorithm/binary-search";
-import LinkedList from "./linkedlist";
 import "./sidebar.css";
 const Sidebar = () => {
   // state of menu-mobile
