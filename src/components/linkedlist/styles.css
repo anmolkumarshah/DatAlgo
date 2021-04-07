@@ -24,3 +24,12 @@
   font-weight: 400;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
+
+.display {
+  display: inline-block;
+  padding: 3%;
+  border: 3px solid black;
+  border-radius: 10%;
+  font-size: 100px;
+  z-index: 100;
+}

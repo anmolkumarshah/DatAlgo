@@ -1,45 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import Xarrow from "react-xarrows";
-import Draggable from "react-draggable";
 import { toast } from "react-toastify";
 import "./styles.css";
-
-const Node = (props) => {
-  const boxStyle = {
-    position: "absolute",
-    border: "grey solid 2px",
-    borderRadius: "10px",
-    padding: "2px",
-    textAlign: "center",
-    cursor: "grab",
-  };
-  const newRef = useRef(null);
-  useEffect(() => {
-    props.update(props.box.id, newRef);
-  }, []);
-  let badgeClass = "badge badge-";
-  if (
-    props.box.length === 0
-      ? (badgeClass += "danger")
-      : (badgeClass += "warning")
-  )
-    if (
-      props.box.data === "Temp" ? (badgeClass += "danger") : (badgeClass += "")
-    )
-      return (
-        <Draggable onDrag={props.forceRerender} onStop={props.forceRerender}>
-          <div
-            ref={newRef}
-            id={props.box.id}
-            style={{ ...boxStyle, left: props.box.x, top: props.box.y }}
-          >
-            <div className={badgeClass}>
-              <h4>{props.box.data}</h4>
-            </div>
-          </div>
-        </Draggable>
-      );
-};
+import Node from "./Node";
 
 const LinkedList = () => {
   const [, setRender] = useState({});
@@ -49,9 +12,7 @@ const LinkedList = () => {
     width: window.innerWidth,
     height: window.innerHeight,
   });
-  const updateSize = () => {
-    setSize({ width: window.innerWidth, height: window.innerHeight });
-  };
+  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   useEffect(() => {
     window.addEventListener("resize", updateSize);
     return () => {
@@ -59,14 +20,24 @@ const LinkedList = () => {
     };
   });
 
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
   const random = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+
+  const updateSize = () => {
+    setSize({ width: window.innerWidth, height: window.innerHeight });
   };
 
   const [nodes, setNodes] = useState([]);
   const [findVal, setFindVal] = useState("");
   const [nodeVal, setNodeVal] = useState("");
   const [findPointer, setFindPointer] = useState(null);
+
+  const [indexVal, setIndex] = useState("");
+  const [value, setValue] = useState("");
+
   const tempRef = useRef(null);
   const headRef = useRef(null);
 
@@ -84,18 +55,13 @@ const LinkedList = () => {
     setNodes([]);
   };
 
-  const handleAdd = (e) => {
-    e.preventDefault();
-    // console.log(nodes);
-    nodes.length === 0 && toast.info(`Good Job!, You Created your first node`);
-    nodes.length === 0 &&
-      toast(`You can move any of node whereelse you want, isn't it good`);
-
-    if (nodeVal && nodes.length >= 0) {
+  const addNode = (value) => {
+    console.log(value);
+    if (value && nodes.length >= 0) {
       const newNode = {
         length: nodes.length,
         id: (nodes.length + 1).toString() + random(100, 400).toString(),
-        data: nodeVal,
+        data: value,
         x:
           size.width < 450
             ? random(10, size.width - 100)
@@ -106,11 +72,11 @@ const LinkedList = () => {
           nodes.length === 0 ? headRef : nodes[nodes.length - 1].currentRef,
       };
 
-      const headPointer = {
+      const tempPointer = {
         length: nodes.length,
         id:
           (nodes.length + 1).toString() + random(100, 400).toString() + "head",
-        data: "Head Pointer",
+        data: "Temp Pointer",
         x: size.width < 450 ? 50 : size.width - 200,
         y: size.height - 200,
         currentRef: tempRef,
@@ -129,17 +95,47 @@ const LinkedList = () => {
         prevRef:
           nodes.length === 0 ? headRef : nodes[nodes.length - 1].currentRef,
       };
+
       nodes.length === 0
-        ? setNodes([...nodes, lastNode, headPointer, newNode])
-        : setNodes([...nodes, newNode]);
+        ? setNodes((nodes) => [...nodes, lastNode, tempPointer, newNode])
+        : setNodes((nodes) => [...nodes, newNode]);
       setNodeVal("");
       nodes.length > 2 && setFindPointer(nodes[2].currentRef);
     }
   };
 
-  let headPointerProps;
+  const handleAdd = (e) => {
+    e.preventDefault();
+    // console.log(nodes);
+    nodes.length === 0 && toast.info(`Good Job!, You Created your first node`);
+    nodes.length === 0 &&
+      toast(`You can move any of node whereelse you want, isn't it good`);
+    addNode(nodeVal);
+  };
+
+  const handleInsert = async (e) => {
+    console.log("HandleInert");
+    e.preventDefault();
+    let index = parseInt(indexVal);
+    index += 2;
+    let previousValue = nodes.map((item) => item.data);
+    previousValue = indexVal && [
+      ...previousValue.slice(0, index),
+      value,
+      ...previousValue.slice(index),
+    ];
+    console.log(previousValue);
+    // setNodes([]);
+    handleAdd(e);
+
+    // for (let i = 2; i < previousValue.length; i++) {
+    //   await addNode(previousValue[i]);
+    // }
+  };
+
+  let tempPointerProps;
   if (nodes.length > 2) {
-    headPointerProps = {
+    tempPointerProps = {
       start: nodes[1].currentRef,
       end: findPointer,
       dashness: true ? { animation: Number(1) } : false,
@@ -164,7 +160,7 @@ const LinkedList = () => {
       i++;
       if (i < nodes.length) {
         setFindPointer(nodes[i].currentRef);
-        toast(`Searching... ${findVal}`);
+        toast(`Searching... ${findVal}`, { autoClose: 1000 });
         if (nodes[i].data === findVal) {
           fun(i);
         }
@@ -197,14 +193,7 @@ const LinkedList = () => {
           color: "gray",
           strokeWidth: 2,
         };
-        // let headPointerProps = {
-        //   start: nodes[1].currentRef,
-        //   end: nodes.length > 2 ? nodes[2].currentRef : nodes[1].currentRef,
-        //   dashness: true ? { animation: Number(1) } : false,
-        //   curveness: Number(0.5),
-        //   color: "gray",
-        //   strokeWidth: 2,
-        // };
+
         return (
           <>
             <Xarrow {...props} />
@@ -216,7 +205,7 @@ const LinkedList = () => {
               forceRerender={forceRerender}
             />
 
-            {findVal && <Xarrow {...headPointerProps} />}
+            {(findVal || indexVal) && <Xarrow {...tempPointerProps} />}
           </>
         );
       })}
@@ -297,17 +286,26 @@ const LinkedList = () => {
 
             <div className="col-sm-4">
               <div className="row form-group">
-                <div className="col-9">
+                <div className="col-5">
                   <input
+                    placeholder="value"
                     className="form-control"
-                    value={nodeVal}
-                    onChange={(e) => setNodeVal(e.target.value)}
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
                   ></input>
                 </div>
-                <div className="col-3">
+                <div className="col-5">
+                  <input
+                    placeholder="index"
+                    className="form-control"
+                    value={indexVal}
+                    onChange={(e) => setIndex(e.target.value)}
+                  ></input>
+                </div>
+                <div className="col-2">
                   <button
                     type="submit"
-                    onClick={handleAdd}
+                    onClick={handleInsert}
                     className="btn btn-primary"
                   >
                     Add
