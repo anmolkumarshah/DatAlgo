@@ -18,6 +18,7 @@ ul {
   margin: 0;
   padding: 0;
   display: flex;
+  justify-content: center;
 }
 
 .cell {
@@ -79,14 +80,13 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 0.3rem 0.6rem;
 }
 
 .target-marker {
   position: relative;
   top: 50px;
-  left: 3%;
+  left: 3.5%;
   display: inline-block;
   width: 40px;
   height: 20px;
@@ -95,22 +95,26 @@ ul {
 .target {
   background-color: rgb(255, 8, 8);
   color: white;
-  padding: 2%;
+  padding: 1.5%;
 }
 
 .low {
   background-color: rgb(84, 99, 230);
   color: white;
+  border: 5px solid rgb(235, 20, 217);
 }
 
 .mid {
-  background-color: rgb(182, 122, 238);
+  /* background-color: rgb(131, 0, 253); */
+  background-color: yellow;
   color: white;
+  border: 5px solid blue;
 }
 
 .high {
   background-color: rgb(163, 8, 55);
   color: white;
+  border: 5px solid rgb(20, 12, 12);
 }
 
 .unactive {
@@ -162,7 +166,7 @@ ul {
   color: white;
 }
 
-.controller {
+.controller-bs {
   position: absolute;
   left: 54.8%;
   bottom: 15%;

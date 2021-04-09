@@ -55,8 +55,7 @@ const LinkedList = () => {
     setNodes([]);
   };
 
-  const addNode = (value) => {
-    console.log(value);
+  const addNode = (value, idx) => {
     if (value && nodes.length >= 0) {
       const newNode = {
         length: nodes.length,
@@ -96,10 +95,16 @@ const LinkedList = () => {
           nodes.length === 0 ? headRef : nodes[nodes.length - 1].currentRef,
       };
 
+      let update;
+      if (idx) update = [...nodes.slice(0, idx), newNode, ...nodes.slice(idx)];
+
       nodes.length === 0
         ? setNodes((nodes) => [...nodes, lastNode, tempPointer, newNode])
+        : idx
+        ? setNodes([...update])
         : setNodes((nodes) => [...nodes, newNode]);
       setNodeVal("");
+      console.log(nodes);
       nodes.length > 2 && setFindPointer(nodes[2].currentRef);
     }
   };
@@ -114,23 +119,25 @@ const LinkedList = () => {
   };
 
   const handleInsert = async (e) => {
-    console.log("HandleInert");
     e.preventDefault();
     let index = parseInt(indexVal);
     index += 2;
-    let previousValue = nodes.map((item) => item.data);
-    previousValue = indexVal && [
-      ...previousValue.slice(0, index),
-      value,
-      ...previousValue.slice(index),
-    ];
-    console.log(previousValue);
+    // let previousValue = nodes.map((item) => item.data);
+    // previousValue = indexVal && [
+    //   ...previousValue.slice(0, index),
+    //   value,
+    //   ...previousValue.slice(index),
+    // ];
+    // // console.log(previousValue);
     // setNodes([]);
-    handleAdd(e);
+    // // handleAdd(e);
 
     // for (let i = 2; i < previousValue.length; i++) {
-    //   await addNode(previousValue[i]);
+    //   setTimeout(() => {
+    //     addNode(previousValue[i]);
+    //   }, i * 1000);
     // }
+    addNode(value, index);
   };
 
   let tempPointerProps;
@@ -173,6 +180,7 @@ const LinkedList = () => {
 
   return (
     <div
+      className="linkedlist"
       style={{ display: "flex", justifyContent: "space-evenly", width: "100%" }}
     >
       {nodes.map((node) => {
@@ -210,11 +218,11 @@ const LinkedList = () => {
         );
       })}
 
-      <div className="title">Linked List</div>
+      {/* <div className="title">Linked List</div> */}
 
       {/* Controller Here */}
 
-      <div className="controller">
+      <div className="controller-ll">
         <form>
           <div className="row">
             <div className="col-sm-4"></div>

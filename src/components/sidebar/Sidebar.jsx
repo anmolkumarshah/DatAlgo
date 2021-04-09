@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import LinkedList from "../linkedlist/linkedlist";
-import BinarySearch from "../search-algorithm/binary-search";
 import "./sidebar.css";
+import BinarySearch from "./../search-algorithm/BinarySearch/binary-search";
+import LinearSearch from "../search-algorithm/LinearSearch/linear-search";
+import MergeSort from "../sorting-algorithm/merge-sort";
 const Sidebar = () => {
   // state of menu-mobile
   const [open, setOpen] = useState(false);
@@ -63,7 +65,9 @@ const Sidebar = () => {
           <small className="text-uppercase font-weight-bold"></small>
         </button>
         {/* <LinkedList /> */}
-        <BinarySearch />
+        {/* <BinarySearch /> */}
+        {/* <LinearSearch /> */}
+        <MergeSort />
       </div>
     </>
   );

@@ -20,7 +20,7 @@ const BinarySearch = () => {
     setStack();
     setIsFound(false);
     setExecutionStack([]);
-    for (let i = 0; i < 15; i++) valueArray.push(i * i);
+    for (let i = 1; i < 16; i++) valueArray.push(i * i);
     let mid = Math.floor((valueArray.length - 1) / 2);
     setDisplayStack([{ low: 0, mid: mid, high: valueArray.length - 1 }]);
     const array = valueArray.map((item) => {
@@ -50,7 +50,7 @@ const BinarySearch = () => {
     if (!TargetSelected) {
       let element = cellArray.filter((i) => i.id === id);
       element = element[0];
-      // console.log(element);
+      console.log(element);
       let index = cellArray.indexOf(element);
       // console.log(index);
       element.type.target = true;
@@ -163,7 +163,7 @@ const BinarySearch = () => {
       <div className="row">
         <div className="col-12 text-center">
           {!TargetSelected && !isFound && (
-            <h3 className="display-4 mb-4">Please Select target</h3>
+            <h3 className="display-4 mb-4">Please Select target </h3>
           )}
           {TargetSelected && (
             <h3 className="display-4 mb-4">looking for {TargetSelected}</h3>
@@ -180,18 +180,21 @@ const BinarySearch = () => {
           let style = "marker step-marker ";
           let cellStyle = "cell ";
           let value;
+
           if (i.type.active === false) cellStyle += "unactive";
           if (i.type.target === true) {
-            cellStyle += "target";
+            cellStyle += "target ";
             style = "marker step-marker ";
           }
-          if (i.type.low === true) cellStyle += "low";
-          if (i.type.mid === true) cellStyle += "mid";
-          if (i.type.high === true) cellStyle += "high";
-          if (i.type.target === true) value = "Target";
-          if (i.type.low === true) value = "Low";
-          if (i.type.mid === true) value = "mid";
-          if (i.type.high === true) value = "High";
+          if (i.type.low === true) cellStyle += "low ";
+          if (i.type.mid === true) cellStyle += "mid ";
+          if (i.type.high === true) cellStyle += "high ";
+
+          if (i.type.target === true) value = "Target ";
+
+          if (i.type.low === true) value = "Low ";
+          if (i.type.mid === true) value = "mid ";
+          if (i.type.high === true) value = "High ";
           return (
             <>
               {i.type.low || i.type.high || i.type.mid || i.type.target ? (
@@ -226,19 +229,22 @@ const BinarySearch = () => {
       <div>
         {TargetSelected ? (
           stack ? (
-            <button onClick={handleNext} className="btn btn-primary controller">
+            <button
+              onClick={handleNext}
+              className="btn btn-primary controller-bs"
+            >
               Next
             </button>
           ) : (
             <button
               onClick={handleCompute}
-              className="btn btn-primary controller"
+              className="btn btn-primary controller-bs"
             >
               Start
             </button>
           )
         ) : (
-          <button onClick={start} className="btn btn-primary controller">
+          <button onClick={start} className="btn btn-primary controller-bs">
             Full Reset
           </button>
         )}

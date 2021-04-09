@@ -1,10 +1,10 @@
-* {
+/* * {
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
-}
+} */
 
-.controller {
+.controller-ll {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -32,4 +32,8 @@
   border-radius: 10%;
   font-size: 100px;
   z-index: 100;
+}
+
+.linkedlist {
+  background-color: white;
 }
