@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "./merge-sort-style.css";
+import "./bubble-sort-style.css";
 
 const randonIntFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const MergeSort = () => {
+const BubbleSort = () => {
   const [array, setArray] = useState([]);
   const [animationSpeed, setAnimationSpeed] = useState(1);
   const [noBars, setNoBars] = useState(5);
@@ -189,4 +189,4 @@ const MergeSort = () => {
   );
 };
 
-export default MergeSort;
+export default BubbleSort;

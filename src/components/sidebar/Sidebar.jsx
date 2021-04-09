@@ -4,7 +4,9 @@ import LinkedList from "../linkedlist/linkedlist";
 import "./sidebar.css";
 import BinarySearch from "./../search-algorithm/BinarySearch/binary-search";
 import LinearSearch from "../search-algorithm/LinearSearch/linear-search";
-import MergeSort from "../sorting-algorithm/merge-sort";
+import BubbleSort from "../sorting-algorithm/bubble-sort/bubble-sort";
+import InsertionSort from "../sorting-algorithm/insertion-sort/insertion-sort";
+import SelectionSort from "../sorting-algorithm/selection-sort/selection-sort";
 const Sidebar = () => {
   // state of menu-mobile
   const [open, setOpen] = useState(false);
@@ -67,7 +69,9 @@ const Sidebar = () => {
         {/* <LinkedList /> */}
         {/* <BinarySearch /> */}
         {/* <LinearSearch /> */}
-        <MergeSort />
+        {/* <BubbleSort /> */}
+        {/* <InsertionSort /> */}
+        <SelectionSort />
       </div>
     </>
   );
