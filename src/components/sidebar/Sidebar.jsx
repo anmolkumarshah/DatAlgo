@@ -7,6 +7,7 @@ import LinearSearch from "../search-algorithm/LinearSearch/linear-search";
 import BubbleSort from "../sorting-algorithm/bubble-sort/bubble-sort";
 import InsertionSort from "../sorting-algorithm/insertion-sort/insertion-sort";
 import SelectionSort from "../sorting-algorithm/selection-sort/selection-sort";
+import QuickSort from "../sorting-algorithm/quick-sort/quick-sort";
 const Sidebar = () => {
   // state of menu-mobile
   const [open, setOpen] = useState(false);
@@ -71,7 +72,8 @@ const Sidebar = () => {
         {/* <LinearSearch /> */}
         {/* <BubbleSort /> */}
         {/* <InsertionSort /> */}
-        <SelectionSort />
+        {/* <SelectionSort /> */}
+        <QuickSort />
       </div>
     </>
   );
