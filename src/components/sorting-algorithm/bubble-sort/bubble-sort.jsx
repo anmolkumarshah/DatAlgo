@@ -158,7 +158,7 @@ const BubbleSort = () => {
           { name: "consider", color: considerColor },
           { name: "compare", color: compareColor },
           { name: "swap", color: swapColor },
-          { name: "sort", color: sortedColor },
+          { name: "sorted", color: sortedColor },
           { name: "initial", color: returnColor },
         ]}
       />
