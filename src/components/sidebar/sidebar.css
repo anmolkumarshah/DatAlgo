@@ -45,8 +45,7 @@ body {
   border: none;
   outline: none;
 }
-.Go {
-}
+
 .page-contnet {
   width: calc(100vw - 18rem);
   margin-left: 18rem;

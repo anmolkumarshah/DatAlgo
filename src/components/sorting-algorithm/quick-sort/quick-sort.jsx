@@ -9,7 +9,6 @@ const QuickSort = () => {
   const [array, setArray] = useState([]);
   const [animationSpeed, setAnimationSpeed] = useState(1);
   const [noBars, setNoBars] = useState(5);
-  // console.log(speed);
 
   const resetArray = () => {
     let temp = [];

@@ -70,10 +70,10 @@ const Sidebar = () => {
         {/* <LinkedList /> */}
         {/* <BinarySearch /> */}
         {/* <LinearSearch /> */}
-        {/* <BubbleSort /> */}
+        <BubbleSort />
         {/* <InsertionSort /> */}
         {/* <SelectionSort /> */}
-        <QuickSort />
+        {/* <QuickSort /> */}
       </div>
     </>
   );

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./bubble-sort-style.css";
+import { Bar } from "./../bar/bar";
+import { ColorIndicator } from "./../colorIndicator/colorIndicator";
 
 const randonIntFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -9,17 +11,33 @@ const BubbleSort = () => {
   const [array, setArray] = useState([]);
   const [animationSpeed, setAnimationSpeed] = useState(1);
   const [noBars, setNoBars] = useState(5);
-  // console.log(speed);
+
+  //   --------------------------------------------------------------------------------
+  //    COLORS HERE
+
+  const considerColor = "rgb(115, 146, 146)";
+  const returnColor = "rgb(255, 159, 159)"; // return and initial color are same
+  const compareColor = "rgb(216, 10, 74)";
+  const swapColor = "green";
+  const sortedColor = "rgb(10, 16, 216)";
+
+  //    MARGIN VARIABLES
+  const normalMargin = "2px";
+  const compare_left_Margin = "0px 5px 0px 12px";
+  const compare_right_Margin = "0px 12px 0px 5px";
+
+  //   --------------------------------------------------------------------------------
 
   const resetArray = () => {
     let temp = [];
     for (let i = 0; i < noBars; i++) temp.push(randonIntFromInterval(50, 400));
     const arrayBar = Array.from(document.getElementsByClassName("array-bar"));
     arrayBar.forEach((i) => {
-      i.style.backgroundColor = "lightblue";
+      i.style.backgroundColor = returnColor;
       i.style.color = "black";
     });
     setArray(temp);
+    // setLogs([]);
   };
 
   //   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -30,6 +48,7 @@ const BubbleSort = () => {
 
   //   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+  // MAIN BUBBLE SORT LOGIC HERE
   const compute = (array) => {
     const animation = [];
     let i, j;
@@ -59,59 +78,54 @@ const BubbleSort = () => {
     for (let i = 0; i < animations.length; i++) {
       const { type, value } = animations[i];
       const [barIdxOne, barIdxTwo] = value;
-
       const barOne = arrayBar[barIdxOne];
       const barTwo = arrayBar[barIdxTwo];
-
       const barOneStyle = arrayBar[barIdxOne].style;
       const barTwoStyle = arrayBar[barIdxTwo].style;
       if (type === "consider") {
         setTimeout(() => {
-          barOneStyle.backgroundColor = "rgb(115, 146, 146)";
-          barTwoStyle.backgroundColor = "rgb(115, 146, 146)";
-          barOneStyle.margin = "2px";
-          barTwoStyle.margin = "2px";
+          barOneStyle.backgroundColor = considerColor;
+          barTwoStyle.backgroundColor = considerColor;
+          barOneStyle.margin = normalMargin;
+          barTwoStyle.margin = normalMargin;
         }, i * speed);
       } else if (type === "return") {
         setTimeout(() => {
-          barOneStyle.margin = "2px";
-          barTwoStyle.margin = "2px";
-          barOneStyle.backgroundColor = "lightblue";
-          barTwoStyle.backgroundColor = "lightblue";
+          barOneStyle.margin = normalMargin;
+          barTwoStyle.margin = normalMargin;
+          barOneStyle.backgroundColor = returnColor;
+          barTwoStyle.backgroundColor = returnColor;
         }, i * speed);
       } else if (type === "compare") {
         setTimeout(() => {
-          barOneStyle.margin = "0px 5px 0px 8px";
-          barTwoStyle.margin = "0px 8px 0px 5px";
-          barOneStyle.backgroundColor = "rgb(216, 10, 74)";
-          barTwoStyle.backgroundColor = "rgb(216, 10, 74)";
+          barOneStyle.margin = compare_left_Margin;
+          barTwoStyle.margin = compare_right_Margin;
+          barOneStyle.backgroundColor = compareColor;
+          barTwoStyle.backgroundColor = compareColor;
         }, i * speed);
       } else if (type === "swap") {
         setTimeout(() => {
-          barOneStyle.backgroundColor = "green";
-          barTwoStyle.backgroundColor = "green";
+          barOneStyle.backgroundColor = swapColor;
+          barTwoStyle.backgroundColor = swapColor;
           let temp = barOneStyle.height;
 
           let temp2 = barOne.textContent;
           barOne.textContent = barTwo.textContent;
           barTwo.textContent = temp2;
 
-          barOneStyle.margin = "2px";
-          barTwoStyle.margin = "2px";
+          barOneStyle.margin = normalMargin;
+          barTwoStyle.margin = normalMargin;
           barOneStyle.height = barTwoStyle.height;
           barTwoStyle.height = temp;
         }, i * speed);
       } else if (type === "sorted") {
         setTimeout(() => {
-          barOneStyle.backgroundColor = "rgb(10, 16, 216)";
-          barTwoStyle.backgroundColor = "rgb(10, 16, 216)";
+          barOneStyle.backgroundColor = sortedColor;
+          barTwoStyle.backgroundColor = sortedColor;
           barOneStyle.color = "white";
           barTwoStyle.color = "white";
         }, i * speed);
       }
-      setTimeout(() => {
-        console.log(type, value);
-      }, i * speed);
     }
   };
 
@@ -122,37 +136,36 @@ const BubbleSort = () => {
   const handleSizeChange = (e) => {
     setArray([]);
     setNoBars(e.target.value);
-    // resetArray();
-  };
-
-  const getWidth = () => {
-    let width;
-    if (noBars == 5) width = "16%";
-    if (noBars == 10) width = "9%";
-    if (noBars == 25) width = "3.5%";
-    if (noBars == 50) width = "1.6%";
-    if (noBars == 100) width = "0.6%";
-    return width;
   };
 
   return (
     <>
-      <div className="container">
-        <div className="line"></div>
+      <hr />
+      <div className="Container mt-5">
         {array.map((i, idx) => {
           return (
-            <div
-              style={{ height: `${i}px`, width: getWidth() }}
+            <Bar
+              height={i}
+              noBars={noBars}
+              returnColor={returnColor}
               key={idx}
-              className="array-bar"
-            >
-              {noBars < 50 && <div className="badge badge-warning">{i}</div>}
-            </div>
+            />
           );
         })}
-        <div className="line"></div>
       </div>
-      <button onClick={resetArray} className="btn btn-primary">
+      <hr />
+
+      <ColorIndicator
+        indicator={[
+          { name: "consider", color: considerColor },
+          { name: "compare", color: compareColor },
+          { name: "swap", color: swapColor },
+          { name: "sort", color: sortedColor },
+          { name: "initial", color: returnColor },
+        ]}
+      />
+
+      <button onClick={resetArray} className="btn btn-primary mt-5">
         New Array
       </button>
       <button onClick={bubbleSort} className="btn btn-primary">
@@ -190,3 +203,18 @@ const BubbleSort = () => {
 };
 
 export default BubbleSort;
+
+// const ColorIndicator = ({ indicator }) => {
+//   return (
+//     <ul className="color-info mb-5">
+//       {indicator.map((i) => {
+//         return (
+//           <div>
+//             <li className="box" style={{ backgroundColor: i.color }}></li>
+//             <li>{i.name}</li>
+//           </div>
+//         );
+//       })}
+//     </ul>
+//   );
+// };
