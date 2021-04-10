@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./bubble-sort-style.css";
 import { Bar } from "./../bar/bar";
 import { ColorIndicator } from "./../colorIndicator/colorIndicator";
-
-const randonIntFromInterval = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
+import { Controller } from "./../controller/controller.jsx";
+import { randonIntFromInterval } from "../helper.jsx";
 
 const BubbleSort = () => {
   const [array, setArray] = useState([]);
@@ -164,57 +162,14 @@ const BubbleSort = () => {
           { name: "initial", color: returnColor },
         ]}
       />
-
-      <button onClick={resetArray} className="btn btn-primary mt-5">
-        New Array
-      </button>
-      <button onClick={bubbleSort} className="btn btn-primary">
-        sort
-      </button>
-      <form>
-        <select
-          onChange={handleSpeedChange}
-          id="inputState"
-          class="form-control"
-        >
-          <option selected value="1">
-            x1
-          </option>
-          <option value="2">x2</option>
-          <option value="3">x3</option>
-          <option value="4">x4</option>
-          <option value="5">x5</option>
-          <option value="10">x10</option>
-          <option value="100">x100</option>
-        </select>
-
-        <select onChange={handleSizeChange} class="form-control">
-          <option selected value="5">
-            5
-          </option>
-          <option value="10">10</option>
-          <option value="25">25</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-        </select>
-      </form>
+      <Controller
+        resetArray={resetArray}
+        operation={bubbleSort}
+        handleSpeedChange={handleSpeedChange}
+        handleSizeChange={handleSizeChange}
+      />
     </>
   );
 };
 
 export default BubbleSort;
-
-// const ColorIndicator = ({ indicator }) => {
-//   return (
-//     <ul className="color-info mb-5">
-//       {indicator.map((i) => {
-//         return (
-//           <div>
-//             <li className="box" style={{ backgroundColor: i.color }}></li>
-//             <li>{i.name}</li>
-//           </div>
-//         );
-//       })}
-//     </ul>
-//   );
-// };

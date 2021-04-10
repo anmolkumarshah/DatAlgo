@@ -7,3 +7,7 @@ export const getWidth = (noBars) => {
   if (noBars == 100) width = "0.6%";
   return width;
 };
+
+export const randonIntFromInterval = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
