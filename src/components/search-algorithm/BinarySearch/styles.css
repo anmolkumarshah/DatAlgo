@@ -4,8 +4,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to left, #ffb75e, #ed8f03);
-  font-family: "Montserrat", "Arial", sans-serif;
+  /* background: linear-gradient(to left, #ffb75e, #ed8f03); */
+  /* font-family: "Montserrat", "Arial", sans-serif; */
 }
 
 .container {
@@ -19,6 +19,7 @@ ul {
   padding: 0;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .cell {

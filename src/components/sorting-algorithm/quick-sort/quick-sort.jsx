@@ -11,7 +11,7 @@ const randonIntFromInterval = (min, max) => {
 const QuickSort = () => {
   const [array, setArray] = useState([]);
   const [animationSpeed, setAnimationSpeed] = useState(1);
-  const [noBars, setNoBars] = useState(5);
+  const [noBars, setNoBars] = useState(25);
 
   //   --------------------------------------------------------------------------------
   //    COLORS HERE
@@ -33,7 +33,7 @@ const QuickSort = () => {
   const resetArray = () => {
     let temp = [];
     for (let i = 0; i < noBars; i++) temp.push(randonIntFromInterval(50, 400));
-    temp.push(500);
+    temp.push(450);
     const arrayBar = Array.from(document.getElementsByClassName("array-bar"));
     arrayBar.forEach((i) => {
       i.style.backgroundColor = returnColor;
@@ -191,7 +191,7 @@ const QuickSort = () => {
   return (
     <>
       <hr />
-      <div className="container">
+      <div className="Container">
         {array.map((i, idx) => {
           return (
             <Bar

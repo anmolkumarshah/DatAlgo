@@ -11,7 +11,7 @@ const randonIntFromInterval = (min, max) => {
 const SelectionSort = () => {
   const [array, setArray] = useState([]);
   const [animationSpeed, setAnimationSpeed] = useState(1);
-  const [noBars, setNoBars] = useState(5);
+  const [noBars, setNoBars] = useState(25);
 
   //   --------------------------------------------------------------------------------
   //    COLORS HERE
@@ -135,7 +135,7 @@ const SelectionSort = () => {
   return (
     <>
       <hr />
-      <div className="container">
+      <div className="Container">
         {array.map((i, idx) => {
           return (
             <Bar

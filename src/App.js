@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Sidebar from "./components/sidebar/Sidebar";
+import DrawerLeft from "./material-ui-components/drawer";
 
 class App extends Component {
   state = {};
@@ -10,7 +11,8 @@ class App extends Component {
     return (
       <React.Fragment>
         <ToastContainer />
-        <Sidebar />
+        {/* <Sidebar /> */}
+        <DrawerLeft />
       </React.Fragment>
     );
   }

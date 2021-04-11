@@ -8,7 +8,7 @@ import { randonIntFromInterval } from "../helper.jsx";
 const BubbleSort = () => {
   const [array, setArray] = useState([]);
   const [animationSpeed, setAnimationSpeed] = useState(1);
-  const [noBars, setNoBars] = useState(5);
+  const [noBars, setNoBars] = useState(25);
 
   //   --------------------------------------------------------------------------------
   //    COLORS HERE
