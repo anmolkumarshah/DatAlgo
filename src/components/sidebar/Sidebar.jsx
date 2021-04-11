@@ -73,9 +73,9 @@ const Sidebar = () => {
 
         {/* <BubbleSort /> */}
         {/* <InsertionSort /> */}
-        {/* <SelectionSort /> */}
+        <SelectionSort />
 
-        <QuickSort />
+        {/* <QuickSort /> */}
       </div>
     </>
   );
