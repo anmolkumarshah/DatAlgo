@@ -26,6 +26,7 @@ import BubbleSort from "./../components/sorting-algorithm/bubble-sort/bubble-sor
 import InsertionSort from "../components/sorting-algorithm/insertion-sort/insertion-sort";
 import SelectionSort from "../components/sorting-algorithm/selection-sort/selection-sort";
 import QuickSort from "../components/sorting-algorithm/quick-sort/quick-sort";
+import Homepage from "./../homepage/homepage";
 
 const drawerWidth = 240;
 
@@ -187,6 +188,8 @@ export default function DrawerLeft() {
           <Route path="/insertion-search" component={InsertionSort} />
           <Route path="/selection-search" component={SelectionSort} />
           <Route path="/quick-search" component={QuickSort} />
+
+          <Route path="/" component={Homepage} />
         </Switch>
       </main>
     </div>

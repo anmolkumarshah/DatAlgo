@@ -4,11 +4,14 @@ import { Bar } from "./../bar/bar";
 import { ColorIndicator } from "./../colorIndicator/colorIndicator";
 import { Controller } from "./../controller/controller.jsx";
 import { randonIntFromInterval } from "../helper.jsx";
+import SimpleAccordion from "../../../material-ui-components/accordian";
 
 const BubbleSort = () => {
   const [array, setArray] = useState([]);
   const [animationSpeed, setAnimationSpeed] = useState(1);
   const [noBars, setNoBars] = useState(25);
+  const [log, setLog] = useState([]);
+  let animations = [];
 
   //   --------------------------------------------------------------------------------
   //    COLORS HERE
@@ -69,8 +72,7 @@ const BubbleSort = () => {
   };
 
   const bubbleSort = () => {
-    const animations = compute(array);
-
+    animations = compute(array);
     const arrayBar = document.getElementsByClassName("array-bar");
     let speed = 1000 / animationSpeed;
     for (let i = 0; i < animations.length; i++) {
@@ -162,6 +164,7 @@ const BubbleSort = () => {
           { name: "initial", color: returnColor },
         ]}
       />
+
       <Controller
         resetArray={resetArray}
         operation={bubbleSort}
