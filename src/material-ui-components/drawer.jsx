@@ -27,6 +27,8 @@ import InsertionSort from "../components/sorting-algorithm/insertion-sort/insert
 import SelectionSort from "../components/sorting-algorithm/selection-sort/selection-sort";
 import QuickSort from "../components/sorting-algorithm/quick-sort/quick-sort";
 import Homepage from "./../homepage/homepage";
+import PathFinding from "./../components/path-finding/path-finding";
+import BinaryTree from "../components/tree/BinaryTree";
 
 const drawerWidth = 240;
 
@@ -173,6 +175,16 @@ export default function DrawerLeft() {
               { target: "/quick-search", name: "Quick Sort" },
             ]}
           ></SimpleAccordion>
+
+          <SimpleAccordion
+            name="Binary Tree & Traversals"
+            array={[{ target: "/binary-tree", name: "BinaryTree" }]}
+          ></SimpleAccordion>
+
+          <SimpleAccordion
+            name="Path Finding Algorithm"
+            array={[{ target: "/path-finding", name: "Dijkstra Algorithm" }]}
+          ></SimpleAccordion>
         </List>
       </Drawer>
       <main
@@ -188,6 +200,8 @@ export default function DrawerLeft() {
           <Route path="/insertion-search" component={InsertionSort} />
           <Route path="/selection-search" component={SelectionSort} />
           <Route path="/quick-search" component={QuickSort} />
+          <Route path="/path-finding" component={PathFinding} />
+          <Route path="/binary-tree" component={BinaryTree} />
 
           <Route path="/" component={Homepage} />
         </Switch>

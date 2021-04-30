@@ -8,11 +8,16 @@
 }
 
 .start-node {
-  background-color: goldenrod;
+  /* background-color: goldenrod; */
+  background-image: url("./images/source.png");
+  background-size: contain;
+  z-index: 1000;
 }
 
 .target-node {
   background-color: rgb(55, 0, 255);
+  background-image: url("./images/target.jpg");
+  background-size: contain;
 }
 
 .node-wall {

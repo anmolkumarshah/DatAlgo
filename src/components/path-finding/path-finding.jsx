@@ -3,14 +3,27 @@ import Node from "./Node";
 import "./main-style.css";
 import { dijkstra, getNodesInShortestPathOrder } from "./algorithms/dijkstra";
 
-const START_NODE_ROW = 10;
-const START_NODE_COL = 15;
-const FINISH_NODE_ROW = 10;
-const FINISH_NODE_COL = 35;
+import Switch from "@material-ui/core/Switch";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 const PathFinding = () => {
   const [nodes, setNodes] = useState([]);
   const [mouseIsPressed, setMouseIsPressed] = useState(false);
+
+  const [START_NODE_ROW, SET_START_NODE_ROW] = useState(3);
+  const [START_NODE_COL, SET_START_NODE_COL] = useState(5);
+  const [FINISH_NODE_ROW, SET_FINISH_NODE_ROW] = useState(10);
+  const [FINISH_NODE_COL, SET_FINISH_NODE_COL] = useState(35);
+
+  const ALL_ROWS = 20;
+  const ALL_COLS = 51;
+
+  const [checked, setChecked] = React.useState(false);
+
+  const toggleChecked = () => {
+    setChecked((prev) => !prev);
+  };
 
   const animateDijkstra = (visitedNodesInOrder, nodesInShortestPathOrder) => {
     for (let i = 0; i <= visitedNodesInOrder.length; i++) {
@@ -22,8 +35,8 @@ const PathFinding = () => {
       }
       setTimeout(() => {
         const node = visitedNodesInOrder[i];
-        document.getElementById(`node-${node.row}-${node.col}`).className =
-          "node node-visited";
+        document.getElementById(`node-${node.row}-${node.col}`).className +=
+          " node node-visited";
       }, 10 * i);
     }
   };
@@ -32,8 +45,8 @@ const PathFinding = () => {
     for (let i = 0; i < nodesInShortestPathOrder.length; i++) {
       setTimeout(() => {
         const node = nodesInShortestPathOrder[i];
-        document.getElementById(`node-${node.row}-${node.col}`).className =
-          "node node-shortest-path";
+        document.getElementById(`node-${node.row}-${node.col}`).className +=
+          " node node-shortest-path";
       }, 50 * i);
     }
   };
@@ -44,7 +57,6 @@ const PathFinding = () => {
     const visitedNodesInOrder = dijkstra(nodes, startNode, finishNode);
     const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
     animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
-    // console.log(visitedNodesInOrder);
   };
 
   const handleMouseDown = (row, col) => {
@@ -75,10 +87,14 @@ const PathFinding = () => {
   };
 
   useEffect(() => {
+    init();
+  }, []);
+
+  const init = () => {
     const vertical = [];
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < ALL_ROWS; i++) {
       const horizontal = [];
-      for (let j = 0; j < 50; j++) {
+      for (let j = 0; j < ALL_COLS; j++) {
         const currentNode = {
           row: i,
           col: j,
@@ -94,13 +110,26 @@ const PathFinding = () => {
       vertical.push(horizontal);
     }
     setNodes(vertical);
-  }, []);
+  };
+
+  const handleClear = () => {};
 
   return (
     <div className="nodes">
       <button className="btn btn-primary" onClick={visualizeDijkstra}>
         Start
       </button>
+      <button className="btn btn-primary" onClick={handleClear}>
+        Clear
+      </button>
+
+      <FormGroup>
+        <FormControlLabel
+          control={<Switch checked={checked} onChange={toggleChecked} />}
+          label={checked ? "Move Source" : "Move Target"}
+        />
+      </FormGroup>
+
       {nodes.map((item, idx) => {
         return (
           <div key={idx} className="nodes">
