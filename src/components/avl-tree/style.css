@@ -1,0 +1,23 @@
+.node {
+  fill: rgb(252, 252, 252);
+  stroke: rgb(25, 0, 255);
+  font-size: 25px;
+}
+
+.link {
+  fill: rgb(241, 241, 241);
+  stroke: rgb(7, 7, 7);
+}
+
+.top {
+  margin-top: 200px;
+}
+
+.controller-avl {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  background-color: burlywood;
+  width: 100vw;
+  padding: 10px;
+}

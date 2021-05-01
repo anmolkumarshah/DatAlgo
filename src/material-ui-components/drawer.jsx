@@ -29,6 +29,7 @@ import QuickSort from "../components/sorting-algorithm/quick-sort/quick-sort";
 import Homepage from "./../homepage/homepage";
 import PathFinding from "./../components/path-finding/path-finding";
 import BinaryTree from "../components/tree/BinaryTree";
+import AVLTrees from "../components/avl-tree/AVLTrees";
 
 const drawerWidth = 240;
 
@@ -177,8 +178,11 @@ export default function DrawerLeft() {
           ></SimpleAccordion>
 
           <SimpleAccordion
-            name="Binary Tree & Traversals"
-            array={[{ target: "/binary-tree", name: "BinaryTree" }]}
+            name="Binary & AVL Tree"
+            array={[
+              { target: "/binary-tree", name: "Binary Tree & Traversals" },
+              { target: "/avl-tree", name: "AVL Tree" },
+            ]}
           ></SimpleAccordion>
 
           <SimpleAccordion
@@ -202,6 +206,7 @@ export default function DrawerLeft() {
           <Route path="/quick-search" component={QuickSort} />
           <Route path="/path-finding" component={PathFinding} />
           <Route path="/binary-tree" component={BinaryTree} />
+          <Route path="/avl-tree" component={AVLTrees} />
 
           <Route path="/" component={Homepage} />
         </Switch>

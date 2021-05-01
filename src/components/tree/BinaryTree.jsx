@@ -180,26 +180,41 @@ const BinaryTree = () => {
         }}
       />
       <TraversedList list={traverlist} />
-      <form>
-        <select onChange={changeHandler} className="form-control">
-          <option selected value={"title"}>
-            Please Select
-          </option>
-          <option value={"PreOrder"}>PreOrder</option>
-          <option value={"PostOrder"}>PostOrder</option>
-          <option value={"InOrder"}>InOrder</option>
-          <option value={"LevelOrder"}>LevelOrder</option>
-        </select>
-      </form>
-      <button onClick={() => animateList(treeData)} className="btn">
-        Start
-      </button>
-      <button onClick={reset} className="btn">
-        Clear
-      </button>
-      <button onClick={customInput} className="btn">
-        Custom Input
-      </button>
+      <div className="controller-tree">
+        <div className="row">
+          <div className="col-3">
+            <form>
+              <select onChange={changeHandler} className="form-control">
+                <option selected value={"title"}>
+                  Please Select
+                </option>
+                <option value={"PreOrder"}>PreOrder</option>
+                <option value={"PostOrder"}>PostOrder</option>
+                <option value={"InOrder"}>InOrder</option>
+                <option value={"LevelOrder"}>LevelOrder</option>
+              </select>
+            </form>
+          </div>
+          <div className="col-1">
+            <button
+              onClick={() => animateList(treeData)}
+              className="btn btn-primary"
+            >
+              Start
+            </button>
+          </div>
+          <div className="col-1">
+            <button onClick={reset} className="btn btn-danger">
+              Clear
+            </button>
+          </div>
+          <div className="col">
+            <button onClick={customInput} className="btn btn-info">
+              Custom Input
+            </button>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
