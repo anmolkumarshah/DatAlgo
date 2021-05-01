@@ -30,6 +30,8 @@ import Homepage from "./../homepage/homepage";
 import PathFinding from "./../components/path-finding/path-finding";
 import BinaryTree from "../components/tree/BinaryTree";
 import AVLTrees from "../components/avl-tree/AVLTrees";
+import LinkedList from "../components/linkedlist/linkedlist";
+import SingleLinkedList from "../components/singleLinkedList/singleLinkedList";
 
 const drawerWidth = 240;
 
@@ -160,6 +162,15 @@ export default function DrawerLeft() {
         <Divider />
         <List>
           <SimpleAccordion
+            name="Linked List"
+            array={[{ target: "/single-LL", name: "Single Linked List" }]}
+          ></SimpleAccordion>
+
+          <Divider />
+          <Divider />
+          <Divider />
+
+          <SimpleAccordion
             name="Search Algorithms"
             array={[
               { target: "/linear-search", name: "Linear Search" },
@@ -178,7 +189,7 @@ export default function DrawerLeft() {
           ></SimpleAccordion>
 
           <SimpleAccordion
-            name="Binary & AVL Tree"
+            name="Tree Algorithm"
             array={[
               { target: "/binary-tree", name: "Binary Tree & Traversals" },
               { target: "/avl-tree", name: "AVL Tree" },
@@ -198,7 +209,7 @@ export default function DrawerLeft() {
       >
         <Switch>
           <Route path="/binary-search" component={BinarySearch} />
-          <Route path="/linear-search" component={LinearSearch} />
+          <Route path="/linear-search" component={LinkedList} />
 
           <Route path="/bubble-sort" component={BubbleSort} />
           <Route path="/insertion-search" component={InsertionSort} />
@@ -207,6 +218,8 @@ export default function DrawerLeft() {
           <Route path="/path-finding" component={PathFinding} />
           <Route path="/binary-tree" component={BinaryTree} />
           <Route path="/avl-tree" component={AVLTrees} />
+
+          <Route path="/single-LL" component={SingleLinkedList} />
 
           <Route path="/" component={Homepage} />
         </Switch>

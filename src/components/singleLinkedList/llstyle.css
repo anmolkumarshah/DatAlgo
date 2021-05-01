@@ -1,0 +1,13 @@
+.joins {
+  stroke-width: 1.5px;
+  margin-top: 10px;
+}
+
+.controller-sll {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  background-color: burlywood;
+  width: 100vw;
+  padding: 10px;
+}

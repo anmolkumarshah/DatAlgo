@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import AVLTrees from "./components/avl-tree/AVLTrees";
+import SingleLinkedList from "./components/singleLinkedList/singleLinkedList.jsx";
 
 import DrawerLeft from "./material-ui-components/drawer";
 
@@ -12,8 +12,7 @@ class App extends Component {
         <ToastContainer />
         {/* <Sidebar /> */}
         <DrawerLeft />
-        {/* <PathFinding /> */}
-        {/* <AVLTrees /> */}
+        {/* <SingleLinkedList /> */}
       </React.Fragment>
     );
   }
