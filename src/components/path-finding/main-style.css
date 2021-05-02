@@ -125,3 +125,13 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.controller-path-finding {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  background-color: burlywood;
+  width: 100vw;
+  padding: 10px;
+  border-top: 5px solid rgb(73, 73, 245);
+}

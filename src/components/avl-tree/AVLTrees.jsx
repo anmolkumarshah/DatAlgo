@@ -96,11 +96,14 @@ const AVLTrees = () => {
         />
       )}
       <div className="row controller-avl">
-        <div className="col-1">
-          <button onClick={create} className="btn btn-primary">
-            Create
-          </button>
-        </div>
+        {!isCreated && (
+          <div className="col-1">
+            <button onClick={create} className="btn btn-primary">
+              Create
+            </button>
+          </div>
+        )}
+
         <div className="col-1">
           {isCreated && (
             <button onClick={handleClear} className="btn btn-dark">

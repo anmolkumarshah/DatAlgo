@@ -116,10 +116,7 @@ const PathFinding = () => {
 
   return (
     <div className="nodes">
-      <button className="btn btn-primary" onClick={visualizeDijkstra}>
-        Start
-      </button>
-      <button className="btn btn-primary" onClick={handleClear}>
+      {/* <button className="btn btn-primary" onClick={handleClear}>
         Clear
       </button>
 
@@ -128,7 +125,7 @@ const PathFinding = () => {
           control={<Switch checked={checked} onChange={toggleChecked} />}
           label={checked ? "Move Source" : "Move Target"}
         />
-      </FormGroup>
+      </FormGroup> */}
 
       {nodes.map((item, idx) => {
         return (
@@ -152,6 +149,16 @@ const PathFinding = () => {
           </div>
         );
       })}
+
+      <div className="controller-path-finding">
+        <div className="row">
+          <div className="col">
+            <button className="btn btn-primary" onClick={visualizeDijkstra}>
+              Start
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

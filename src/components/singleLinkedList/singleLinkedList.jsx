@@ -51,6 +51,17 @@ const SingleLinkedList = () => {
     setIdx(data);
   };
 
+  const deleteIndex = (e) => {
+    e.preventDefault();
+    sll.delete(idx);
+    updateData();
+  };
+
+  const reverse = () => {
+    sll.Reverse();
+    updateData();
+  };
+
   const clearHandler = () => {
     setData(new SLinkedList("").display());
     setIsStart(false);
@@ -91,10 +102,10 @@ const SingleLinkedList = () => {
           )}
 
           {isStart && (
-            <div className="col-3">
+            <div className="col-2">
               <form onSubmit={insertSubmitHandler}>
                 <div className="row">
-                  <div className="col-8">
+                  <div className="col-6">
                     <input
                       onChange={insertChangeHandler}
                       value={toInsert}
@@ -112,10 +123,10 @@ const SingleLinkedList = () => {
           )}
 
           {isStart && (
-            <div className="col-3">
+            <div className="col-2">
               <form onSubmit={insertFrontSubmitHandler}>
                 <div className="row">
-                  <div className="col-8">
+                  <div className="col-6">
                     <input
                       onChange={insertChangeHandler}
                       value={toInsert}
@@ -133,10 +144,10 @@ const SingleLinkedList = () => {
           )}
 
           {isStart && (
-            <div className="col">
-              <form onSubmit={insertAfterSubmitHandler}>
+            <div className="col-2">
+              <form onSubmit={deleteIndex}>
                 <div className="row">
-                  <div className="col">
+                  <div className="col-8">
                     <input
                       onChange={idxChangeHandler}
                       value={idx}
@@ -144,7 +155,29 @@ const SingleLinkedList = () => {
                       placeholder="Index"
                     ></input>
                   </div>
-                  <div className="col">
+                  <div className="col-2">
+                    <button className="btn btn-primary" type="submit">
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          )}
+
+          {isStart && (
+            <div className="col-3">
+              <form onSubmit={insertAfterSubmitHandler}>
+                <div className="row">
+                  <div className="col-4">
+                    <input
+                      onChange={idxChangeHandler}
+                      value={idx}
+                      className="form-control"
+                      placeholder="Index"
+                    ></input>
+                  </div>
+                  <div className="col-4">
                     <input
                       onChange={insertChangeHandler}
                       value={toInsert}
@@ -152,13 +185,21 @@ const SingleLinkedList = () => {
                       placeholder="Value"
                     ></input>
                   </div>
-                  <div className="col">
+                  <div className="col-1">
                     <button className="btn btn-primary" type="submit">
                       Insert After
                     </button>
                   </div>
                 </div>
               </form>
+            </div>
+          )}
+
+          {isStart && (
+            <div className="col-2">
+              <button onClick={reverse} className="btn btn-warning">
+                Reverse
+              </button>
             </div>
           )}
         </div>
