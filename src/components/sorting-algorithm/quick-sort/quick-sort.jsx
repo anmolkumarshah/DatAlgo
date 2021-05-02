@@ -190,6 +190,16 @@ const QuickSort = () => {
 
   return (
     <>
+      <ColorIndicator
+        indicator={[
+          { name: "pivot", color: pivotColor },
+          { name: "j variable", color: j_Color },
+          { name: "i variable", color: i_Color },
+          { name: "compare", color: compareColor },
+          { name: "swap", color: swapColor },
+          { name: "initial", color: returnColor },
+        ]}
+      />
       <hr />
       <div className="Container">
         {array.map((i, idx) => {
@@ -205,16 +215,7 @@ const QuickSort = () => {
         {/* <div className="line"></div> */}
       </div>
       <hr />
-      <ColorIndicator
-        indicator={[
-          { name: "pivot", color: pivotColor },
-          { name: "j variable", color: j_Color },
-          { name: "i variable", color: i_Color },
-          { name: "compare", color: compareColor },
-          { name: "swap", color: swapColor },
-          { name: "initial", color: returnColor },
-        ]}
-      />
+
       <Controller
         resetArray={resetArray}
         operation={quickSort}

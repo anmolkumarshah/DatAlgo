@@ -1,3 +1,6 @@
+body{
+  background-color: black;
+}
 .Container {
   display: flex;
   flex-direction: column;

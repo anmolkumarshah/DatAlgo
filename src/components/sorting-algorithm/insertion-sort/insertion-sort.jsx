@@ -16,10 +16,10 @@ const InsertionSort = () => {
   //   --------------------------------------------------------------------------------
   //    COLORS HERE
 
-  const keySelectionColor = "rgb(115, 146, 146)";
-  const returnColor = "rgb(255, 159, 159)"; // return and initial color are same
+  const keySelectionColor = "#FAD02C";
+  const returnColor = "#647C90"; // return and initial color are same
   const compareColor = "rgb(216, 10, 74)";
-  const memoryOverridingColor = "green";
+  const memoryOverridingColor = "#32CD30";
 
   //    MARGIN VARIABLES
   const normalMargin = "2px";
@@ -131,6 +131,14 @@ const InsertionSort = () => {
 
   return (
     <>
+      <ColorIndicator
+        indicator={[
+          { name: "selected key", color: keySelectionColor },
+          { name: "compare", color: compareColor },
+          { name: "memory overriding", color: memoryOverridingColor },
+          { name: "initial", color: returnColor },
+        ]}
+      />
       <hr />
       <div className="Container">
         {array.map((i, idx) => {
@@ -145,14 +153,7 @@ const InsertionSort = () => {
         })}
       </div>
       <hr />
-      <ColorIndicator
-        indicator={[
-          { name: "selected key", color: keySelectionColor },
-          { name: "compare", color: compareColor },
-          { name: "memory overriding", color: memoryOverridingColor },
-          { name: "initial", color: returnColor },
-        ]}
-      />
+
       <Controller
         resetArray={resetArray}
         operation={insertionSort}

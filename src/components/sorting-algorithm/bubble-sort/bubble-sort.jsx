@@ -16,11 +16,11 @@ const BubbleSort = () => {
   //   --------------------------------------------------------------------------------
   //    COLORS HERE
 
-  const considerColor = "rgb(115, 146, 146)";
-  const returnColor = "rgb(255, 159, 159)"; // return and initial color are same
+  const considerColor = "#FAD02C";
+  const returnColor = "#647C90"; // return and initial color are same
   const compareColor = "rgb(216, 10, 74)";
-  const swapColor = "green";
-  const sortedColor = "rgb(10, 16, 216)";
+  const swapColor = "#32CD30";
+  const sortedColor = "rgb(63,81,181)";
 
   //    MARGIN VARIABLES
   const normalMargin = "2px";
@@ -140,8 +140,18 @@ const BubbleSort = () => {
 
   return (
     <>
+      <ColorIndicator
+        indicator={[
+          { name: "consider", color: considerColor },
+          { name: "compare", color: compareColor },
+          { name: "swap", color: swapColor },
+          { name: "sorted", color: sortedColor },
+          { name: "initial", color: returnColor },
+        ]}
+      />
+
       <hr />
-      <div className="Container mt-5">
+      <div className="Container ">
         {array.map((i, idx) => {
           return (
             <Bar
@@ -154,16 +164,6 @@ const BubbleSort = () => {
         })}
       </div>
       <hr />
-
-      <ColorIndicator
-        indicator={[
-          { name: "consider", color: considerColor },
-          { name: "compare", color: compareColor },
-          { name: "swap", color: swapColor },
-          { name: "sorted", color: sortedColor },
-          { name: "initial", color: returnColor },
-        ]}
-      />
 
       <Controller
         resetArray={resetArray}
