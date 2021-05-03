@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import DoubleLinkedList from "./components/doubleLinkedList/doubleLinkedList";
 
 import DrawerLeft from "./material-ui-components/drawer";
-import Array from "./components/array";
+
 class App extends Component {
   render() {
     return (
@@ -12,7 +12,6 @@ class App extends Component {
         <ToastContainer />
         {/* <Sidebar /> */}
         <DrawerLeft />
-        <Array />
         {/* <DoubleLinkedList /> */}
       </React.Fragment>
     );
