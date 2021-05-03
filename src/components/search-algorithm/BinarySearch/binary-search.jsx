@@ -163,7 +163,7 @@ const BinarySearch = () => {
       <div className="row">
         <div className="col-12 text-center">
           {!TargetSelected && !isFound && (
-            <h3 className="display-4 mb-4">Please Select target </h3>
+            <h3 className="display-4 mb-4">Please Select Target </h3>
           )}
           {TargetSelected && (
             <h3 className="display-4 mb-4">looking for {TargetSelected}</h3>
@@ -232,6 +232,7 @@ const BinarySearch = () => {
             <button
               onClick={handleNext}
               className="btn btn-primary controller-bs"
+              style={{ backgroundColor: "rgb(63,81,181)" }}
             >
               Next
             </button>
@@ -239,12 +240,17 @@ const BinarySearch = () => {
             <button
               onClick={handleCompute}
               className="btn btn-primary controller-bs"
+              style={{ backgroundColor: "rgb(63,81,181)" }}
             >
               Start
             </button>
           )
         ) : (
-          <button onClick={start} className="btn btn-primary controller-bs">
+          <button
+            onClick={start}
+            className="btn btn-primary controller-bs"
+            style={{ backgroundColor: "rgb(63,81,181)" }}
+          >
             Full Reset
           </button>
         )}

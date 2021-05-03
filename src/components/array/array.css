@@ -1,0 +1,28 @@
+.container {
+  height: 50vh;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.arr-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.array {
+  float: left;
+  background-color: #7933ff;
+  color: white;
+  font-size: 2rem;
+  height: 5rem;
+  width: 5rem;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.array p {
+  padding: 10px;
+}

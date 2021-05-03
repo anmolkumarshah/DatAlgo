@@ -17,7 +17,7 @@ const InsertionSort = () => {
   //    COLORS HERE
 
   const keySelectionColor = "#FAD02C";
-  const returnColor = "#647C90"; // return and initial color are same
+  const returnColor = "rgb(63,81,181)"; // return and initial color are same
   const compareColor = "rgb(216, 10, 74)";
   const memoryOverridingColor = "#32CD30";
 
