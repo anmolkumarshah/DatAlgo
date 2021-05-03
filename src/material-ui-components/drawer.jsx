@@ -32,6 +32,7 @@ import BinaryTree from "../components/tree/BinaryTree";
 import AVLTrees from "../components/avl-tree/AVLTrees";
 import LinkedList from "../components/linkedlist/linkedlist";
 import SingleLinkedList from "../components/singleLinkedList/singleLinkedList";
+import Arr from "../components/array/Array";
 
 const drawerWidth = 240;
 
@@ -162,6 +163,11 @@ export default function DrawerLeft() {
         <Divider />
         <List>
           <SimpleAccordion
+            name="Array"
+            array={[{ target: "/array", name: "Array" }]}
+          ></SimpleAccordion>
+
+          <SimpleAccordion
             name="Linked List"
             array={[{ target: "/single-LL", name: "Single Linked List" }]}
           ></SimpleAccordion>
@@ -210,7 +216,6 @@ export default function DrawerLeft() {
         <Switch>
           <Route path="/binary-search" component={BinarySearch} />
           <Route path="/linear-search" component={LinkedList} />
-
           <Route path="/bubble-sort" component={BubbleSort} />
           <Route path="/insertion-search" component={InsertionSort} />
           <Route path="/selection-search" component={SelectionSort} />
@@ -220,7 +225,7 @@ export default function DrawerLeft() {
           <Route path="/avl-tree" component={AVLTrees} />
 
           <Route path="/single-LL" component={SingleLinkedList} />
-
+          <Route path="/array" component={Arr} />
           <Route path="/" component={Homepage} />
         </Switch>
       </main>

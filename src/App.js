@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import DoubleLinkedList from "./components/doubleLinkedList/doubleLinkedList";
 
 import DrawerLeft from "./material-ui-components/drawer";
+import CircularLinkedList from "./components/doubleLinkedList/circularLinkedList.jsx";
+import Arr from "./components/array/Array";
 
 class App extends Component {
   render() {
@@ -12,7 +13,8 @@ class App extends Component {
         <ToastContainer />
         {/* <Sidebar /> */}
         <DrawerLeft />
-        {/* <DoubleLinkedList /> */}
+        {/* <CircularLinkedList /> */}
+        {/* <Arr /> */}
       </React.Fragment>
     );
   }
