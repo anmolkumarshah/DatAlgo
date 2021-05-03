@@ -5,20 +5,22 @@ export const Controller = ({
   handleSizeChange,
 }) => {
   return (
-    <div className="controller row w-50">
-      <div className="col-sm-3">
-        <button onClick={resetArray} className="btn btn-primary">
+    <div className="controller justify-content-md-cente d-flex w-100">
+      <div className="col-sm-3 ">
+        <button onClick={resetArray} className="btn w-100 btn-primary" style ={{backgroundColor :"rgb(63,81,181)"}}>
           New Array
         </button>
       </div>
       <div className="col-sm-3">
-        <button onClick={() => operation()} className="btn btn-primary">
-          sort
+        <button onClick={() => operation()} className="btn w-100 btn-primary" style={{backgroundColor : "rgb(63,81,181)"}}>
+          Sort
         </button>
       </div>
       <div className="col-sm-3">
-        <form>
-          <label htmlFor="speed">Speed</label>
+        <form className="d-flex  align-items-center ">
+          <label className="p-0 m-0" htmlFor="speed">
+            Speed
+          </label>
           <select onChange={handleSpeedChange} id="speed" class="form-control">
             <option selected value="1">
               x1
@@ -33,8 +35,8 @@ export const Controller = ({
         </form>
       </div>
       <div className="col-sm-3">
-        <form>
-          <label htmlFor="size">Size</label>
+        <form className="d-flex  align-items-center ">
+          <label className="p-0 m-0" htmlFor="size">Size</label>
           <select id="size" onChange={handleSizeChange} class="form-control">
             <option value="5">5</option>
             <option value="10">10</option>

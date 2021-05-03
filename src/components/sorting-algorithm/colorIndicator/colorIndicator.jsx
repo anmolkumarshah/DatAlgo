@@ -2,7 +2,7 @@ import "./colorIndicator-style.css";
 
 export const ColorIndicator = ({ indicator }) => {
   return (
-    <ul className="color-info mb-5">
+    <ul className="color-info m-0 p-0">
       {indicator.map((i) => {
         return (
           <div>

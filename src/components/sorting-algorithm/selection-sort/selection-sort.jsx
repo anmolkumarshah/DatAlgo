@@ -16,11 +16,11 @@ const SelectionSort = () => {
   //   --------------------------------------------------------------------------------
   //    COLORS HERE
 
-  const j_variable = "yellow";
-  const k_variable = "pink";
-  const returnColor = "rgb(255, 159, 159)"; // return and initial color are same
+  const j_variable = "#0E86D4";
+  const k_variable = "#055C9D";
+  const returnColor = "#647C90"; // return and initial color are same
   const compareColor = "rgb(216, 10, 74)";
-  const swapColor = "green";
+  const swapColor = "#32CD30";
 
   //    MARGIN VARIABLES
   const normalMargin = "2px";
@@ -134,6 +134,15 @@ const SelectionSort = () => {
 
   return (
     <>
+      <ColorIndicator
+        indicator={[
+          { name: "j variable", color: j_variable },
+          { name: "k variable", color: k_variable },
+          { name: "swap", color: swapColor },
+          { name: "compare", color: compareColor },
+          { name: "initial", color: returnColor },
+        ]}
+      />
       <hr />
       <div className="Container">
         {array.map((i, idx) => {
@@ -148,15 +157,6 @@ const SelectionSort = () => {
         })}
       </div>
       <hr />
-      <ColorIndicator
-        indicator={[
-          { name: "j variable", color: j_variable },
-          { name: "k variable", color: k_variable },
-          { name: "swap", color: swapColor },
-          { name: "compare", color: compareColor },
-          { name: "initial", color: returnColor },
-        ]}
-      />
       <Controller
         resetArray={resetArray}
         operation={insertionSort}
