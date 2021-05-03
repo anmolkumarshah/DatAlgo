@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 {
   "name": "datalgo",
   "version": "0.1.0",
@@ -47,53 +47,4 @@
     ]
   }
 }
-=======
-{
-  "name": "datalgo",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2",
-    "@testing-library/jest-dom": "^5.11.10",
-    "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^12.8.3",
-    "bootstrap": "^4.6.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-draggable": "^4.4.3",
-    "react-icons": "^4.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
-    "react-toastify": "^7.0.3",
-    "react-transition-group": "^4.4.1",
-    "react-tree-graph": "^6.0.0",
-    "react-xarrows": "^1.5.2",
-    "web-vitals": "^1.1.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
-}
->>>>>>> b490cd450b5fe5793ac0c5311ec3a90b614e759d
+
