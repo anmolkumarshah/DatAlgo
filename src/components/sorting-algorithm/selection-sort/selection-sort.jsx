@@ -18,9 +18,9 @@ const SelectionSort = () => {
 
   const j_variable = "#0E86D4";
   const k_variable = "#055C9D";
-  const returnColor = "#647C90"; // return and initial color are same
+  const returnColor = "rgb(63,81,181)"; // return and initial color are same
   const compareColor = "rgb(216, 10, 74)";
-  const swapColor = "#32CD30";
+  const swapColor = "rgb(63,81,181)";
 
   //    MARGIN VARIABLES
   const normalMargin = "2px";

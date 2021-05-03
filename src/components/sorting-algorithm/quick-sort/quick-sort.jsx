@@ -19,7 +19,7 @@ const QuickSort = () => {
   const pivotColor = "rgb(115, 146, 146)";
   const i_Color = "yellow";
   const j_Color = "pink";
-  const returnColor = "rgb(255, 159, 159)"; // return and initial color are same
+  const returnColor = "rgb(63,81,181)"; // return and initial color are same
   const compareColor = "rgb(216, 10, 74)";
   const swapColor = "green";
 

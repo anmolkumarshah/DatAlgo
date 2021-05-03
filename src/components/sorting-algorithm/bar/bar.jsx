@@ -13,7 +13,7 @@ export const Bar = (props) => {
       className="array-bar"
     >
       {props.noBars < 50 && (
-        <div className="badge badge-warning text-dark">{props.height}</div>
+        <div className="badge badge-warning text-dark ">{props.height}</div>
       )}
     </div>
   );
