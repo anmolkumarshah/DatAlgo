@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-// import "./bubble.css";
+import { ColorIndicator } from "../sorting-algorithm/colorIndicator/colorIndicator";
 import "./array.css";
-let InitialElements = 10;
+let InitialElements = 15;
 
 const Arr = () => {
+  let initialColor = "rgb(63, 81, 181)";
+  let considerColor = "#0C6170";
   // Storing Array elemnts
   const [elements, setElements] = useState([]);
   //   Range of elements
@@ -15,6 +17,11 @@ const Arr = () => {
   };
   const newInput = (event) => {
     setNewElement(event.target.value);
+  };
+  const [deleteIndex, setDeleteIndex] = useState();
+
+  const newDeleteIndex = (event) => {
+    setDeleteIndex(event.target.value);
   };
   // generate random elements
   const generateRandomElements = (start, end) => {
@@ -42,7 +49,7 @@ const Arr = () => {
     }, delay);
     setTimeout(() => {
       bar[index].style.backgroundColor = color;
-      bar[index].style.backgroundColor = "#7933ff";
+      bar[index].style.backgroundColor = initialColor;
     }, 150 * delay);
   };
 
@@ -56,7 +63,7 @@ const Arr = () => {
     }
     setTimeout(() => {
       if ((i = idx)) {
-        heighlightSorted(idx, delay--, "#05192d");
+        heighlightSorted(idx, delay--, "#32CD30");
         // Insert;
         setNoElement(noElement + 1);
         setElements((oldItems) => {
@@ -72,6 +79,7 @@ const Arr = () => {
     if (isNaN(newElement) || isNaN(index)) {
       alert("Incorrect Element or Incorrect Index");
       setNewElement([]);
+      setIndex("");
     } else {
       addElement(index);
       setNewElement([]);
@@ -89,7 +97,7 @@ const Arr = () => {
     }
     setTimeout(() => {
       if ((i = idx)) {
-        heighlightSorted(idx, delay--, "#05192d");
+        heighlightSorted(idx, delay--, considerColor);
         // Delete
         setTimeout(() => {
           setElements((oldItems) => {
@@ -97,124 +105,108 @@ const Arr = () => {
           });
         }, 300 * delay);
         setNoElement(noElement - 1);
-        elements.splice(i, 1);
+        // elements.splice(i, 1);
         console.log(elements, noElement);
       }
     }, 250 * delay);
   };
 
   const handleDelete = () => {
-    if (isNaN(index)) {
+    if (isNaN(deleteIndex)) {
       alert("Incorrect Index");
+      setDeleteIndex("");
     } else {
-      delteIndex(index);
-      setIndex("");
-    }
-  };
-  const updateElement = (idx) => {
-    let delay = 1;
-    let i;
-    for (i = 0; i < idx; i++) {
-      heighlightSorted(i, delay++, "red");
-      delay++;
-    }
-    setTimeout(() => {
-      if ((i = idx)) {
-        heighlightSorted(idx, delay, "#05192d");
-        // Update;
-        setNoElement(noElement - 1);
-        // elements.pop();
-        setElements((oldItems) => {
-          return [...oldItems, (oldItems[i] = newElement.pop())];
-        });
-      }
-    }, 150 * delay);
-  };
-  const handleUpdate = () => {
-    if (isNaN(index)) {
-      alert("Incorrect Index");
-    } else {
-      updateElement(index);
-      setNewElement("");
-      setIndex("");
+      delteIndex(deleteIndex);
+      setDeleteIndex("");
     }
   };
   return (
     <>
+      <ColorIndicator
+        indicator={[
+          { name: "Array", color: initialColor },
+          { name: "No of Steps", color: "red" },
+          { name: "Consider", color: considerColor },
+
+          { name: "Action", color: "#32CD30" },
+        ]}
+      />
+      <hr />
       <div className="container">
-        <div className="arr-container">
+        <div className="arr-container d-flex">
           {elements.map((value, idx) => {
             if (value != null)
               return (
-                <div
-                  className="array"
-                  key={idx}
-                  style={
-                    {
-                      //     backgroundColor: "#ff931e",
-                      //     height: "5rem",
-                      // width: `${60 / elements.length}%`,
-                      //     display: "inline-block",
-                      //     margin: "0 1px",
-                    }
-                  }
-                >
-                  <p className="heading">{value}</p>
-                </div>
+                <>
+                  <div>
+                    <div
+                      className="array"
+                      key={idx}
+                      style={
+                        {
+                          //     backgroundColor: "#ff931e",
+                          //     height: "5rem",
+                          // width: `${60 / elements.length}%`,
+                          //     display: "inline-block",
+                          //     margin: "0 1px",
+                        }
+                      }
+                    >
+                      <p className="heading">{value}</p>
+                    </div>
+                    {/* Index */}
+                    <p
+                      style={{
+                        color: "red",
+                        textAlign: "center",
+                        fontWeight: "bold",
+                        fontSize: "18px",
+                        paddingTop: "5px",
+                      }}
+                    >
+                      {idx}
+                    </p>
+                  </div>
+                </>
               );
           })}
         </div>
 
         <div className="controlls-container">
-          <div className="customInput">
-            <h1>Insert Element</h1>
+          <div className="d-flex align-items-center col-sm-6 controlHandler">
+            <input
+              type="text"
+              name="index"
+              id="index"
+              onChange={newIndex}
+              value={index}
+              placeholder="Index"
+              className="pl-2"
+            />
             <input
               type="text"
               name="customInput"
               id="customInput"
               onChange={newInput}
               value={newElement}
+              placeholder="Value"
+              className="pl-2"
             />
-            <input
-              type="text"
-              name="index"
-              id="index"
-              onChange={newIndex}
-              value={index}
-            />
-            <button style={{ marginTop: "20px" }} onClick={handleNewInput}>
-              Append Element
+            <button className="btn btn-primary" onClick={handleNewInput}>
+              Insert
             </button>
           </div>
-          <div className="deleteIndex">
+          <div className="col-sm-1"></div>
+          <div className="col-sm-5 controlHandler">
             <input
               type="text"
               name="index"
               id="index"
-              onChange={newIndex}
-              value={index}
+              onChange={newDeleteIndex}
+              value={deleteIndex}
             />
-            <button style={{ marginTop: "20px" }} onClick={handleDelete}>
-              Delete Element
-            </button>
-          </div>
-          <div className="updateIndex">
-            <input
-              type="text"
-              name="customInput"
-              id="customInput"
-              onChange={newInput}
-              value={newElement}
-            />
-            <input
-              type="text"
-              name="index"
-              id="index"
-              onChange={newIndex}
-              value={index}
-            />
-            <button style={{ marginTop: "20px" }} onClick={handleUpdate}>
-              Update Element
+            <button className="btn btn-primary" onClick={handleDelete}>
+              Delete
             </button>
           </div>
         </div>
