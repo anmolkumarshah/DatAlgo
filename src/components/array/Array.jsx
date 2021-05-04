@@ -171,7 +171,6 @@ const Arr = () => {
               );
           })}
         </div>
-
         <div className="controlls-container">
           <div className="d-flex align-items-center col-sm-6 controlHandler">
             <input
