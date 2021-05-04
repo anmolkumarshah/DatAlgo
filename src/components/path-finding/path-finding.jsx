@@ -6,6 +6,7 @@ import { dijkstra, getNodesInShortestPathOrder } from "./algorithms/dijkstra";
 import Switch from "@material-ui/core/Switch";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import AlertDialog from "../../material-ui-components/alertDialog";
 
 const PathFinding = () => {
   const [nodes, setNodes] = useState([]);
@@ -90,6 +91,16 @@ const PathFinding = () => {
     init();
   }, []);
 
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(true);
+  }, []);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const init = () => {
     const vertical = [];
     for (let i = 0; i < ALL_ROWS; i++) {
@@ -126,6 +137,13 @@ const PathFinding = () => {
           label={checked ? "Move Source" : "Move Target"}
         />
       </FormGroup> */}
+
+      <AlertDialog
+        open={open}
+        handleClose={handleClose}
+        title="Welcome to Path Finding"
+        content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+      />
 
       {nodes.map((item, idx) => {
         return (

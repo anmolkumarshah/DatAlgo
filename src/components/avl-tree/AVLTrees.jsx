@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AVLTree from "./avl-tree";
 import Tree from "react-tree-graph";
 import "./style.css";
+import AlertDialog from "../../material-ui-components/alertDialog";
 
 const AVLTrees = () => {
   const [considerTree, setConsiderTree] = useState(new AVLTree(""));
@@ -9,6 +10,16 @@ const AVLTrees = () => {
   const [value, setValue] = useState(null);
   const [data, setData] = useState(considerTree.getRoot());
   const [toDel, setToDel] = useState(0);
+
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(true);
+  }, []);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const create = () => {
     let rootvalue = parseInt(prompt("Enter the root value"));
@@ -80,6 +91,12 @@ const AVLTrees = () => {
 
   return (
     <div className="top">
+      <AlertDialog
+        open={open}
+        handleClose={handleClose}
+        title="Welcome to AVL Tree"
+        content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+      />
       {considerTree && (
         <Tree
           data={data}

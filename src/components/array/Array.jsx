@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import AlertDialog from "../../material-ui-components/alertDialog";
 import { ColorIndicator } from "../sorting-algorithm/colorIndicator/colorIndicator";
 import "./array.css";
 let InitialElements = 15;
@@ -31,6 +32,16 @@ const Arr = () => {
   useEffect(() => {
     generateRandomArray();
   }, []);
+
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(true);
+  }, []);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   //   generate array of random elements
   const generateRandomArray = () => {
@@ -122,6 +133,12 @@ const Arr = () => {
   };
   return (
     <>
+      <AlertDialog
+        open={open}
+        handleClose={handleClose}
+        title="Welcome to Array"
+        content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+      />
       <ColorIndicator
         indicator={[
           { name: "Array", color: initialColor },

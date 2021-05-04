@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SLinkedList from "./singleLinkedListClass";
 import Tree from "react-tree-graph";
 import "./llstyle.css";
+import AlertDialog from "../../material-ui-components/alertDialog";
 
 const SingleLinkedList = () => {
   const [sll, setSll] = useState(new SLinkedList(""));
@@ -10,6 +11,15 @@ const SingleLinkedList = () => {
   const [isStart, setIsStart] = useState(false);
 
   const [idx, setIdx] = useState("");
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(true);
+  }, []);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const createHandler = () => {
     let head = parseInt(prompt("Enter Head Value"));
@@ -68,6 +78,13 @@ const SingleLinkedList = () => {
   };
   return (
     <div>
+      <AlertDialog
+        open={open}
+        handleClose={handleClose}
+        title="Welcome to Single Linked List"
+        content="Click on the Create button at the bottom left corner of screen and you are ready to play with linked list."
+      />
+
       <Tree
         data={data}
         height={200}

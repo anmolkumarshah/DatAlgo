@@ -3,6 +3,7 @@ import BTree from "./Tree";
 import Tree from "react-tree-graph";
 import "./style.css";
 import TraversedList from "./TraverseList";
+import AlertDialog from "../../material-ui-components/alertDialog";
 
 const BinaryTree = () => {
   const t1 = new BTree([
@@ -30,6 +31,16 @@ const BinaryTree = () => {
   useEffect(() => {
     setData(treeData.display());
   }, []);
+
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(true);
+  }, []);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const Delete = (data) => {
     const children = data.children;
@@ -166,6 +177,12 @@ const BinaryTree = () => {
 
   return (
     <>
+      <AlertDialog
+        open={open}
+        handleClose={handleClose}
+        title="Welcome to Binary Tree"
+        content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+      />
       <Tree
         data={data}
         height={600}

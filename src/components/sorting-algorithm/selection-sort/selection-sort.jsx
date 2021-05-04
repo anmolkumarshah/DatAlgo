@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import AlertDialog from "../../../material-ui-components/alertDialog";
 import { Bar } from "../bar/bar";
 import { ColorIndicator } from "../colorIndicator/colorIndicator";
 import { Controller } from "../controller/controller";
@@ -45,6 +46,16 @@ const SelectionSort = () => {
   useEffect(() => {
     resetArray();
   }, []);
+
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(true);
+  }, []);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   //   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -134,6 +145,12 @@ const SelectionSort = () => {
 
   return (
     <>
+      <AlertDialog
+        open={open}
+        handleClose={handleClose}
+        title="Welcome to Selection Sorts"
+        content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+      />
       <ColorIndicator
         indicator={[
           { name: "j variable", color: j_variable },
