@@ -23,9 +23,11 @@ const AVLTrees = () => {
 
   const create = () => {
     let rootvalue = parseInt(prompt("Enter the root value"));
-    const temp = new AVLTree(rootvalue);
-    setConsiderTree(temp);
-    setCreated(true);
+    if (!isNaN(rootvalue)) {
+      const temp = new AVLTree(rootvalue);
+      setConsiderTree(temp);
+      setCreated(true);
+    }
   };
 
   const insert = (data) => {

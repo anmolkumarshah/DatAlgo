@@ -1,12 +1,13 @@
 .node {
-  fill: rgb(252, 252, 252);
-  stroke: rgb(25, 0, 255);
+  fill: rgb(72, 14, 207);
+  stroke: rgb(2, 1, 12);
   font-size: 25px;
 }
 
 .link {
   fill: rgb(241, 241, 241);
   stroke: rgb(7, 7, 7);
+  stroke-width: 1.5px;
 }
 
 .top {

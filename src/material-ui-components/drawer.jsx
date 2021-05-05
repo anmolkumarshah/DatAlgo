@@ -102,6 +102,12 @@ export default function DrawerLeft() {
     setOpen(true);
   };
 
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Tab") {
+      setOpen(!open);
+    }
+  });
+
   const handleDrawerClose = () => {
     setOpen(false);
   };

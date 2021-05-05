@@ -2,6 +2,12 @@ class Node {
   constructor(data) {
     this.name = data;
     this.children = [];
+    // this.gProps = {
+    //   className: "node-style",
+    // }
+    this.nodeProps = {
+      className: "node-style",
+    };
   }
 }
 

@@ -23,9 +23,11 @@ const SingleLinkedList = () => {
 
   const createHandler = () => {
     let head = parseInt(prompt("Enter Head Value"));
-    const temp = new SLinkedList(head);
-    setSll(temp);
-    setIsStart(true);
+    if (!isNaN(head)) {
+      const temp = new SLinkedList(head);
+      setSll(temp);
+      setIsStart(true);
+    }
   };
 
   const insertChangeHandler = (e) => {
@@ -34,7 +36,6 @@ const SingleLinkedList = () => {
   };
   const insertSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(toInsert);
     sll.insertBack(toInsert);
     updateData();
   };
@@ -96,9 +97,6 @@ const SingleLinkedList = () => {
         svgProps={{
           transform: "rotate(0)",
           className: "joins",
-        }}
-        textProps={{
-          transform: "rotate(10)",
         }}
       />
       <div className="controller-sll">
