@@ -1,0 +1,26 @@
+.link {
+  stroke-width: 3.5px;
+  margin-top: 10px;
+}
+
+.controller-sll {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  background-color: burlywood;
+  width: 100vw;
+  padding: 10px;
+  border-top: 5px solid rgb(73, 73, 245);
+}
+
+.node-style {
+  fill: rgb(133, 230, 133);
+  stroke-width: 0.5px;
+  width: 50px;
+  height: 30px;
+  margin: 10px;
+}
+
+.node-text-style {
+  transform: rotate(10);
+}

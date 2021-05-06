@@ -1,0 +1,39 @@
+/* * {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+} */
+
+.controller-ll {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 100px;
+  background-color: rgba(247, 234, 210, 0.938);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  padding: 1% 50px;
+  overflow-y: scroll;
+}
+
+.title {
+  background-color: rgba(0, 0, 0, 0.164);
+  width: 100vw;
+  text-align: center;
+  padding: 2px 0px;
+  font-weight: 400;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.display {
+  display: inline-block;
+  padding: 3%;
+  border: 3px solid black;
+  border-radius: 10%;
+  font-size: 100px;
+  z-index: 100;
+}
+
+.linkedlist {
+  background-color: white;
+}

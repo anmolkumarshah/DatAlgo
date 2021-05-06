@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import Code from "@material-ui/icons/Code";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
@@ -19,7 +20,7 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import SimpleAccordion from "./accordian";
 
-import { Route, Switch } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import BinarySearch from "../components/search-algorithm/BinarySearch/binary-search";
 import LinearSearch from "./../components/search-algorithm/LinearSearch/linear-search";
 import BubbleSort from "./../components/sorting-algorithm/bubble-sort/bubble-sort";
@@ -33,6 +34,7 @@ import AVLTrees from "../components/avl-tree/AVLTrees";
 import LinkedList from "../components/linkedlist/linkedlist";
 import SingleLinkedList from "../components/singleLinkedList/singleLinkedList";
 import Arr from "../components/array/Array";
+import Editor from "../components/code-editor/editor";
 
 const drawerWidth = 240;
 
@@ -167,6 +169,27 @@ export default function DrawerLeft() {
         </List>
         <Divider />
         <Divider />
+
+        <List>
+          <ListItem button key={""}>
+            <ListItemIcon>
+              <Code />
+            </ListItemIcon>
+            <Link
+              style={{
+                textDecoration: "none",
+                color: "black",
+                fontSize: "15px",
+              }}
+              to="/code-editor"
+            >
+              Online Code Editor
+            </Link>
+          </ListItem>
+        </List>
+
+        <Divider />
+        <Divider />
         <List>
           <SimpleAccordion
             name="Array"
@@ -214,6 +237,7 @@ export default function DrawerLeft() {
           ></SimpleAccordion>
         </List>
       </Drawer>
+
       <main
         className={clsx(classes.content, {
           [classes.contentShift]: open,
@@ -229,6 +253,7 @@ export default function DrawerLeft() {
           <Route path="/path-finding" component={PathFinding} />
           <Route path="/binary-tree" component={BinaryTree} />
           <Route path="/avl-tree" component={AVLTrees} />
+          <Route path="/code-editor" component={Editor} />
 
           <Route path="/single-LL" component={SingleLinkedList} />
           <Route path="/array" component={Arr} />
