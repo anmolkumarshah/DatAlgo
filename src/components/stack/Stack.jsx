@@ -1,4 +1,4 @@
-import { SignalCellularConnectedNoInternet4BarTwoTone } from "@material-ui/icons";
+// import { SignalCellularConnectedNoInternet4BarTwoTone } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import AlertDialog from "../../material-ui-components/alertDialog";
 import "./stack.css";
@@ -23,7 +23,8 @@ const Stack = () => {
   const generateRandomArray = () => {
     const temp = [];
     for (let i = 0; i <= noElement; i++) {
-      temp[i] = generateRandomElements(10, 100);
+      let temps = generateRandomElements(10, 100);
+      if (temp.indexOf(temps) === -1) temp.push(temps);
     }
     console.log(temp);
     setElements(temp);
@@ -74,13 +75,15 @@ const Stack = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const handlePush = () => {
     setNoElement(noElement + 1);
+    console.log(noElement);
     if (isNaN(newElement)) {
-      setNoElement(noElement - 1);
+      setNoElement(noElement);
+      console.log(noElement);
       setErrorMessage("Enter Element");
     } else if (noElement <= maxElements && newElement !== "") {
       pushElement();
     } else {
-      setNoElement(noElement - 1);
+      setNoElement(noElement);
       console.log(noElement);
     }
   };
@@ -106,6 +109,7 @@ const Stack = () => {
     if (noElement > 0) popElement();
     else if (elements.length - 1 === 0) {
       popElement();
+      setErrorMessage("");
     }
   };
 

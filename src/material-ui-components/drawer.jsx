@@ -35,6 +35,7 @@ import LinkedList from "../components/linkedlist/linkedlist";
 import SingleLinkedList from "../components/singleLinkedList/singleLinkedList";
 import Arr from "../components/array/Array";
 import Editor from "../components/code-editor/editor";
+import Stack from "../components/stack/Stack";
 
 const drawerWidth = 240;
 
@@ -169,7 +170,6 @@ export default function DrawerLeft() {
         </List>
         <Divider />
         <Divider />
-
         <List>
           <ListItem button key={""}>
             <ListItemIcon>
@@ -197,10 +197,14 @@ export default function DrawerLeft() {
           ></SimpleAccordion>
 
           <SimpleAccordion
+            name="Stack"
+            array={[{ target: "/stack", name: "Stack" }]}
+          ></SimpleAccordion>
+
+          <SimpleAccordion
             name="Linked List"
             array={[{ target: "/single-LL", name: "Single Linked List" }]}
           ></SimpleAccordion>
-
           <Divider />
           <Divider />
           <Divider />
@@ -257,6 +261,7 @@ export default function DrawerLeft() {
 
           <Route path="/single-LL" component={SingleLinkedList} />
           <Route path="/array" component={Arr} />
+          <Route path="/stack" component={Stack} />
           <Route path="/" component={Homepage} />
         </Switch>
       </main>
