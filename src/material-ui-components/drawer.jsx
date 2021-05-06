@@ -35,6 +35,7 @@ import LinkedList from "../components/linkedlist/linkedlist";
 import SingleLinkedList from "../components/singleLinkedList/singleLinkedList";
 import Arr from "../components/array/Array";
 import Editor from "../components/code-editor/editor";
+import FeedbackForm from "../components/feedback-form/common/feedback";
 
 const drawerWidth = 240;
 
@@ -166,6 +167,22 @@ export default function DrawerLeft() {
               <ListItemText primary={text} />
             </ListItem>
           ))}
+
+          <ListItem button key={""}>
+            <ListItemIcon>
+              <Code />
+            </ListItemIcon>
+            <Link
+              style={{
+                textDecoration: "none",
+                color: "black",
+                fontSize: "15px",
+              }}
+              to="/feedback"
+            >
+              Feedback
+            </Link>
+          </ListItem>
         </List>
         <Divider />
         <Divider />
@@ -254,9 +271,9 @@ export default function DrawerLeft() {
           <Route path="/binary-tree" component={BinaryTree} />
           <Route path="/avl-tree" component={AVLTrees} />
           <Route path="/code-editor" component={Editor} />
-
           <Route path="/single-LL" component={SingleLinkedList} />
           <Route path="/array" component={Arr} />
+          <Route path="/feedback" component={FeedbackForm} />
           <Route path="/" component={Homepage} />
         </Switch>
       </main>
