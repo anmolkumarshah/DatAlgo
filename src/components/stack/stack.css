@@ -1,0 +1,41 @@
+.stack {
+  margin-top: 100px;
+  gap: 10px;
+  padding: 20px;
+  padding-bottom: 5px;
+  border-left: 5px solid black;
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+  border-radius: 30px;
+  min-height: 520px;
+  min-width: 240px;
+  background-color: #eae7fa;
+  position: relative;
+}
+.element-box {
+  background-color: #050a30;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  
+}
+.element-box p {
+  color: red;
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+.element {
+  padding: 2px !important;
+  background-color: rgb(63, 81, 181);
+  min-height: 30px;
+  width: 200px;
+  text-align: center;
+  border-bottom: 3px solid #050a30;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+.element p {
+  color: white;
+  font-size: 23px;
+  font-weight: bold;
+}

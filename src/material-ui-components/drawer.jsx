@@ -22,7 +22,7 @@ import SimpleAccordion from "./accordian";
 
 import { Link, Route, Switch } from "react-router-dom";
 import BinarySearch from "../components/search-algorithm/BinarySearch/binary-search";
-import LinearSearch from "./../components/search-algorithm/LinearSearch/linear-search";
+// import LinearSearch from "./../components/search-algorithm/LinearSearch/linear-search";
 import BubbleSort from "./../components/sorting-algorithm/bubble-sort/bubble-sort";
 import InsertionSort from "../components/sorting-algorithm/insertion-sort/insertion-sort";
 import SelectionSort from "../components/sorting-algorithm/selection-sort/selection-sort";
@@ -35,7 +35,10 @@ import LinkedList from "../components/linkedlist/linkedlist";
 import SingleLinkedList from "../components/singleLinkedList/singleLinkedList";
 import Arr from "../components/array/Array";
 import Editor from "../components/code-editor/editor";
+
 import FeedbackForm from "../components/feedback-form/common/feedback";
+
+import Stack from "../components/stack/Stack";
 
 const drawerWidth = 240;
 
@@ -186,7 +189,6 @@ export default function DrawerLeft() {
         </List>
         <Divider />
         <Divider />
-
         <List>
           <ListItem button key={""}>
             <ListItemIcon>
@@ -214,10 +216,14 @@ export default function DrawerLeft() {
           ></SimpleAccordion>
 
           <SimpleAccordion
+            name="Stack"
+            array={[{ target: "/stack", name: "Stack" }]}
+          ></SimpleAccordion>
+
+          <SimpleAccordion
             name="Linked List"
             array={[{ target: "/single-LL", name: "Single Linked List" }]}
           ></SimpleAccordion>
-
           <Divider />
           <Divider />
           <Divider />
@@ -273,7 +279,11 @@ export default function DrawerLeft() {
           <Route path="/code-editor" component={Editor} />
           <Route path="/single-LL" component={SingleLinkedList} />
           <Route path="/array" component={Arr} />
+
           <Route path="/feedback" component={FeedbackForm} />
+
+          <Route path="/stack" component={Stack} />
+
           <Route path="/" component={Homepage} />
         </Switch>
       </main>
