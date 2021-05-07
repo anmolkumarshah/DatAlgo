@@ -6,7 +6,13 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-export default function AlertDialog({ open, handleClose, title, content }) {
+export default function AlertDialog({
+  open,
+  handleClose,
+  title,
+  content,
+  code = "false",
+}) {
   return (
     <Dialog
       open={open}
@@ -16,9 +22,13 @@ export default function AlertDialog({ open, handleClose, title, content }) {
     >
       <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
       <DialogContent>
-        <DialogContentText id="alert-dialog-description">
-          {content}
-        </DialogContentText>
+        {code ? (
+          <pre>{content}</pre>
+        ) : (
+          <DialogContentText id="alert-dialog-description">
+            {content}
+          </DialogContentText>
+        )}
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary" autoFocus>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AlertDialog from "../../material-ui-components/alertDialog";
+import Info from "../../material-ui-components/info";
 import { ColorIndicator } from "../sorting-algorithm/colorIndicator/colorIndicator";
 import "./array.css";
 let InitialElements = 15;
@@ -9,9 +10,7 @@ const Arr = () => {
   const considerColor = "#0C6170";
   const minElementColor = "#5C038C";
   const maxElementColor = "#1B1734";
-  // Storing Array elemnts
   let [elements, setElements] = useState([]);
-  //   Range of elements
   const [noElement, setNoElement] = useState(InitialElements - 1);
   const [newElement, setNewElement] = useState();
   const [index, setIndex] = useState();
@@ -102,9 +101,7 @@ const Arr = () => {
   };
 
   // Delete Element
-  const delteIndex = (idx) => {
-
-  };
+  const delteIndex = (idx) => {};
 
   const handleDelete = () => {
     if (isNaN(deleteIndex)) {
@@ -287,6 +284,8 @@ const Arr = () => {
           </div>
         </div>
       </div>
+      <hr />
+      {/* <Info /> */}
     </>
   );
 };

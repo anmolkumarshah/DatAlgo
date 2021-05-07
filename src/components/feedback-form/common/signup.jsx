@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import AlertDialog from "../../../material-ui-components/alertDialog";
+import { toast } from "react-toastify";
 
-const FeedbackForm = () => {
+const SignupForm = (props) => {
   const [email, setEmail] = useState("");
-  const [description, setDescription] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+
   const [err, setErr] = useState([]);
-  const [done, setDone] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -16,29 +18,30 @@ const FeedbackForm = () => {
     setOpen(false);
   };
 
-  const handleSuccessClose = () => {
-    setDone(false);
-  };
-
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
-  const handleDesChange = (e) => {
-    setDescription(e.target.value);
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = "http://localhost:8080/feedback/create";
-    const method = "POST";
+    const url = "http://localhost:8080/auth/signup";
+    const method = "PUT";
     try {
       const result = await fetch(url, {
         method: method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: email,
-          description: description,
+          name: name,
+          password: password,
         }),
       });
       const responseJson = await result.json();
@@ -47,7 +50,9 @@ const FeedbackForm = () => {
         setOpen(true);
       } else {
         console.log(responseJson);
-        setDone(true);
+        toast.success(`Your Account Has Been Created`);
+        toast.info(`You are redirecting to Login`);
+        props.history.push("/login");
       }
     } catch (e) {
       setErr(e);
@@ -55,7 +60,8 @@ const FeedbackForm = () => {
     }
 
     setEmail("");
-    setDescription("");
+    setPassword("");
+    setName("");
   };
 
   return (
@@ -63,7 +69,7 @@ const FeedbackForm = () => {
       style={{
         width: "100vw",
         height: "100vh",
-        backgroundImage: `url(${"https://cdn.pixabay.com/photo/2020/02/27/08/47/sunset-4883881_1280.jpg"})`,
+        backgroundImage: `url(${"https://cdn.pixabay.com/photo/2018/09/08/09/48/tulips-3662183_1280.jpg"})`,
         overflow: "hidden",
         backgroundSize: "cover",
       }}
@@ -76,18 +82,11 @@ const FeedbackForm = () => {
           content={"error"}
         />
       )}
-      {done && (
-        <AlertDialog
-          open={done}
-          handleClose={handleSuccessClose}
-          title="Thanks for providing feedback"
-          content={"feedback"}
-        />
-      )}
+
       <form onSubmit={handleSubmit} style={{ padding: "300px 500px" }}>
         <div className="form-group">
           <label className="text-light h2" htmlFor="email">
-            Email address
+            Email Address
           </label>
           <input
             type="email"
@@ -96,28 +95,42 @@ const FeedbackForm = () => {
             placeholder="name@example.com"
             value={email}
             onChange={handleEmailChange}
+            autoComplete={false}
           />
         </div>
 
         <div className="form-group">
-          <label className="text-light h2" htmlFor="description">
-            How we can improve ?
+          <label className="text-light h2" htmlFor="name">
+            Full Name
           </label>
-          <textarea
-            onChange={handleDesChange}
+          <input
+            type="text"
             className="form-control"
-            id="description"
-            rows="3"
-            value={description}
-          ></textarea>
+            id="name"
+            value={name}
+            onChange={handleNameChange}
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="text-light h2" htmlFor="password">
+            Password
+          </label>
+          <input
+            type="password"
+            className="form-control"
+            id="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Send
+          Signup
         </button>
       </form>
     </div>
   );
 };
 
-export default FeedbackForm;
+export default SignupForm;

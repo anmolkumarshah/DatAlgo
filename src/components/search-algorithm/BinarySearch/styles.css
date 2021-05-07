@@ -29,7 +29,7 @@ ul {
   justify-content: center;
   flex-direction: column;
   color: white !important;
-  background: rgb(63,81,181) !important;
+  background: rgb(63, 81, 181) !important;
   position: relative;
   transition: all 0.3s ease-in-out;
   width: 50px;
@@ -58,6 +58,7 @@ ul {
   width: 30px;
   height: 20px;
   text-align: center;
+  margin-top: 10px;
 }
 
 .step-marker {
@@ -70,7 +71,7 @@ ul {
   padding: 0.6rem 1.5rem !important;
   color: white;
   text-transform: capitalize;
-  border-radius: 5PX;
+  border-radius: 5px;
 }
 
 .dummy {
@@ -104,20 +105,20 @@ ul {
 }
 
 .low {
-  background-color:rgb(8,135,226) !important;
+  background-color: rgb(8, 135, 226) !important;
   color: white;
   /* border: 5px solid #FF4500; */
 }
 
 .mid {
   /* background-color: rgb(131, 0, 253); */
-  background-color: rgb(173,41,255) !important;
+  background-color: rgb(173, 41, 255) !important;
   color: white;
   /* border: 5px solid rgb(173,41,255); */
 }
 
 .high {
-  background-color: rgb(233,28,92) !important;
+  background-color: rgb(233, 28, 92) !important;
   color: white;
   /* border: 5px solid rgb(233,28,92); */
 }

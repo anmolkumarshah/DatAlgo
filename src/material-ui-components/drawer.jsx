@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -39,6 +39,9 @@ import Editor from "../components/code-editor/editor";
 import FeedbackForm from "../components/feedback-form/common/feedback";
 
 import Stack from "../components/stack/Stack";
+import SignupForm from "../components/feedback-form/common/signup";
+import LoginForm from "../components/feedback-form/common/login";
+import Logout from "../components/feedback-form/common/logout";
 
 const drawerWidth = 240;
 
@@ -104,6 +107,14 @@ export default function DrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
+  const [login, setLogin] = useState();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log(token);
+    setLogin(token);
+  });
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -162,14 +173,21 @@ export default function DrawerLeft() {
         </div>
         <Divider />
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem button key={""}>
+            <ListItemIcon>
+              <Code />
+            </ListItemIcon>
+            <Link
+              style={{
+                textDecoration: "none",
+                color: "black",
+                fontSize: "15px",
+              }}
+              to="/"
+            >
+              Home
+            </Link>
+          </ListItem>
 
           <ListItem button key={""}>
             <ListItemIcon>
@@ -186,8 +204,60 @@ export default function DrawerLeft() {
               Feedback
             </Link>
           </ListItem>
+
+          {!login ? (
+            <>
+              <ListItem button key={""}>
+                <ListItemIcon>
+                  <Code />
+                </ListItemIcon>
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    fontSize: "15px",
+                  }}
+                  to="/signup"
+                >
+                  Signup
+                </Link>
+              </ListItem>
+              <ListItem button key={""}>
+                <ListItemIcon>
+                  <Code />
+                </ListItemIcon>
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    fontSize: "15px",
+                  }}
+                  to="/login"
+                >
+                  Login
+                </Link>
+              </ListItem>
+            </>
+          ) : (
+            <ListItem button key={""}>
+              <ListItemIcon>
+                <Code />
+              </ListItemIcon>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                  fontSize: "15px",
+                }}
+                to="/logout"
+              >
+                Logout
+              </Link>
+            </ListItem>
+          )}
         </List>
         <Divider />
+
         <Divider />
         <List>
           <ListItem button key={""}>
@@ -269,20 +339,24 @@ export default function DrawerLeft() {
         <Switch>
           <Route path="/binary-search" component={BinarySearch} />
           <Route path="/linear-search" component={LinkedList} />
+
           <Route path="/bubble-sort" component={BubbleSort} />
           <Route path="/insertion-search" component={InsertionSort} />
           <Route path="/selection-search" component={SelectionSort} />
           <Route path="/quick-search" component={QuickSort} />
+
           <Route path="/path-finding" component={PathFinding} />
           <Route path="/binary-tree" component={BinaryTree} />
           <Route path="/avl-tree" component={AVLTrees} />
           <Route path="/code-editor" component={Editor} />
           <Route path="/single-LL" component={SingleLinkedList} />
           <Route path="/array" component={Arr} />
-
-          <Route path="/feedback" component={FeedbackForm} />
-
           <Route path="/stack" component={Stack} />
+
+          <Route path="/signup" component={SignupForm} />
+          <Route path="/login" component={LoginForm} />
+          <Route path="/feedback" component={FeedbackForm} />
+          <Route path="/logout" component={Logout} />
 
           <Route path="/" component={Homepage} />
         </Switch>

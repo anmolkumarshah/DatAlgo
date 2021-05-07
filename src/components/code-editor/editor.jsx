@@ -46,6 +46,7 @@ const Editor = () => {
         handleClose={handleClose}
         title="Code Output"
         content={output}
+        code={true}
       />
       <AceEditor
         placeholder="Placeholder Text"

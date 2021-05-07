@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import AlertDialog from "../../../material-ui-components/alertDialog";
 
-const FeedbackForm = () => {
+const LoginForm = (props) => {
   const [email, setEmail] = useState("");
-  const [description, setDescription] = useState("");
+  const [password, setPassword] = useState("");
+
   const [err, setErr] = useState([]);
-  const [done, setDone] = useState(false);
+
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -16,21 +18,17 @@ const FeedbackForm = () => {
     setOpen(false);
   };
 
-  const handleSuccessClose = () => {
-    setDone(false);
-  };
-
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
-  const handleDesChange = (e) => {
-    setDescription(e.target.value);
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = "http://localhost:8080/feedback/create";
+    const url = "http://localhost:8080/auth/login";
     const method = "POST";
     try {
       const result = await fetch(url, {
@@ -38,24 +36,26 @@ const FeedbackForm = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: email,
-          description: description,
+          password: password,
         }),
       });
       const responseJson = await result.json();
       if (responseJson.error) {
         setErr(responseJson.error);
+        console.log(responseJson.error);
         setOpen(true);
-      } else {
-        console.log(responseJson);
-        setDone(true);
+        return;
       }
+      localStorage.setItem("token", responseJson.token);
+      toast.success(`You are logged in`);
+      props.history.push("/");
     } catch (e) {
       setErr(e);
       setOpen(true);
     }
 
     setEmail("");
-    setDescription("");
+    setPassword("");
   };
 
   return (
@@ -63,27 +63,18 @@ const FeedbackForm = () => {
       style={{
         width: "100vw",
         height: "100vh",
-        backgroundImage: `url(${"https://cdn.pixabay.com/photo/2020/02/27/08/47/sunset-4883881_1280.jpg"})`,
+        backgroundImage: `url(${"https://cdn.pixabay.com/photo/2019/11/28/07/21/butterfly-4658565_1280.jpg"})`,
         overflow: "hidden",
         backgroundSize: "cover",
       }}
     >
-      {err.length > 0 && (
-        <AlertDialog
-          open={open}
-          handleClose={handleClose}
-          title="Error"
-          content={"error"}
-        />
-      )}
-      {done && (
-        <AlertDialog
-          open={done}
-          handleClose={handleSuccessClose}
-          title="Thanks for providing feedback"
-          content={"feedback"}
-        />
-      )}
+      <AlertDialog
+        open={open}
+        handleClose={handleClose}
+        title="Error"
+        content={"error"}
+      />
+
       <form onSubmit={handleSubmit} style={{ padding: "300px 500px" }}>
         <div className="form-group">
           <label className="text-light h2" htmlFor="email">
@@ -100,24 +91,24 @@ const FeedbackForm = () => {
         </div>
 
         <div className="form-group">
-          <label className="text-light h2" htmlFor="description">
-            How we can improve ?
+          <label className="text-light h2" htmlFor="password">
+            Password
           </label>
-          <textarea
-            onChange={handleDesChange}
+          <input
+            type="password"
             className="form-control"
-            id="description"
-            rows="3"
-            value={description}
-          ></textarea>
+            id="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Send
+          Login
         </button>
       </form>
     </div>
   );
 };
 
-export default FeedbackForm;
+export default LoginForm;
