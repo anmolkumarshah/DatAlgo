@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from "react";
 import AlertDialog from "../../material-ui-components/alertDialog";
 import Info from "../../material-ui-components/info";
+import DisabledTabs from "../../material-ui-components/tab";
 import { ColorIndicator } from "../sorting-algorithm/colorIndicator/colorIndicator";
 import "./array.css";
-let InitialElements = 15;
+import ArrayElement from "./element/ArrayElement";
+const InitialElements = 15;
 
 const Arr = () => {
   const initialColor = "rgb(63, 81, 181)";
-  const considerColor = "#0C6170";
+  const considerColor = "#ff931e";
   const minElementColor = "#5C038C";
   const maxElementColor = "#1B1734";
-  let [elements, setElements] = useState([]);
+
   const [noElement, setNoElement] = useState(InitialElements - 1);
-  const [newElement, setNewElement] = useState("");
+  // arrat for storing element
+  const [elements, setElements] = useState([]);
+
+  // index
   const [index, setIndex] = useState("");
   const newIndex = (event) => {
     setIndex(parseInt(event.target.value));
   };
+  // value
+  const [newElement, setNewElement] = useState("");
   const newInput = (event) => {
     let abc = parseInt(event.target.value);
     setNewElement(abc);
@@ -28,37 +35,39 @@ const Arr = () => {
   const newDeleteIndex = (event) => {
     setDeleteIndex(parseInt(event.target.value));
   };
+
   // generate random elements
   const generateRandomElements = (start, end) => {
     return Math.floor(Math.random() * (end - start - 1) + start);
   };
-  //   Call once while loading page
-  useEffect(() => {
-    generateRandomArray();
-  }, []);
-
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    setOpen(true);
-  }, []);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   //   generate array of random elements
   const generateRandomArray = () => {
     const temp = [];
     for (let i = 0; i <= noElement; i++) {
       temp[i] = generateRandomElements(10, 100);
     }
-    console.log(temp);
     setElements(temp);
   };
+
+  //   Call once while loading page
+  useEffect(() => {
+    generateRandomArray();
+  }, []);
+
+  // Toggle Welcom
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(!open);
+  }, []);
+
+  const handleClose = () => {
+    setOpen(!open);
+  };
+
   //   Heighlighting sorted
   const heighlightAction = (index, delay, color) => {
-    const bar = document.getElementsByClassName("array");
+    const bar = document.getElementsByClassName("array-element");
     setTimeout(() => {
       bar[index].style.backgroundColor = color;
     }, delay);
@@ -112,7 +121,7 @@ const Arr = () => {
     }
     if (i === idx)
       setTimeout(() => {
-        heighlightAction(idx, delay, "red");
+        heighlightAction(idx, delay, considerColor);
         setTimeout(() => {
           setElements((oldItems) => {
             return [...oldItems.filter((ele, i) => i !== idx)];
@@ -149,7 +158,6 @@ const Arr = () => {
     }
     setTimeout(() => {
       heighlightAction(index, delay + 20, minElementColor);
-      console.log(min);
     }, 150 * delay);
   };
   // Max Elemenet
@@ -168,7 +176,6 @@ const Arr = () => {
     }
     setTimeout(() => {
       heighlightAction(index, delay + 20, maxElementColor);
-      console.log(max);
     }, 150 * delay);
   };
 
@@ -187,9 +194,7 @@ const Arr = () => {
               return [...oldItems.filter((ele, idx) => idx !== delidx)];
             });
             setNoElement(noElement - 1);
-            // setErrorMessage(`No Elements : ${elements.length - 1}`);
           }, 150 * 5);
-          console.log(elements[i]);
         }
         delay++;
       }
@@ -220,40 +225,17 @@ const Arr = () => {
       />
       <hr />
       <div className="container">
-        <div className="arr-container d-flex">
+        <div className="array d-flex">
           {elements.map((value, idx) => {
             if (value != null)
               return (
                 <>
-                  <div>
-                    <div
-                      className="array"
-                      key={idx}
-                      style={
-                        {
-                          //     backgroundColor: "#ff931e",
-                          //     height: "5rem",
-                          // width: `${60 / elements.length}%`,
-                          //     display: "inline-block",
-                          //     margin: "0 1px",
-                        }
-                      }
-                    >
-                      <p className="heading">{value}</p>
-                    </div>
-                    {/* Index */}
-                    <p
-                      style={{
-                        color: "red",
-                        textAlign: "center",
-                        fontWeight: "bold",
-                        fontSize: "18px",
-                        paddingTop: "5px",
-                      }}
-                    >
-                      {idx}
-                    </p>
-                  </div>
+                  <ArrayElement
+                    elementClass="array-element"
+                    key={idx}
+                    value={value}
+                    elementIndex={idx}
+                  />
                 </>
               );
           })}
