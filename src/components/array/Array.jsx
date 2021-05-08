@@ -12,19 +12,21 @@ const Arr = () => {
   const maxElementColor = "#1B1734";
   let [elements, setElements] = useState([]);
   const [noElement, setNoElement] = useState(InitialElements - 1);
-  const [newElement, setNewElement] = useState();
-  const [index, setIndex] = useState();
+  const [newElement, setNewElement] = useState("");
+  const [index, setIndex] = useState("");
   const newIndex = (event) => {
-    setIndex(event.target.value);
+    setIndex(parseInt(event.target.value));
   };
   const newInput = (event) => {
     let abc = parseInt(event.target.value);
     setNewElement(abc);
   };
-  const [deleteIndex, setDeleteIndex] = useState();
+
+  // index for delete
+  const [deleteIndex, setDeleteIndex] = useState("");
 
   const newDeleteIndex = (event) => {
-    setDeleteIndex(event.target.value);
+    setDeleteIndex(parseInt(event.target.value));
   };
   // generate random elements
   const generateRandomElements = (start, end) => {
@@ -75,7 +77,7 @@ const Arr = () => {
       delay++;
     }
     setTimeout(() => {
-      if ((i = idx)) {
+      if (i === idx) {
         heighlightAction(idx, delay--, "#32CD30");
         // Insert;
         setNoElement(noElement + 1);
@@ -101,14 +103,32 @@ const Arr = () => {
   };
 
   // Delete Element
-  const delteIndex = (idx) => {};
+  const deleteFromIndex = (idx) => {
+    let delay = 1;
+    let i;
+    for (i = 0; i < idx; i++) {
+      heighlightAction(i, delay++, "red");
+      delay++;
+    }
+    if (i === idx)
+      setTimeout(() => {
+        heighlightAction(idx, delay, "red");
+        setTimeout(() => {
+          setElements((oldItems) => {
+            return [...oldItems.filter((ele, i) => i !== idx)];
+          });
+          setNoElement(noElement - 1);
+          // setErrorMessage(`No Elements : ${elements.length - 1}`);
+        }, 150 * delay);
+      }, 200 * delay);
+  };
 
   const handleDelete = () => {
     if (isNaN(deleteIndex)) {
       alert("Incorrect Index");
       setDeleteIndex("");
     } else {
-      delteIndex(deleteIndex);
+      deleteFromIndex(deleteIndex);
       setDeleteIndex("");
     }
   };
@@ -154,20 +174,21 @@ const Arr = () => {
 
   // Remove Duplicate
   const removeDuplicate = () => {
-    let i, j, idx;
+    let i, j;
     let delay = 1;
     for (i = 0; i <= noElement; i++) {
-      // heighlightAction(i, delay++, "red");
-
       for (j = i + 1; j <= noElement; j++) {
-        if (elements[j] == elements[i]) {
-          heighlightAction(i, 20, "Green");
-          heighlightAction(j, 20, "Black");
-
-          // for (k = j; k < size; k++) {
-          //    arr[k] = arr[k + 1];
-          // }
-          idx = j;
+        if (elements[j] === elements[i]) {
+          heighlightAction(i, 10, "Green");
+          heighlightAction(j, 5, "Black");
+          let delidx = j;
+          setTimeout(() => {
+            setElements((oldItems) => {
+              return [...oldItems.filter((ele, idx) => idx !== delidx)];
+            });
+            setNoElement(noElement - 1);
+            // setErrorMessage(`No Elements : ${elements.length - 1}`);
+          }, 150 * 5);
           console.log(elements[i]);
         }
         delay++;
@@ -280,7 +301,7 @@ const Arr = () => {
             <button onClick={findMax}>Find Max</button>
           </div>
           <div className="col-sm-2">
-            <button onClick={removeDuplicate}>Find Duplicate</button>
+            <button onClick={removeDuplicate}>Remove Duplicate</button>
           </div>
         </div>
       </div>
