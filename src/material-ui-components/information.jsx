@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Info from "./info";
 import FloatingActionButtonSize from "./floatingButton";
-import { Route } from "react-router";
 import { Link } from "react-router-dom";
 
 export default function Information(props) {

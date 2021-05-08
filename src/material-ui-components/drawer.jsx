@@ -13,11 +13,14 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Code from "@material-ui/icons/Code";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import Home from "@material-ui/icons/Home";
+import Account from "@material-ui/icons/AccountBox";
+import Face from "@material-ui/icons/Face";
+import PinDrop from "@material-ui/icons/PinDrop";
+import QuestionAnswer from "@material-ui/icons/QuestionAnswer";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+
 import SimpleAccordion from "./accordian";
 
 import { Link, Route, Switch } from "react-router-dom";
@@ -31,7 +34,6 @@ import Homepage from "./../homepage/homepage";
 import PathFinding from "./../components/path-finding/path-finding";
 import BinaryTree from "../components/tree/BinaryTree";
 import AVLTrees from "../components/avl-tree/AVLTrees";
-import LinkedList from "../components/linkedlist/linkedlist";
 import SingleLinkedList from "../components/singleLinkedList/singleLinkedList";
 import Arr from "../components/array/Array";
 import Editor from "../components/code-editor/editor";
@@ -176,7 +178,7 @@ export default function DrawerLeft() {
         <List>
           <ListItem button key={""}>
             <ListItemIcon>
-              <Code />
+              <Home />
             </ListItemIcon>
             <Link
               style={{
@@ -194,7 +196,7 @@ export default function DrawerLeft() {
             <>
               <ListItem button key={""}>
                 <ListItemIcon>
-                  <Code />
+                  <Account />
                 </ListItemIcon>
                 <Link
                   style={{
@@ -209,7 +211,7 @@ export default function DrawerLeft() {
               </ListItem>
               <ListItem button key={""}>
                 <ListItemIcon>
-                  <Code />
+                  <Face />
                 </ListItemIcon>
                 <Link
                   style={{
@@ -226,7 +228,7 @@ export default function DrawerLeft() {
           ) : (
             <ListItem button key={""}>
               <ListItemIcon>
-                <Code />
+                <PinDrop />
               </ListItemIcon>
               <Link
                 style={{
@@ -323,7 +325,7 @@ export default function DrawerLeft() {
         </List>
         <ListItem button key={""}>
           <ListItemIcon>
-            <Code />
+            <QuestionAnswer />
           </ListItemIcon>
           <Link
             style={{
