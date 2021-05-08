@@ -2,10 +2,18 @@ import React, { useState, useEffect } from "react";
 import AceEditor from "react-ace";
 
 import "ace-builds/src-noconflict/mode-python";
+import "ace-builds/src-noconflict/mode-java";
+import "ace-builds/src-noconflict/mode-c_cpp";
 import "ace-builds/src-noconflict/theme-monokai";
+import "ace-builds/src-noconflict/theme-solarized_light";
 import AlertDialog from "../../material-ui-components/alertDialog";
+import Output from "../../material-ui-components/output";
 
-const Editor = () => {
+const Editor = ({
+  theme = "monokai",
+  language = "python",
+  value = "Enter Code here",
+}) => {
   const [code, setCode] = useState("");
   const changeHandler = (e) => {
     setCode(e);
@@ -41,7 +49,7 @@ const Editor = () => {
   };
   return (
     <>
-      <AlertDialog
+      <Output
         open={open}
         handleClose={handleClose}
         title="Code Output"
@@ -50,9 +58,9 @@ const Editor = () => {
       />
       <AceEditor
         placeholder="Placeholder Text"
-        mode="python"
-        theme="monokai"
-        width="1000px"
+        mode={language}
+        theme={theme}
+        width="1300px"
         name="blah2"
         onLoad={() => {}}
         onChange={changeHandler}
@@ -60,6 +68,7 @@ const Editor = () => {
         showPrintMargin={true}
         showGutter={true}
         highlightActiveLine={true}
+        defaultValue={value}
         value={code}
         setOptions={{
           enableBasicAutocompletion: true,

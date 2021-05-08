@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import DrawerLeft from "./material-ui-components/drawer";
+import FloatingActionButtonSize from "./material-ui-components/floatingButton";
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
       <React.Fragment>
         <ToastContainer />
         <DrawerLeft />
+        {/* <FloatingActionButtonSize /> */}
       </React.Fragment>
     );
   }

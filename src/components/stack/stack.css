@@ -1,5 +1,5 @@
 .stack {
-  margin-top: 100px;
+  margin-top: 30px;
   gap: 10px;
   padding: 20px;
   padding-bottom: 5px;
@@ -7,7 +7,7 @@
   border-right: 5px solid black;
   border-bottom: 5px solid black;
   border-radius: 30px;
-  min-height: 520px;
+  min-height: 450px;
   min-width: 240px;
   background-color: #eae7fa;
   position: relative;
@@ -16,7 +16,6 @@
   background-color: #050a30;
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
-  
 }
 .element-box p {
   color: red;

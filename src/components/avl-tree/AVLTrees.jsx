@@ -3,6 +3,7 @@ import AVLTree from "./avl-tree";
 import Tree from "react-tree-graph";
 import "./style.css";
 import AlertDialog from "../../material-ui-components/alertDialog";
+import Information from "../../material-ui-components/information";
 
 const AVLTrees = () => {
   const [considerTree, setConsiderTree] = useState(new AVLTree(""));
@@ -114,6 +115,7 @@ const AVLTrees = () => {
           }}
         />
       )}
+
       <div className="row controller-avl">
         {!isCreated && (
           <div className="col-1">
@@ -124,6 +126,7 @@ const AVLTrees = () => {
         )}
 
         <div className="col-1">
+          <Information />
           {isCreated && (
             <button onClick={handleClear} className="btn btn-dark">
               Clear

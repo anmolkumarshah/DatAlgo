@@ -1,6 +1,7 @@
 // import { SignalCellularConnectedNoInternet4BarTwoTone } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import AlertDialog from "../../material-ui-components/alertDialog";
+import Information from "../../material-ui-components/information";
 import "./stack.css";
 const InitialElements = 5;
 const maxElements = 10;
@@ -156,6 +157,8 @@ const Stack = () => {
               );
           })}
         </div>
+        <hr />
+        <Information />
         <div className="controlls-container">
           <div className="col-sm-3 controlHandler">
             <input

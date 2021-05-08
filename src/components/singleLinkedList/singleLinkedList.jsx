@@ -3,6 +3,7 @@ import SLinkedList from "./singleLinkedListClass";
 import Tree from "react-tree-graph";
 import "./llstyle.css";
 import AlertDialog from "../../material-ui-components/alertDialog";
+import Information from "../../material-ui-components/information";
 
 const SingleLinkedList = () => {
   const [sll, setSll] = useState(new SLinkedList(""));
@@ -99,6 +100,7 @@ const SingleLinkedList = () => {
           className: "joins",
         }}
       />
+      <Information />
       <div className="controller-sll">
         <div className="row">
           {!isStart && (
