@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
+import InfoRounded from "@material-ui/icons/InfoRounded";
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     right: "10px",
     bottom: "5px",
     zIndex: "10000",
+    backgroundColor: "red",
   },
 
   extendedIcon: {
@@ -29,7 +30,7 @@ export default function FloatingActionButtonSize({ click }) {
           aria-label="add"
           className={classes.margin}
         >
-          <AddIcon />
+          <InfoRounded />
         </Fab>
       </div>
       <div></div>

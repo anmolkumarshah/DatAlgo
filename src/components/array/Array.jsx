@@ -1,62 +1,74 @@
 import React, { useEffect, useState } from "react";
 import AlertDialog from "../../material-ui-components/alertDialog";
+
 import Information from "../../material-ui-components/information";
+
 import { ColorIndicator } from "../sorting-algorithm/colorIndicator/colorIndicator";
 import "./array.css";
-let InitialElements = 15;
+import ArrayElement from "./element/ArrayElement";
+const InitialElements = 15;
 
 const Arr = () => {
   const initialColor = "rgb(63, 81, 181)";
-  const considerColor = "#0C6170";
+  const considerColor = "#ff931e";
   const minElementColor = "#5C038C";
   const maxElementColor = "#1B1734";
-  let [elements, setElements] = useState([]);
+
   const [noElement, setNoElement] = useState(InitialElements - 1);
-  const [newElement, setNewElement] = useState();
-  const [index, setIndex] = useState();
+  // arrat for storing element
+  const [elements, setElements] = useState([]);
+
+  // index
+  const [index, setIndex] = useState("");
   const newIndex = (event) => {
-    setIndex(event.target.value);
+    setIndex(parseInt(event.target.value));
   };
+  // value
+  const [newElement, setNewElement] = useState("");
   const newInput = (event) => {
     let abc = parseInt(event.target.value);
     setNewElement(abc);
   };
-  const [deleteIndex, setDeleteIndex] = useState();
+
+  // index for delete
+  const [deleteIndex, setDeleteIndex] = useState("");
 
   const newDeleteIndex = (event) => {
-    setDeleteIndex(event.target.value);
+    setDeleteIndex(parseInt(event.target.value));
   };
+
   // generate random elements
   const generateRandomElements = (start, end) => {
     return Math.floor(Math.random() * (end - start - 1) + start);
   };
-  //   Call once while loading page
-  useEffect(() => {
-    generateRandomArray();
-  }, []);
-
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    setOpen(true);
-  }, []);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   //   generate array of random elements
   const generateRandomArray = () => {
     const temp = [];
     for (let i = 0; i <= noElement; i++) {
       temp[i] = generateRandomElements(10, 100);
     }
-    console.log(temp);
     setElements(temp);
   };
+
+  //   Call once while loading page
+  useEffect(() => {
+    generateRandomArray();
+  }, []);
+
+  // Toggle Welcom
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(!open);
+  }, []);
+
+  const handleClose = () => {
+    setOpen(!open);
+  };
+
   //   Heighlighting sorted
   const heighlightAction = (index, delay, color) => {
-    const bar = document.getElementsByClassName("array");
+    const bar = document.getElementsByClassName("array-element");
     setTimeout(() => {
       bar[index].style.backgroundColor = color;
     }, delay);
@@ -75,7 +87,7 @@ const Arr = () => {
       delay++;
     }
     setTimeout(() => {
-      if ((i = idx)) {
+      if (i === idx) {
         heighlightAction(idx, delay--, "#32CD30");
         // Insert;
         setNoElement(noElement + 1);
@@ -101,14 +113,32 @@ const Arr = () => {
   };
 
   // Delete Element
-  const delteIndex = (idx) => {};
+  const deleteFromIndex = (idx) => {
+    let delay = 1;
+    let i;
+    for (i = 0; i < idx; i++) {
+      heighlightAction(i, delay++, "red");
+      delay++;
+    }
+    if (i === idx)
+      setTimeout(() => {
+        heighlightAction(idx, delay, considerColor);
+        setTimeout(() => {
+          setElements((oldItems) => {
+            return [...oldItems.filter((ele, i) => i !== idx)];
+          });
+          setNoElement(noElement - 1);
+          // setErrorMessage(`No Elements : ${elements.length - 1}`);
+        }, 150 * delay);
+      }, 200 * delay);
+  };
 
   const handleDelete = () => {
     if (isNaN(deleteIndex)) {
       alert("Incorrect Index");
       setDeleteIndex("");
     } else {
-      delteIndex(deleteIndex);
+      deleteFromIndex(deleteIndex);
       setDeleteIndex("");
     }
   };
@@ -129,7 +159,6 @@ const Arr = () => {
     }
     setTimeout(() => {
       heighlightAction(index, delay + 20, minElementColor);
-      console.log(min);
     }, 150 * delay);
   };
   // Max Elemenet
@@ -148,27 +177,25 @@ const Arr = () => {
     }
     setTimeout(() => {
       heighlightAction(index, delay + 20, maxElementColor);
-      console.log(max);
     }, 150 * delay);
   };
 
   // Remove Duplicate
   const removeDuplicate = () => {
-    let i, j, idx;
+    let i, j;
     let delay = 1;
     for (i = 0; i <= noElement; i++) {
-      // heighlightAction(i, delay++, "red");
-
       for (j = i + 1; j <= noElement; j++) {
-        if (elements[j] == elements[i]) {
-          heighlightAction(i, 20, "Green");
-          heighlightAction(j, 20, "Black");
-
-          // for (k = j; k < size; k++) {
-          //    arr[k] = arr[k + 1];
-          // }
-          idx = j;
-          console.log(elements[i]);
+        if (elements[j] === elements[i]) {
+          heighlightAction(i, 10, "Green");
+          heighlightAction(j, 5, "Black");
+          let delidx = j;
+          setTimeout(() => {
+            setElements((oldItems) => {
+              return [...oldItems.filter((ele, idx) => idx !== delidx)];
+            });
+            setNoElement(noElement - 1);
+          }, 150 * 5);
         }
         delay++;
       }
@@ -199,40 +226,17 @@ const Arr = () => {
       />
       <hr />
       <div className="container">
-        <div className="arr-container d-flex">
+        <div className="array d-flex">
           {elements.map((value, idx) => {
             if (value != null)
               return (
                 <>
-                  <div>
-                    <div
-                      className="array"
-                      key={idx}
-                      style={
-                        {
-                          //     backgroundColor: "#ff931e",
-                          //     height: "5rem",
-                          // width: `${60 / elements.length}%`,
-                          //     display: "inline-block",
-                          //     margin: "0 1px",
-                        }
-                      }
-                    >
-                      <p className="heading">{value}</p>
-                    </div>
-                    {/* Index */}
-                    <p
-                      style={{
-                        color: "red",
-                        textAlign: "center",
-                        fontWeight: "bold",
-                        fontSize: "18px",
-                        paddingTop: "5px",
-                      }}
-                    >
-                      {idx}
-                    </p>
-                  </div>
+                  <ArrayElement
+                    elementClass="array-element"
+                    key={idx}
+                    value={value}
+                    elementIndex={idx}
+                  />
                 </>
               );
           })}
@@ -282,7 +286,7 @@ const Arr = () => {
             <button onClick={findMax}>Find Max</button>
           </div>
           <div className="col-sm-2">
-            <button onClick={removeDuplicate}>Find Duplicate</button>
+            <button onClick={removeDuplicate}>Remove Duplicate</button>
           </div>
         </div>
       </div>

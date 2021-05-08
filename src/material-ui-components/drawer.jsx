@@ -22,7 +22,7 @@ import SimpleAccordion from "./accordian";
 
 import { Link, Route, Switch } from "react-router-dom";
 import BinarySearch from "../components/search-algorithm/BinarySearch/binary-search";
-// import LinearSearch from "./../components/search-algorithm/LinearSearch/linear-search";
+// import LinearSearch from "./../components/search-algorithm/LinearSearch/LinearSearch";
 import BubbleSort from "./../components/sorting-algorithm/bubble-sort/bubble-sort";
 import InsertionSort from "../components/sorting-algorithm/insertion-sort/insertion-sort";
 import SelectionSort from "../components/sorting-algorithm/selection-sort/selection-sort";
@@ -42,6 +42,8 @@ import Stack from "../components/stack/Stack";
 import SignupForm from "../components/feedback-form/common/signup";
 import LoginForm from "../components/feedback-form/common/login";
 import Logout from "../components/feedback-form/common/logout";
+import LinearSearch from "../components/search-algorithm/LinearSearch/LinearSearch";
+import Queue from "../components/queue/Queue";
 
 const drawerWidth = 240;
 
@@ -189,22 +191,6 @@ export default function DrawerLeft() {
             </Link>
           </ListItem>
 
-          <ListItem button key={""}>
-            <ListItemIcon>
-              <Code />
-            </ListItemIcon>
-            <Link
-              style={{
-                textDecoration: "none",
-                color: "black",
-                fontSize: "15px",
-              }}
-              to="/feedback"
-            >
-              Feedback
-            </Link>
-          </ListItem>
-
           {!login ? (
             <>
               <ListItem button key={""}>
@@ -259,6 +245,7 @@ export default function DrawerLeft() {
         <Divider />
 
         <Divider />
+
         <List>
           <ListItem button key={""}>
             <ListItemIcon>
@@ -276,7 +263,6 @@ export default function DrawerLeft() {
             </Link>
           </ListItem>
         </List>
-
         <Divider />
         <Divider />
         <List>
@@ -291,17 +277,24 @@ export default function DrawerLeft() {
           ></SimpleAccordion>
 
           <SimpleAccordion
+            name="Queue"
+            array={[{ target: "/queue", name: "Queue" }]}
+          ></SimpleAccordion>
+
+          <SimpleAccordion
             name="Linked List"
             array={[{ target: "/single-LL", name: "Single Linked List" }]}
           ></SimpleAccordion>
-          <Divider />
+        </List>
+        <Divider />
+        <List>
           <Divider />
           <Divider />
 
           <SimpleAccordion
             name="Search Algorithms"
             array={[
-              { target: "/linear-search", name: "Linear Search" },
+              { target: "/LinearSearch", name: "Linear Search" },
               { target: "/binary-search", name: "Binary Search" },
             ]}
           ></SimpleAccordion>
@@ -329,6 +322,21 @@ export default function DrawerLeft() {
             array={[{ target: "/path-finding", name: "Dijkstra Algorithm" }]}
           ></SimpleAccordion>
         </List>
+        <ListItem button key={""}>
+          <ListItemIcon>
+            <Code />
+          </ListItemIcon>
+          <Link
+            style={{
+              textDecoration: "none",
+              color: "black",
+              fontSize: "15px",
+            }}
+            to="/feedback"
+          >
+            Feedback
+          </Link>
+        </ListItem>
       </Drawer>
 
       <main
@@ -337,8 +345,12 @@ export default function DrawerLeft() {
         })}
       >
         <Switch>
+          <Route path="/array" component={Arr} />
+          <Route path="/stack" component={Stack} />
+          <Route path="/queue" component={Queue} />
+
           <Route path="/binary-search" component={BinarySearch} />
-          <Route path="/linear-search" component={LinkedList} />
+          <Route path="/LinearSearch" component={LinearSearch} />
 
           <Route path="/bubble-sort" component={BubbleSort} />
           <Route path="/insertion-search" component={InsertionSort} />
@@ -350,8 +362,6 @@ export default function DrawerLeft() {
           <Route path="/avl-tree" component={AVLTrees} />
           <Route path="/code-editor" component={Editor} />
           <Route path="/single-LL" component={SingleLinkedList} />
-          <Route path="/array" component={Arr} />
-          <Route path="/stack" component={Stack} />
 
           <Route path="/signup" component={SignupForm} />
           <Route path="/login" component={LoginForm} />

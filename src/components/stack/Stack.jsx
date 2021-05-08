@@ -14,7 +14,6 @@ const Stack = () => {
   const [newElement, setNewElement] = useState();
   const newElementFound = (event) => {
     setNewElement(event.target.value);
-    console.log(event.target.value);
   };
   // generate random elements
   const generateRandomElements = (start, end) => {
@@ -27,7 +26,6 @@ const Stack = () => {
       let temps = generateRandomElements(10, 100);
       if (temp.indexOf(temps) === -1) temp.push(temps);
     }
-    console.log(temp);
     setElements(temp);
     setNoElement(noElement + 1);
   };
@@ -61,7 +59,6 @@ const Stack = () => {
   //   Push Element
   const pushElement = () => {
     if (noElement < maxElements) {
-      console.log(noElement);
       setTimeout(() => {
         setElements((oldItems) => {
           return [...oldItems, newElement];
@@ -76,16 +73,13 @@ const Stack = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const handlePush = () => {
     setNoElement(noElement + 1);
-    console.log(noElement);
     if (isNaN(newElement)) {
       setNoElement(noElement);
-      console.log(noElement);
       setErrorMessage("Enter Element");
     } else if (noElement <= maxElements && newElement !== "") {
       pushElement();
     } else {
       setNoElement(noElement);
-      console.log(noElement);
     }
   };
 
@@ -95,7 +89,7 @@ const Stack = () => {
     setTimeout(() => {
       setTimeout(() => {
         setElements((oldItems) => {
-          return [...oldItems.filter((ele) => ele !== oldItems[noElement - 1])];
+          return [...oldItems.filter((ele, i) => i !== elements.length - 1)];
         });
         setNoElement(noElement - 1);
         if (elements.length - 1 === 0) {
