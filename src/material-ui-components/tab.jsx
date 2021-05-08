@@ -7,6 +7,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Editor from "../components/code-editor/editor";
+import Chip from "@material-ui/core/Chip";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -76,6 +77,11 @@ export default function SimpleTabs() {
         <Editor language="java" value="Java ABC" />
       </TabPanel>
       <TabPanel value={value} index={2}>
+        <Chip
+          className="mb-3"
+          color="primary"
+          label="you can run your python code"
+        />
         <Editor language="python" value="Python ABC" theme="solarized_light" />
       </TabPanel>
     </div>

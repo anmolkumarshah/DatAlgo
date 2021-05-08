@@ -78,9 +78,11 @@ const Editor = ({
           tabSize: 2,
         }}
       />
-      <button onClick={runHandler} className="btn btn-dark mt-1">
-        Run
-      </button>
+      {language === "python" && (
+        <button onClick={runHandler} className="btn btn-dark mt-1">
+          Run
+        </button>
+      )}
     </>
   );
 };
