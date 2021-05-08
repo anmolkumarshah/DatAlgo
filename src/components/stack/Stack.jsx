@@ -94,7 +94,9 @@ const Stack = () => {
     setTimeout(() => {
       setTimeout(() => {
         setElements((oldItems) => {
-          return [...oldItems.filter((ele) => ele !== oldItems[noElement - 1])];
+          return [
+            ...oldItems.filter((ele, idx) => idx !== elements.length - 1),
+          ];
         });
         setNoElement(noElement - 1);
         if (elements.length - 1 === 0) {

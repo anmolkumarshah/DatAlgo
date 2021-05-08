@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import AlertDialog from "../../material-ui-components/alertDialog";
 import { ColorIndicator } from "../sorting-algorithm/colorIndicator/colorIndicator";
 import "./array.css";
+import FullWidthTabs from "../../material-ui-components/tab";
+import CenteredTabs from "../../material-ui-components/tab";
+
 let InitialElements = 15;
 
 const Arr = () => {
   const initialColor = "rgb(63, 81, 181)";
   const considerColor = "#0C6170";
-  const minElementColor = "#5C038C";
-  const maxElementColor = "#1B1734";
+  const minElementColor = "blue";
+  const maxElementColor = "rgb(173,41,255)";
   // Storing Array elemnts
-  let [elements, setElements] = useState([]);
+  const [elements, setElements] = useState([]);
   //   Range of elements
   const [noElement, setNoElement] = useState(InitialElements - 1);
   const [newElement, setNewElement] = useState();
@@ -19,13 +22,12 @@ const Arr = () => {
     setIndex(event.target.value);
   };
   const newInput = (event) => {
-    let abc = parseInt(event.target.value);
-    setNewElement(abc);
+    setNewElement(event.target.value);
   };
-  const [deleteIndex, setDeleteIndex] = useState();
+  const [deleteIndex, setDeleteIndex] = useState("");
 
   const newDeleteIndex = (event) => {
-    setDeleteIndex(event.target.value);
+    setDeleteIndex(parseInt(event.target.value));
   };
   // generate random elements
   const generateRandomElements = (start, end) => {
@@ -103,7 +105,24 @@ const Arr = () => {
 
   // Delete Element
   const delteIndex = (idx) => {
-
+    let delay = 1;
+    let i;
+    for (i = 0; i < idx; i++) {
+      heighlightAction(i, delay++, "red");
+      delay++;
+    }
+    setTimeout(() => {
+      if (i === idx) {
+        heighlightAction(idx, delay--, considerColor);
+        // Delete
+        setTimeout(() => {
+          setElements((oldItems) => {
+            return [...oldItems.filter((ele, idxx) => idxx !== idx)];
+          });
+        }, 300 * delay);
+        setNoElement(noElement - 1);
+      }
+    }, 250 * delay);
   };
 
   const handleDelete = () => {
@@ -131,11 +150,12 @@ const Arr = () => {
       delay++;
     }
     setTimeout(() => {
-      heighlightAction(index, delay + 20, minElementColor);
+      heighlightAction(index, 10, minElementColor);
       console.log(min);
     }, 150 * delay);
   };
-  // Max Elemenet
+
+  // Find Max
   const findMax = () => {
     let max = -9007199254740991;
     let delay = 2;
@@ -150,7 +170,7 @@ const Arr = () => {
       delay++;
     }
     setTimeout(() => {
-      heighlightAction(index, delay + 20, maxElementColor);
+      heighlightAction(index, 10, maxElementColor);
       console.log(max);
     }, 150 * delay);
   };
@@ -176,11 +196,6 @@ const Arr = () => {
         delay++;
       }
     }
-
-    // setTimeout(() => {
-    //   heighlightAction(idx, delay + 20, maxElementColor);
-    //   // console.log(max);
-    // }, 150 * delay);
   };
   return (
     <>
@@ -188,16 +203,15 @@ const Arr = () => {
         open={open}
         handleClose={handleClose}
         title="Welcome to Array"
-        content="An array is a data structure that contains a group of elements. Typically these elements are all of the same data type, such as an integer or string. Arrays are commonly used in computer programs to organize data so that a related set of values can be easily sorted or searched."
+        content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
       />
       <ColorIndicator
         indicator={[
           { name: "Array", color: initialColor },
           { name: "No of Steps", color: "red" },
           { name: "Consider", color: considerColor },
+
           { name: "Action", color: "#32CD30" },
-          { name: "Min", color: minElementColor },
-          { name: "Max", color: maxElementColor },
         ]}
       />
       <hr />
@@ -240,8 +254,11 @@ const Arr = () => {
               );
           })}
         </div>
+
+        <CenteredTabs />
+
         <div className="controlls-container">
-          <div className="d-flex align-items-center col-sm-3 controlHandler">
+          <div className="d-flex align-items-center col-sm-4 controlHandler">
             <input
               type="text"
               name="index"
@@ -260,30 +277,40 @@ const Arr = () => {
               placeholder="Value"
               className="pl-2"
             />
-            <button className=" " onClick={handleNewInput}>
+            <button className="btn btn-primary" onClick={handleNewInput}>
               Insert
             </button>
           </div>
-          <div className="col-sm-3 controlHandler">
+
+          <div className="col-sm-1">
+            <button className="btn btn-primary" onClick={findMin}>
+              Find Min
+            </button>
+          </div>
+
+          <div className="col-sm-1">
+            <button className="btn btn-primary" onClick={findMax}>
+              Find Max
+            </button>
+          </div>
+
+          <div className="col-sm-1">
+            <button className="btn btn-primary" onClick={removeDuplicate}>
+              Duplicates
+            </button>
+          </div>
+
+          <div className="col-sm-2 controlHandler">
             <input
               type="text"
               name="index"
               id="index"
               onChange={newDeleteIndex}
               value={deleteIndex}
-              placeholder="Index"
-              className="pl-2"
             />
-            <button onClick={handleDelete}>Delete</button>
-          </div>
-          <div className="col-sm-1" considerColor>
-            <button onClick={findMin}>Find Min</button>
-          </div>
-          <div className="col-sm-1" considerColor>
-            <button onClick={findMax}>Find Max</button>
-          </div>
-          <div className="col-sm-2">
-            <button onClick={removeDuplicate}>Find Duplicate</button>
+            <button className="btn btn-primary" onClick={handleDelete}>
+              Delete
+            </button>
           </div>
         </div>
       </div>
