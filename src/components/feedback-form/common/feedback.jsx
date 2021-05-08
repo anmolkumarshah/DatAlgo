@@ -42,8 +42,13 @@ const FeedbackForm = () => {
         }),
       });
       const responseJson = await result.json();
+      console.log(responseJson);
       if (responseJson.error) {
-        setErr(responseJson.error);
+        let display = "";
+        responseJson.desc.forEach((item) => {
+          display += `${item.param} : ${item.msg}`;
+        });
+        setErr(display);
         setOpen(true);
       } else {
         console.log(responseJson);
@@ -73,7 +78,7 @@ const FeedbackForm = () => {
           open={open}
           handleClose={handleClose}
           title="Error"
-          content={"error"}
+          content={err}
         />
       )}
       {done && (

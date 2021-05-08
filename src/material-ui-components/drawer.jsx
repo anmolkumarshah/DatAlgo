@@ -113,7 +113,6 @@ export default function DrawerLeft() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log(token);
     setLogin(token);
   });
 

@@ -41,8 +41,8 @@ const LoginForm = (props) => {
       });
       const responseJson = await result.json();
       if (responseJson.error) {
-        setErr(responseJson.error);
-        console.log(responseJson.error);
+        setErr(responseJson.message);
+        console.log(responseJson);
         setOpen(true);
         return;
       }
@@ -72,7 +72,7 @@ const LoginForm = (props) => {
         open={open}
         handleClose={handleClose}
         title="Error"
-        content={"error"}
+        content={err}
       />
 
       <form onSubmit={handleSubmit} style={{ padding: "300px 500px" }}>
@@ -105,6 +105,14 @@ const LoginForm = (props) => {
 
         <button type="submit" className="btn btn-primary">
           Login
+        </button>
+        <button
+          onClick={() => {
+            props.history.push("/signup");
+          }}
+          className="ml-2 btn btn-info"
+        >
+          don't have an account, Create one
         </button>
       </form>
     </div>

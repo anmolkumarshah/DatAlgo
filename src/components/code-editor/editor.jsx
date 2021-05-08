@@ -6,7 +6,6 @@ import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-c_cpp";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/theme-solarized_light";
-import AlertDialog from "../../material-ui-components/alertDialog";
 import Output from "../../material-ui-components/output";
 
 const Editor = ({
@@ -20,9 +19,13 @@ const Editor = ({
   };
   const [open, setOpen] = useState(false);
   const [output, setOutput] = useState("");
+  const [title, setTitle] = useState("");
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
     setOpen(false);
+    const t = localStorage.getItem("token");
+    setToken(t);
   }, []);
 
   const handleClose = () => {
@@ -34,17 +37,26 @@ const Editor = ({
     try {
       const result = await fetch(url, {
         method: method,
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Authorization: token },
         body: JSON.stringify({
           sourcecode: code,
         }),
       });
       const responseJson = await result.json();
-      console.log(responseJson);
+
+      if (responseJson.error) {
+        setOutput(responseJson.message + ", Please login before running code");
+        setOpen(true);
+        setTitle("You get an error");
+        return;
+      }
       setOutput(responseJson.output.stdout);
+      setTitle("Code Output");
       setOpen(true);
     } catch (e) {
-      console.log(e);
+      setTitle("You get an error");
+      setOutput(e.message);
+      setOpen(true);
     }
   };
   return (
@@ -52,7 +64,7 @@ const Editor = ({
       <Output
         open={open}
         handleClose={handleClose}
-        title="Code Output"
+        title={title}
         content={output}
         code={true}
       />

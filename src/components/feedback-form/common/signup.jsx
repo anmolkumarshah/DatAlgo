@@ -46,7 +46,11 @@ const SignupForm = (props) => {
       });
       const responseJson = await result.json();
       if (responseJson.error) {
-        setErr(responseJson.error);
+        let display = "";
+        responseJson.error.forEach((item) => {
+          display += `${item.param} : ${item.msg}  `;
+        });
+        setErr(display);
         setOpen(true);
       } else {
         console.log(responseJson);
@@ -79,7 +83,7 @@ const SignupForm = (props) => {
           open={open}
           handleClose={handleClose}
           title="Error"
-          content={"error"}
+          content={err}
         />
       )}
 
@@ -127,6 +131,14 @@ const SignupForm = (props) => {
 
         <button type="submit" className="btn btn-primary">
           Signup
+        </button>
+        <button
+          onClick={() => {
+            props.history.push("/login");
+          }}
+          className="ml-2 btn btn-info"
+        >
+          Already have an account
         </button>
       </form>
     </div>
