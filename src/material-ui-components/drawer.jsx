@@ -43,8 +43,7 @@ import SignupForm from "../components/feedback-form/common/signup";
 import LoginForm from "../components/feedback-form/common/login";
 import Logout from "../components/feedback-form/common/logout";
 import LinearSearch from "../components/search-algorithm/LinearSearch/LinearSearch";
-import Queue from "../components/queue/Queue";
-
+import Que from "../components/que/Que";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -345,7 +344,7 @@ export default function DrawerLeft() {
         <Switch>
           <Route path="/array" component={Arr} />
           <Route path="/stack" component={Stack} />
-          <Route path="/queue" component={Queue} />
+          <Route path="/queue" component={Que} />
 
           <Route path="/binary-search" component={BinarySearch} />
           <Route path="/LinearSearch" component={LinearSearch} />
