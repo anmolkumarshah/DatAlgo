@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import AlertDialog from "../../../material-ui-components/alertDialog";
 
 const LoginForm = (props) => {
+  const backend = "https://datalgo.herokuapp.com/";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,7 +29,7 @@ const LoginForm = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = "http://localhost:8080/auth/login";
+    const url = backend + "auth/login";
     const method = "POST";
     try {
       const result = await fetch(url, {
@@ -41,8 +42,8 @@ const LoginForm = (props) => {
       });
       const responseJson = await result.json();
       if (responseJson.error) {
-        setErr(responseJson.error);
-        console.log(responseJson.error);
+        setErr(responseJson.message);
+        console.log(responseJson);
         setOpen(true);
         return;
       }
@@ -72,7 +73,7 @@ const LoginForm = (props) => {
         open={open}
         handleClose={handleClose}
         title="Error"
-        content={"error"}
+        content={err}
       />
 
       <form onSubmit={handleSubmit} style={{ padding: "300px 500px" }}>
@@ -105,6 +106,14 @@ const LoginForm = (props) => {
 
         <button type="submit" className="btn btn-primary">
           Login
+        </button>
+        <button
+          onClick={() => {
+            props.history.push("/signup");
+          }}
+          className="ml-2 btn btn-info"
+        >
+          don't have an account, Create one
         </button>
       </form>
     </div>

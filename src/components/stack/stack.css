@@ -6,15 +6,25 @@
   transition: all 0.5s;
 }
 .stack {
+<<<<<<< HEAD
   gap: 5px;
+=======
+  margin-top: 30px;
+  gap: 10px;
+>>>>>>> adabd9b21c77a6fd77e802edff1101e8041aa55c
   padding: 20px;
   padding-bottom: 5px;
   border-left: 5px solid black;
   border-right: 5px solid black;
   border-bottom: 5px solid black;
   border-radius: 30px;
+<<<<<<< HEAD
   height: 440px;
   width: 240px;
+=======
+  min-height: 450px;
+  min-width: 240px;
+>>>>>>> adabd9b21c77a6fd77e802edff1101e8041aa55c
   background-color: #eae7fa;
   position: relative;
 }

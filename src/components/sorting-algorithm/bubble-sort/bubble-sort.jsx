@@ -6,6 +6,7 @@ import { Controller } from "./../controller/controller.jsx";
 import { randonIntFromInterval } from "../helper.jsx";
 import SimpleAccordion from "../../../material-ui-components/accordian";
 import AlertDialog from "../../../material-ui-components/alertDialog";
+import Information from "../../../material-ui-components/information";
 
 const BubbleSort = () => {
   const [array, setArray] = useState([]);
@@ -158,6 +159,7 @@ const BubbleSort = () => {
         title="Welcome to Bubble Sort"
         content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
       />
+      <Information />
       <ColorIndicator
         indicator={[
           { name: "consider", color: considerColor },

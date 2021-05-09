@@ -7,6 +7,7 @@ import Switch from "@material-ui/core/Switch";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import AlertDialog from "../../material-ui-components/alertDialog";
+import Information from "../../material-ui-components/information";
 
 const PathFinding = () => {
   const [nodes, setNodes] = useState([]);
@@ -144,7 +145,7 @@ const PathFinding = () => {
         title="Welcome to Path Finding"
         content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
       />
-
+      <Information />
       {nodes.map((item, idx) => {
         return (
           <div key={idx} className="nodes">

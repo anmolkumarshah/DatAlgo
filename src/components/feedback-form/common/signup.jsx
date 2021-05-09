@@ -3,6 +3,7 @@ import AlertDialog from "../../../material-ui-components/alertDialog";
 import { toast } from "react-toastify";
 
 const SignupForm = (props) => {
+  const backend = "https://datalgo.herokuapp.com/";
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -32,7 +33,7 @@ const SignupForm = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = "http://localhost:8080/auth/signup";
+    const url = backend + "auth/signup";
     const method = "PUT";
     try {
       const result = await fetch(url, {
@@ -46,7 +47,11 @@ const SignupForm = (props) => {
       });
       const responseJson = await result.json();
       if (responseJson.error) {
-        setErr(responseJson.error);
+        let display = "";
+        responseJson.error.forEach((item) => {
+          display += `${item.param} : ${item.msg}  `;
+        });
+        setErr(display);
         setOpen(true);
       } else {
         console.log(responseJson);
@@ -79,7 +84,7 @@ const SignupForm = (props) => {
           open={open}
           handleClose={handleClose}
           title="Error"
-          content={"error"}
+          content={err}
         />
       )}
 
@@ -127,6 +132,14 @@ const SignupForm = (props) => {
 
         <button type="submit" className="btn btn-primary">
           Signup
+        </button>
+        <button
+          onClick={() => {
+            props.history.push("/login");
+          }}
+          className="ml-2 btn btn-info"
+        >
+          Already have an account
         </button>
       </form>
     </div>

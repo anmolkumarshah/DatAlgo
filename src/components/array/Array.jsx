@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import AlertDialog from "../../material-ui-components/alertDialog";
-import Info from "../../material-ui-components/info";
-import DisabledTabs from "../../material-ui-components/tab";
+
+import Information from "../../material-ui-components/information";
+
 import { ColorIndicator } from "../sorting-algorithm/colorIndicator/colorIndicator";
 import "./array.css";
 import ArrayElement from "./element/ArrayElement";
@@ -241,6 +242,8 @@ const Arr = () => {
               );
           })}
         </div>
+        <hr />
+        <Information />
         <div className="controlls-container">
           <div className="d-flex align-items-center col-sm-4 controlHandler">
             <input
@@ -288,7 +291,11 @@ const Arr = () => {
           </div>
         </div>
       </div>
+<<<<<<< HEAD
     </div>
+=======
+    </>
+>>>>>>> adabd9b21c77a6fd77e802edff1101e8041aa55c
   );
 };
 

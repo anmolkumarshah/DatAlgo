@@ -1,8 +1,12 @@
 // import { SignalCellularConnectedNoInternet4BarTwoTone } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import AlertDialog from "../../material-ui-components/alertDialog";
+<<<<<<< HEAD
 import { ColorIndicator } from "../sorting-algorithm/colorIndicator/colorIndicator";
 
+=======
+import Information from "../../material-ui-components/information";
+>>>>>>> adabd9b21c77a6fd77e802edff1101e8041aa55c
 import "./stack.css";
 const InitialElements = 5;
 const maxElements = 10;
@@ -151,6 +155,8 @@ const Stack = () => {
               );
           })}
         </div>
+        <hr />
+        <Information />
         <div className="controlls-container">
           <div className="col-sm-3 controlHandler">
             <input

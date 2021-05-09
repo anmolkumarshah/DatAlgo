@@ -3,6 +3,7 @@ import AVLTree from "./avl-tree";
 import Tree from "react-tree-graph";
 import "./style.css";
 import AlertDialog from "../../material-ui-components/alertDialog";
+import Information from "../../material-ui-components/information";
 
 const AVLTrees = () => {
   const [considerTree, setConsiderTree] = useState(new AVLTree(""));
@@ -100,6 +101,7 @@ const AVLTrees = () => {
           title="Welcome to AVL Tree"
           content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
         />
+<<<<<<< HEAD
         {considerTree && (
           <Tree
             data={data}
@@ -123,6 +125,44 @@ const AVLTrees = () => {
                 Create
               </button>
             </div>
+=======
+      )}
+
+      <div className="row controller-avl">
+        {!isCreated && (
+          <div className="col-1">
+            <button onClick={create} className="btn btn-primary">
+              Create
+            </button>
+          </div>
+        )}
+
+        <div className="col-1">
+          <Information />
+          {isCreated && (
+            <button onClick={handleClear} className="btn btn-dark">
+              Clear
+            </button>
+          )}
+        </div>
+        <div className="col-5">
+          {isCreated && (
+            <form onSubmit={handleSubmit}>
+              <div className="row">
+                <div className="col">
+                  <input
+                    onChange={changeHandler}
+                    className="form-control"
+                  ></input>
+                </div>
+                <div className="col">
+                  <button type="submit" className="btn btn-primary">
+                    insert
+                  </button>
+                </div>
+              </div>
+            </form>
+>>>>>>> adabd9b21c77a6fd77e802edff1101e8041aa55c
           )}
 
           <div className="col-1 d-flex align-items-center controlHandler controlHandler">

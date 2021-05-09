@@ -4,6 +4,7 @@ import Tree from "react-tree-graph";
 import "./style.css";
 import TraversedList from "./TraverseList";
 import AlertDialog from "../../material-ui-components/alertDialog";
+import Information from "../../material-ui-components/information";
 
 const BinaryTree = () => {
   const t1 = new BTree([
@@ -176,6 +177,7 @@ const BinaryTree = () => {
   };
 
   return (
+<<<<<<< HEAD
     <div className="container d-flex justify-content-center align-items-center">
       <div>
         <AlertDialog
@@ -233,6 +235,62 @@ const BinaryTree = () => {
                 Custom Input
               </button>
             </div>
+=======
+    <>
+      <AlertDialog
+        open={open}
+        handleClose={handleClose}
+        title="Welcome to Binary Tree"
+        content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+      />
+      <Information />
+      <Tree
+        data={data}
+        height={600}
+        width={400}
+        animated={true}
+        duration={1000}
+        svgProps={{
+          transform: "rotate(90)",
+        }}
+        textProps={{
+          transform: "rotate(270)",
+        }}
+      />
+      <TraversedList list={traverlist} />
+      <div className="controller-tree">
+        <div className="row">
+          <div className="col-3">
+            <form>
+              <select onChange={changeHandler} className="form-control">
+                <option selected value={"title"}>
+                  Please Select
+                </option>
+                <option value={"PreOrder"}>PreOrder</option>
+                <option value={"PostOrder"}>PostOrder</option>
+                <option value={"InOrder"}>InOrder</option>
+                <option value={"LevelOrder"}>LevelOrder</option>
+              </select>
+            </form>
+          </div>
+          <div className="col-1">
+            <button
+              onClick={() => animateList(treeData)}
+              className="btn btn-primary"
+            >
+              Start
+            </button>
+          </div>
+          <div className="col-1">
+            <button onClick={reset} className="btn btn-danger">
+              Clear
+            </button>
+          </div>
+          <div className="col">
+            <button onClick={customInput} className="btn btn-info">
+              Custom Input
+            </button>
+>>>>>>> adabd9b21c77a6fd77e802edff1101e8041aa55c
           </div>
         </div>
       </div>

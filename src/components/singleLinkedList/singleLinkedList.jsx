@@ -3,6 +3,7 @@ import SLinkedList from "./singleLinkedListClass";
 import Tree from "react-tree-graph";
 import "./llstyle.css";
 import AlertDialog from "../../material-ui-components/alertDialog";
+import Information from "../../material-ui-components/information";
 
 const SingleLinkedList = () => {
   const [sll, setSll] = useState(new SLinkedList(""));
@@ -98,8 +99,29 @@ const SingleLinkedList = () => {
           className: "joins",
         }}
       />
+<<<<<<< HEAD
       <div className="controlls-container">
         <div className="row justify-content-center">
+=======
+      <Information />
+      <div className="controller-sll">
+        <div className="row">
+          {!isStart && (
+            <div className="col-1">
+              <button onClick={createHandler} className="btn btn-primary">
+                Create
+              </button>
+            </div>
+          )}
+          {isStart && (
+            <div className="col-1">
+              <button onClick={clearHandler} className="btn btn-danger">
+                Clear
+              </button>
+            </div>
+          )}
+
+>>>>>>> adabd9b21c77a6fd77e802edff1101e8041aa55c
           {isStart && (
             <div className="col-3">
               <form onSubmit={insertSubmitHandler}>
