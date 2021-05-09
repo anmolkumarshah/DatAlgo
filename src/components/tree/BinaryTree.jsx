@@ -176,63 +176,67 @@ const BinaryTree = () => {
   };
 
   return (
-    <>
-      <AlertDialog
-        open={open}
-        handleClose={handleClose}
-        title="Welcome to Binary Tree"
-        content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
-      />
-      <Tree
-        data={data}
-        height={600}
-        width={400}
-        animated={true}
-        duration={1000}
-        svgProps={{
-          transform: "rotate(90)",
-        }}
-        textProps={{
-          transform: "rotate(270)",
-        }}
-      />
-      <TraversedList list={traverlist} />
-      <div className="controller-tree">
-        <div className="row">
-          <div className="col-3">
-            <form>
-              <select onChange={changeHandler} className="form-control">
-                <option selected value={"title"}>
-                  Please Select
-                </option>
-                <option value={"PreOrder"}>PreOrder</option>
-                <option value={"PostOrder"}>PostOrder</option>
-                <option value={"InOrder"}>InOrder</option>
-                <option value={"LevelOrder"}>LevelOrder</option>
-              </select>
-            </form>
-          </div>
-          <div className="col-1">
-            <button
-              onClick={() => animateList(treeData)}
-              className="btn btn-primary"
-            >
-              Start
-            </button>
-          </div>
-          <div className="col-1">
-            <button onClick={reset} className="btn btn-danger">
-              Clear
-            </button>
-          </div>
-          <div className="col">
-            <button onClick={customInput} className="btn btn-info">
-              Custom Input
-            </button>
+    <div className="container d-flex justify-content-center align-items-center">
+      <div>
+        <AlertDialog
+          open={open}
+          handleClose={handleClose}
+          title="Welcome to Binary Tree"
+          content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+        />
+        <Tree
+          data={data}
+          height={600}
+          width={400}
+          animated={true}
+          duration={1000}
+          svgProps={{
+            transform: "rotate(90)",
+          }}
+          textProps={{
+            transform: "rotate(270)",
+          }}
+        />
+        <TraversedList list={traverlist} />
+
+        
+        <div className="controlls-container w-100">
+          <div className="row">
+            <div className="col-4">
+              <form>
+                <select onChange={changeHandler} className="form-control">
+                  <option selected value={"title"}>
+                    Please Select
+                  </option>
+                  <option value={"PreOrder"}>PreOrder</option>
+                  <option value={"PostOrder"}>PostOrder</option>
+                  <option value={"InOrder"}>InOrder</option>
+                  <option value={"LevelOrder"}>LevelOrder</option>
+                </select>
+              </form>
+            </div>
+            <div className="col-2">
+              <button
+                onClick={() => animateList(treeData)}
+                className="btn btn-primary"
+              >
+                Start
+              </button>
+            </div>
+            <div className="col-2">
+              <button onClick={reset} className="btn btn-danger">
+                Clear
+              </button>
+            </div>
+            <div className="col-4">
+              <button onClick={customInput} className="btn btn-info">
+                Custom Input
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

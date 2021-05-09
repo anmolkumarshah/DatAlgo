@@ -1,16 +1,6 @@
-body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* background: linear-gradient(to left, #ffb75e, #ed8f03); */
-  /* font-family: "Montserrat", "Arial", sans-serif; */
-}
-
-.container {
+.binary-container {
   height: 100%;
-  margin-top: 10%;
+  margin-top: 15%;
 }
 
 ul {
@@ -171,7 +161,7 @@ ul {
   padding: 10px;
   color: white;
 }
-
+/* 
 .controller-bs {
   position: absolute;
   left: 46%;
@@ -179,4 +169,4 @@ ul {
   width: 150px;
   height: 40px;
   overflow: hidden;
-}
+} */

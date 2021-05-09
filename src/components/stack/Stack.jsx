@@ -1,6 +1,8 @@
 // import { SignalCellularConnectedNoInternet4BarTwoTone } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import AlertDialog from "../../material-ui-components/alertDialog";
+import { ColorIndicator } from "../sorting-algorithm/colorIndicator/colorIndicator";
+
 import "./stack.css";
 const InitialElements = 5;
 const maxElements = 10;
@@ -115,8 +117,7 @@ const Stack = () => {
         title="Welcome to Stack"
         content="In computing, a stack is a data structure used to store a collection of objects. Individual items can be added and stored in a stack using a push operation. Objects can be retrieved using a pop operation, which removes an item from the stack."
       />
-
-      <div className="container">
+      <div className="container mx-auto stack-container d-flex justify-content-center">
         <div className="stack d-flex flex-column-reverse justify-content-start">
           <p
             style={{

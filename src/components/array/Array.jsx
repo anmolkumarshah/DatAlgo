@@ -206,7 +206,8 @@ const Arr = () => {
     // }, 150 * delay);
   };
   return (
-    <>
+    <div className="container">
+      {" "}
       <AlertDialog
         open={open}
         handleClose={handleClose}
@@ -224,7 +225,7 @@ const Arr = () => {
         ]}
       />
       <hr />
-      <div className="container">
+      <div className="container array-container d-flex align-items-center justify-content-center">
         <div className="array d-flex">
           {elements.map((value, idx) => {
             if (value != null)
@@ -241,7 +242,7 @@ const Arr = () => {
           })}
         </div>
         <div className="controlls-container">
-          <div className="d-flex align-items-center col-sm-3 controlHandler">
+          <div className="d-flex align-items-center col-sm-4 controlHandler">
             <input
               type="text"
               name="index"
@@ -260,7 +261,7 @@ const Arr = () => {
               placeholder="Value"
               className="pl-2"
             />
-            <button className=" " onClick={handleNewInput}>
+            <button className="btn btn-primary w-100" onClick={handleNewInput}>
               Insert
             </button>
           </div>
@@ -287,9 +288,7 @@ const Arr = () => {
           </div>
         </div>
       </div>
-      <hr />
-      {/* <Info /> */}
-    </>
+    </div>
   );
 };
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ArrayElement from "../../array/element/ArrayElement";
+import { ColorIndicator } from "../../sorting-algorithm/colorIndicator/colorIndicator";
 
 const InitialElements = 15;
 const LinearSearch = () => {
@@ -8,8 +9,6 @@ const LinearSearch = () => {
   const minElementColor = "#5C038C";
   const maxElementColor = "#1B1734";
 
-  // Counter For No Of Elements
-  const [noElement, setNoElement] = useState(InitialElements);
   // Arrya fro storing elements
   const [elements, setElements] = useState([]);
   // Element to be searched
@@ -28,7 +27,7 @@ const LinearSearch = () => {
   //   generate array of random elements
   const generateRandomArray = () => {
     const temp = [];
-    for (let i = 0; i < noElement; i++) {
+    for (let i = 0; i < InitialElements; i++) {
       temp[i] = generateRandomElements(10, 100);
     }
     setElements(temp);
@@ -58,7 +57,7 @@ const LinearSearch = () => {
     let i,
       delay = 1;
 
-    for (i = 0; i < noElement; i++) {
+    for (i = 0; i < InitialElements; i++) {
       heighlightAction(i, delay, "red");
       delay++;
       if (elements[i] === newElement) {
@@ -84,8 +83,19 @@ const LinearSearch = () => {
   };
   //   ----
   return (
-    <React.Fragment>
-      <div className="container">
+    <div className="container">
+      <ColorIndicator
+        indicator={[
+          { name: "Array", color: initialColor },
+          { name: "No of Steps", color: "red" },
+          { name: "Consider", color: considerColor },
+          { name: "Action", color: "#32CD30" },
+          { name: "Min", color: minElementColor },
+          { name: "Max", color: maxElementColor },
+        ]}
+      />
+      <hr />
+      <div className="container mt-5 d-flex justify-content-center">
         <div className="array d-flex">
           {elements.map((value, idx) => {
             if (value != null)
@@ -118,7 +128,7 @@ const LinearSearch = () => {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

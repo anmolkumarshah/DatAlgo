@@ -1,61 +1,140 @@
-import React, { useState } from "react";
-import AccessibilityIcon from "@material-ui/icons/Accessibility";
-import AccessibilityNewIcon from "@material-ui/icons/AccessibilityNew";
-import { FaMale, FaFemale } from "react-icons/fa";
-
-const data = [
-  <FaMale style={{ color: "white", fontSize: "50px" }} />,
-  <FaFemale style={{ color: "white", fontSize: "50px" }} />,
-];
-
+import { React, useState } from "react";
+import { FaMale, FaFemale, FaArrowLeft } from "react-icons/fa";
+import { ColorIndicator } from "../sorting-algorithm/colorIndicator/colorIndicator";
+import "./que.css";
+const maxMembers = 10;
 const Que = () => {
-  const [dataitem, setDataItem] = useState([]);
-  //   const [newMember, setNewMember] = useState("");
-  //   const [input, setNewInput] = useState("");
-  //   const newMemberFound = (event) => {
-  //     let person = parseInt(event.target.value);
-  //     if (person === 1) {
-  //       setNewMember(<FaMale style={{ color: "white", fontSize: "50px" }} />);
-  //     } else if (person === 2) {
-  //       setNewMember(<FaMale style={{ color: "white", fontSize: "50px" }} />);
-  //     }
-  //     console.log(person);
-  //   };
+  const initialColor = "rgb(63, 81, 181)";
+  const maleColor = "#FBEAFF";
+  const femaleColor = "#F9F871";
+  const dequeueColor = "red";
+  const enqueueColor = "#250B65";
 
-  const handleEnqueue = () => {
-    setDataItem((oldItems) => {
-      return [...oldItems, dataitem.splice(dataitem.length - 1, 0, 1).pop()];
-    });
+  const [elements, setElements] = useState([
+    <FaMale className="male" />,
+    <FaFemale className="female" />,
+    <FaMale className="male" />,
+    <FaFemale className="female" />,
+    <FaMale className="male" />,
+  ]);
+
+  const heighlightAction = (index, delay, color) => {
+    const bar = document.getElementsByClassName("queue-element");
+    setTimeout(() => {
+      bar[index].style.backgroundColor = color;
+    }, delay);
+    setTimeout(() => {
+      bar[index].style.backgroundColor = color;
+      bar[index].style.backgroundColor = initialColor;
+    }, 150 * delay);
   };
+
+  //   Male
+  const enqueueMale = () => {
+    let delay = 1;
+    let i;
+    for (i = 0; i < elements.length; i++) {
+      heighlightAction(i, delay++, "red");
+      delay++;
+    }
+
+    if (i < maxMembers) {
+      setTimeout(() => {
+        heighlightAction(i, delay--, enqueueColor);
+
+        setElements((oldItems) => {
+          return [...oldItems, <FaMale className="male" />];
+        });
+        //   }
+      }, 150 * delay);
+    } else {
+      alert("Queue is Full");
+    }
+  };
+
+  //   Female
+  const enqueueFeMale = () => {
+    let delay = 1;
+    let i;
+    for (i = 0; i < elements.length; i++) {
+      heighlightAction(i, delay++, "red");
+      delay++;
+    }
+    if (i < maxMembers) {
+      setTimeout(() => {
+        heighlightAction(i, delay--, enqueueColor);
+
+        setElements((oldItems) => {
+          return [...oldItems, <FaFemale className="female" />];
+        });
+        //   }
+      }, 150 * delay);
+    } else {
+      alert("Queue is Full");
+    }
+  };
+
+  //   Dequeue
+  const deQueue = () => {
+    if (elements.length - 1 >= 0) {
+      heighlightAction(0, 8, dequeueColor);
+      setTimeout(() => {
+        setTimeout(() => {
+          setElements((oldItems) => {
+            return [...oldItems.filter((ele, i) => i !== 0)];
+          });
+        }, 400 * 2);
+      }, 200 * 2);
+    } else {
+      alert("Queue is empty");
+    }
+  };
+
   return (
     <div className="container">
-      <div className="d-flex ">
-        {dataitem.map((val, idx) => {
-          return (
-            <div
-              key={idx}
-              style={{ backgroundColor: "red", borderRadius: "50%" }}
-              className="p-2 m-2"
-            >
-              {val}
-            </div>
-          );
-        })}
-      </div>
-      <div className="controlls-container">
-        {/* <form className="d-flex  align-items-center ">
-          <label className="p-0 m-0 font-weight-bold" htmlFor="speed">
-            Select
-          </label>
-          <select onChange={newMemberFound} id="speed" class="form-control">
-            <option selected value="0" disabled>
-              Select
-            </option>
-            <option value="1">Male</option>
-            <option value="2">Female</option>
-          </select> */}
-        <button onClick={handleEnqueue}>Enqueue</button>
-        {/* </form> */}
+      <ColorIndicator
+        indicator={[
+          { name: "Queue", color: initialColor },
+          { name: "Male", color: maleColor },
+          { name: "Female", color: femaleColor },
+          { name: "Enqueue", color: enqueueColor },
+          { name: "Dequeue", color: dequeueColor },
+        ]}
+      />
+      <hr />
+      <div className="container queue-container d-flex align-items-center justify-content-center">
+        <div class="queue">
+          {elements.map((val, i) => {
+            let arrow;
+
+            if (i < elements.length - 1) {
+              arrow = <FaArrowLeft />;
+            }
+            return (
+              <>
+                <div className="queue-element">{val}</div>
+                <div className="queue-pointer">{arrow}</div>
+              </>
+            );
+          })}
+        </div>
+        <div className="controlls-container">
+          <div className="d-flex align-items-center col-sm-2 controlHandler">
+            <button className="btn btn-primary" onClick={enqueueMale}>
+              Enqueue Male
+            </button>
+          </div>
+          <div className="d-flex align-items-center col-sm-2 controlHandler">
+            <button className="btn btn-primary" onClick={enqueueFeMale}>
+              Enqueue Female
+            </button>
+          </div>
+          <div className="d-flex align-items-center col-sm-2 controlHandler">
+            <button className="btn btn-primary" onClick={deQueue}>
+              Dequeue
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

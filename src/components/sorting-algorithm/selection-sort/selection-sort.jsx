@@ -144,7 +144,7 @@ const SelectionSort = () => {
   };
 
   return (
-    <>
+    <div className="container">
       <AlertDialog
         open={open}
         handleClose={handleClose}
@@ -174,13 +174,15 @@ const SelectionSort = () => {
         })}
       </div>
       <hr />
-      <Controller
-        resetArray={resetArray}
-        operation={insertionSort}
-        handleSpeedChange={handleSpeedChange}
-        handleSizeChange={handleSizeChange}
-      />
-    </>
+      <div className="controlls-container w-100">
+        <Controller
+          resetArray={resetArray}
+          operation={insertionSort}
+          handleSpeedChange={handleSpeedChange}
+          handleSizeChange={handleSizeChange}
+        />
+      </div>
+    </div>
   );
 };
 
