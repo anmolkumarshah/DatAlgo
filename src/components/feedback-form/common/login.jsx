@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import AlertDialog from "../../../material-ui-components/alertDialog";
 
 const LoginForm = (props) => {
+  const backend = "https://datalgo.herokuapp.com/";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,7 +29,7 @@ const LoginForm = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = "http://localhost:8080/auth/login";
+    const url = backend + "auth/login";
     const method = "POST";
     try {
       const result = await fetch(url, {

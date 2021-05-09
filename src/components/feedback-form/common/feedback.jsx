@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import AlertDialog from "../../../material-ui-components/alertDialog";
 
 const FeedbackForm = () => {
+  const backend = "https://datalgo.herokuapp.com/";
   const [email, setEmail] = useState("");
   const [description, setDescription] = useState("");
   const [err, setErr] = useState([]);
@@ -30,7 +31,7 @@ const FeedbackForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = "http://localhost:8080/feedback/create";
+    const url = backend + "feedback/create";
     const method = "POST";
     try {
       const result = await fetch(url, {

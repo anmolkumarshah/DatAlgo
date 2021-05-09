@@ -13,6 +13,7 @@ const Editor = ({
   language = "python",
   value = "Enter Code here",
 }) => {
+  const backend = "https://datalgo.herokuapp.com/";
   const [code, setCode] = useState("");
   const changeHandler = (e) => {
     setCode(e);
@@ -32,7 +33,7 @@ const Editor = ({
     setOpen(false);
   };
   const runHandler = async () => {
-    const url = "http://localhost:8080/interprete/run";
+    const url = backend + "interprete/run";
     const method = "POST";
     try {
       const result = await fetch(url, {
