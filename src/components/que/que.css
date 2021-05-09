@@ -1,0 +1,36 @@
+.queue-container {
+  height: auto;
+}
+
+.queue {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 100px;
+}
+
+.queue-element {
+  background-color: rgb(63, 81, 181);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+}
+
+.queue-pointer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+.male {
+  color: #fbeaff;
+  font-size: 50px;
+}
+
+.female {
+  color: #f9f871;
+  font-size: 50px;
+}

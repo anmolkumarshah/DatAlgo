@@ -1,4 +1,12 @@
+.stack-container  {
+  margin: 0 auto;
+  margin-top: 120px ;
+}
+.enter {
+  transition: all 0.5s;
+}
 .stack {
+  gap: 5px;
   margin-top: 30px;
   gap: 10px;
   padding: 20px;
@@ -7,17 +15,19 @@
   border-right: 5px solid black;
   border-bottom: 5px solid black;
   border-radius: 30px;
-  min-height: 450px;
-  min-width: 240px;
+  height: 440px;
+  width: 240px;
   background-color: #eae7fa;
   position: relative;
 }
 .element-box {
+  width: 200px;
   background-color: #050a30;
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
 }
 .element-box p {
+  width: 100%;
   color: red;
   text-align: center;
   font-size: 16px;
@@ -26,15 +36,16 @@
 .element {
   padding: 2px !important;
   background-color: rgb(63, 81, 181);
-  min-height: 30px;
+  min-height: 25px;
   width: 200px;
   text-align: center;
   border-bottom: 3px solid #050a30;
   border-bottom-left-radius: 100px;
   border-bottom-right-radius: 100px;
+  transition: all 0.5s;
 }
 .element p {
   color: white;
-  font-size: 23px;
+  font-size: 20px;
   font-weight: bold;
 }

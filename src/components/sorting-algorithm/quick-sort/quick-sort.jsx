@@ -201,7 +201,7 @@ const QuickSort = () => {
   };
 
   return (
-    <>
+    <div className="container">
       <AlertDialog
         open={open}
         handleClose={handleClose}
@@ -234,14 +234,15 @@ const QuickSort = () => {
         {/* <div className="line"></div> */}
       </div>
       <hr />
-
-      <Controller
-        resetArray={resetArray}
-        operation={quickSort}
-        handleSpeedChange={handleSpeedChange}
-        handleSizeChange={handleSizeChange}
-      />
-    </>
+      <div className="controlls-container w-100">
+        <Controller
+          resetArray={resetArray}
+          operation={quickSort}
+          handleSpeedChange={handleSpeedChange}
+          handleSizeChange={handleSizeChange}
+        />
+      </div>
+    </div>
   );
 };
 

@@ -93,83 +93,122 @@ const AVLTrees = () => {
   };
 
   return (
-    <div className="top">
-      <AlertDialog
-        open={open}
-        handleClose={handleClose}
-        title="Welcome to AVL Tree"
-        content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
-      />
-      {considerTree && (
-        <Tree
-          data={data}
-          height={600}
-          width={400}
-          animated={true}
-          duration={1000}
-          svgProps={{
-            transform: "rotate(90)",
-          }}
-          textProps={{
-            transform: "rotate(270)",
-          }}
+    <div className="container">
+      <div className="top d-flex align-items-center justify-content-center">
+        <AlertDialog
+          open={open}
+          handleClose={handleClose}
+          title="Welcome to AVL Tree"
+          content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
         />
-      )}
-
-      <div className="row controller-avl">
-        {!isCreated && (
-          <div className="col-1">
-            <button onClick={create} className="btn btn-primary">
-              Create
-            </button>
-          </div>
+        {considerTree && (
+          <Tree
+            data={data}
+            height={600}
+            width={400}
+            animated={true}
+            duration={1000}
+            svgProps={{
+              transform: "rotate(90)",
+            }}
+            textProps={{
+              transform: "rotate(270)",
+            }}
+          />
         )}
 
-        <div className="col-1">
-          <Information />
-          {isCreated && (
-            <button onClick={handleClear} className="btn btn-dark">
-              Clear
-            </button>
+        <div className="controlls-container w-100">
+          {!isCreated && (
+            <div className="col-1 d-flex align-items-center controlHandler">
+              <button onClick={create} className="btn btn-primary">
+                Create
+              </button>
+            </div>
           )}
-        </div>
-        <div className="col-5">
-          {isCreated && (
-            <form onSubmit={handleSubmit}>
-              <div className="row">
-                <div className="col">
-                  <input
-                    onChange={changeHandler}
-                    className="form-control"
-                  ></input>
-                </div>
-                <div className="col">
-                  <button type="submit" className="btn btn-primary">
-                    insert
-                  </button>
-                </div>
+
+          <div className="row controller-avl">
+            {!isCreated && (
+              <div className="col-1">
+                <button onClick={create} className="btn btn-primary">
+                  Create
+                </button>
               </div>
-            </form>
-          )}
-        </div>
-        <div className="col-5">
-          {isCreated && (
-            <form onSubmit={handleDelete}>
-              <div className="row">
-                <div className="col">
-                  <input
-                    onChange={deleteValHandler}
-                    className="form-control"
-                  ></input>
-                </div>
-                <div className="col">
-                  <button type="submit" className="btn btn-danger">
-                    Delete
+            )}
+
+            <div className="col-1">
+              <Information />
+              {isCreated && (
+                <button onClick={handleClear} className="btn btn-dark">
+                  Clear
+                </button>
+              )}
+            </div>
+            <div className="col-5">
+              {isCreated && (
+                <form onSubmit={handleSubmit}>
+                  <div className="row">
+                    <div className="col">
+                      <input
+                        onChange={changeHandler}
+                        className="form-control"
+                      ></input>
+                    </div>
+                    <div className="col">
+                      <button type="submit" className="btn btn-primary">
+                        insert
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              )}
+
+              <div className="col-1 d-flex align-items-center controlHandler controlHandler">
+                {isCreated && (
+                  <button onClick={handleClear} className="btn btn-dark">
+                    Clear
                   </button>
-                </div>
+                )}
               </div>
-            </form>
-          )}
+              <div className="col-5 d-flex align-items-center controlHandler">
+                {isCreated && (
+                  <form onSubmit={handleSubmit}>
+                    <div className="row">
+                      <div className="col">
+                        <input
+                          onChange={changeHandler}
+                          className="form-control"
+                        ></input>
+                      </div>
+                      <div className="col">
+                        <button type="submit" className="btn btn-primary">
+                          insert
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                )}
+              </div>
+              <div className="col-5 d-flex align-items-center controlHandler">
+                {isCreated && (
+                  <form onSubmit={handleDelete}>
+                    <div className="row">
+                      <div className="col">
+                        <input
+                          onChange={deleteValHandler}
+                          className="form-control"
+                        ></input>
+                      </div>
+                      <div className="col">
+                        <button type="submit" className="btn btn-danger">
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

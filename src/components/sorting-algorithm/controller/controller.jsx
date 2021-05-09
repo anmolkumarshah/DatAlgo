@@ -5,7 +5,7 @@ export const Controller = ({
   handleSizeChange,
 }) => {
   return (
-    <div className="controller justify-content-md-cente d-flex w-100">
+    <div className="controller container justify-content-md-cente d-flex w-100">
       <div className="col-sm-3 ">
         <button onClick={resetArray} className="btn w-100 btn-primary" style ={{backgroundColor :"rgb(63,81,181)"}}>
           New Array

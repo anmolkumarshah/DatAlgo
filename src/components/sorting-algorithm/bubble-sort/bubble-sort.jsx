@@ -151,7 +151,8 @@ const BubbleSort = () => {
   };
 
   return (
-    <>
+    <div className="container">
+      {" "}
       <AlertDialog
         open={open}
         handleClose={handleClose}
@@ -168,7 +169,6 @@ const BubbleSort = () => {
           { name: "initial", color: returnColor },
         ]}
       />
-
       <hr />
       <div className="Container ">
         {array.map((i, idx) => {
@@ -183,14 +183,15 @@ const BubbleSort = () => {
         })}
       </div>
       <hr />
-
-      <Controller
-        resetArray={resetArray}
-        operation={bubbleSort}
-        handleSpeedChange={handleSpeedChange}
-        handleSizeChange={handleSizeChange}
-      />
-    </>
+      <div className="controlls-container w-100">
+        <Controller
+          resetArray={resetArray}
+          operation={bubbleSort}
+          handleSpeedChange={handleSpeedChange}
+          handleSizeChange={handleSizeChange}
+        />
+      </div>
+    </div>
   );
 };
 

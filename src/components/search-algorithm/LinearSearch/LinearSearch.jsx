@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AlertDialog from "../../../material-ui-components/alertDialog";
 import Information from "../../../material-ui-components/information";
 import ArrayElement from "../../array/element/ArrayElement";
+import { ColorIndicator } from "../../sorting-algorithm/colorIndicator/colorIndicator";
 
 const InitialElements = 15;
 const LinearSearch = () => {
@@ -10,8 +11,6 @@ const LinearSearch = () => {
   const minElementColor = "#5C038C";
   const maxElementColor = "#1B1734";
 
-  // Counter For No Of Elements
-  const [noElement, setNoElement] = useState(InitialElements);
   // Arrya fro storing elements
   const [elements, setElements] = useState([]);
   // Element to be searched
@@ -30,7 +29,7 @@ const LinearSearch = () => {
   //   generate array of random elements
   const generateRandomArray = () => {
     const temp = [];
-    for (let i = 0; i < noElement; i++) {
+    for (let i = 0; i < InitialElements; i++) {
       temp[i] = generateRandomElements(10, 100);
     }
     setElements(temp);
@@ -70,7 +69,7 @@ const LinearSearch = () => {
     let i,
       delay = 1;
 
-    for (i = 0; i < noElement; i++) {
+    for (i = 0; i < InitialElements; i++) {
       heighlightAction(i, delay, "red");
       delay++;
       if (elements[i] === newElement) {
@@ -96,48 +95,61 @@ const LinearSearch = () => {
   };
   //   ----
   return (
-    <React.Fragment>
-      <AlertDialog
-        open={open}
-        handleClose={handleClose}
-        title="Welcome to Linear Search"
-        content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+    <div className="container">
+      <ColorIndicator
+        indicator={[
+          { name: "Array", color: initialColor },
+          { name: "No of Steps", color: "red" },
+          { name: "Consider", color: considerColor },
+          { name: "Action", color: "#32CD30" },
+          { name: "Min", color: minElementColor },
+          { name: "Max", color: maxElementColor },
+        ]}
       />
-      <div className="container">
-        <div className="array d-flex">
-          {elements.map((value, idx) => {
-            if (value != null)
-              return (
-                <>
-                  <ArrayElement
-                    elementClass="array-element"
-                    key={idx}
-                    value={value}
-                    elementIndex={idx}
-                  />
-                </>
-              );
-          })}
-        </div>
-        <Information />
-        <div className="controlls-container w-100">
-          <div className="d-flex align-items-center col-sm-3 controlHandler">
-            <input
-              type="text"
-              name="index"
-              id="index"
-              onChange={newElementInput}
-              value={newElement}
-              placeholder="Search Element "
-              className="pl-2"
-            />
-            <button className="btn btn-primary" onClick={handleSearch}>
-              Search
-            </button>
+      <hr />
+      <div className="container mt-5 d-flex justify-content-center">
+        <AlertDialog
+          open={open}
+          handleClose={handleClose}
+          title="Welcome to Linear Search"
+          content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+        />
+        <div className="container">
+          <div className="array d-flex">
+            {elements.map((value, idx) => {
+              if (value != null)
+                return (
+                  <>
+                    <ArrayElement
+                      elementClass="array-element"
+                      key={idx}
+                      value={value}
+                      elementIndex={idx}
+                    />
+                  </>
+                );
+            })}
+          </div>
+          <Information />
+          <div className="controlls-container w-100">
+            <div className="d-flex align-items-center col-sm-3 controlHandler">
+              <input
+                type="text"
+                name="index"
+                id="index"
+                onChange={newElementInput}
+                value={newElement}
+                placeholder="Search Element "
+                className="pl-2"
+              />
+              <button className="btn btn-primary" onClick={handleSearch}>
+                Search
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

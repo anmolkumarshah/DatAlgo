@@ -171,7 +171,7 @@ const BinarySearch = () => {
   };
 
   return (
-    <div>
+    <div className="binary-container">
       <AlertDialog
         open={open}
         handleClose={handleClose}
@@ -245,7 +245,7 @@ const BinarySearch = () => {
           })}
         </div>
       )}
-      <div>
+      <div className="controlls-container w-100">
         {TargetSelected ? (
           stack ? (
             <button
