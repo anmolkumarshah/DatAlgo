@@ -291,11 +291,7 @@ const Arr = () => {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
     </div>
-=======
-    </>
->>>>>>> adabd9b21c77a6fd77e802edff1101e8041aa55c
   );
 };
 
