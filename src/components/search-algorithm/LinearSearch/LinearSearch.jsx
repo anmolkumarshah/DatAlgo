@@ -95,7 +95,6 @@ const LinearSearch = () => {
   };
   //   ----
   return (
-<<<<<<< HEAD
     <div className="container">
       <ColorIndicator
         indicator={[
@@ -109,46 +108,44 @@ const LinearSearch = () => {
       />
       <hr />
       <div className="container mt-5 d-flex justify-content-center">
-=======
-    <React.Fragment>
-      <AlertDialog
-        open={open}
-        handleClose={handleClose}
-        title="Welcome to Linear Search"
-        content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
-      />
-      <div className="container">
->>>>>>> adabd9b21c77a6fd77e802edff1101e8041aa55c
-        <div className="array d-flex">
-          {elements.map((value, idx) => {
-            if (value != null)
-              return (
-                <>
-                  <ArrayElement
-                    elementClass="array-element"
-                    key={idx}
-                    value={value}
-                    elementIndex={idx}
-                  />
-                </>
-              );
-          })}
-        </div>
-        <Information />
-        <div className="controlls-container w-100">
-          <div className="d-flex align-items-center col-sm-3 controlHandler">
-            <input
-              type="text"
-              name="index"
-              id="index"
-              onChange={newElementInput}
-              value={newElement}
-              placeholder="Search Element "
-              className="pl-2"
-            />
-            <button className="btn btn-primary" onClick={handleSearch}>
-              Search
-            </button>
+        <AlertDialog
+          open={open}
+          handleClose={handleClose}
+          title="Welcome to Linear Search"
+          content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+        />
+        <div className="container">
+          <div className="array d-flex">
+            {elements.map((value, idx) => {
+              if (value != null)
+                return (
+                  <>
+                    <ArrayElement
+                      elementClass="array-element"
+                      key={idx}
+                      value={value}
+                      elementIndex={idx}
+                    />
+                  </>
+                );
+            })}
+          </div>
+          <Information />
+          <div className="controlls-container w-100">
+            <div className="d-flex align-items-center col-sm-3 controlHandler">
+              <input
+                type="text"
+                name="index"
+                id="index"
+                onChange={newElementInput}
+                value={newElement}
+                placeholder="Search Element "
+                className="pl-2"
+              />
+              <button className="btn btn-primary" onClick={handleSearch}>
+                Search
+              </button>
+            </div>
           </div>
         </div>
       </div>
