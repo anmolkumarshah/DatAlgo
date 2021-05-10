@@ -93,8 +93,8 @@ const AVLTrees = () => {
   };
 
   return (
-    <div className="container">
-      <div className="top d-flex align-items-center justify-content-center">
+    <div className="container mt-5 d-flex align-items-center justify-content-center">
+      <div className="top ">
         <AlertDialog
           open={open}
           handleClose={handleClose}
@@ -127,14 +127,6 @@ const AVLTrees = () => {
           )}
 
           <div className="row controller-avl">
-            {!isCreated && (
-              <div className="col-1">
-                <button onClick={create} className="btn btn-primary">
-                  Create
-                </button>
-              </div>
-            )}
-
             <div className="col-1">
               <Information />
               {isCreated && (

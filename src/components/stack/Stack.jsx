@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import AlertDialog from "../../material-ui-components/alertDialog";
 import { ColorIndicator } from "../sorting-algorithm/colorIndicator/colorIndicator";
+import Button from "@material-ui/core/Button";
 
 import Information from "../../material-ui-components/information";
 import "./stack.css";
@@ -165,10 +166,24 @@ const Stack = () => {
               placeholder="Value"
               className="pl-2"
             />
-            <button onClick={handlePush}>Push</button>
+            <Button
+              className="Button"
+              variant="contained"
+              color="primary"
+              onClick={handlePush}
+            >
+              Push
+            </Button>
           </div>
           <div className="col-sm-2">
-            <button onClick={handlePop}>Pop</button>
+            <Button
+              className="Button"
+              variant="contained"
+              color="primary"
+              onClick={handlePop}
+            >
+              Pop
+            </Button>
           </div>
         </div>
       </div>

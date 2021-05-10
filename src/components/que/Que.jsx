@@ -1,6 +1,8 @@
 import { React, useState } from "react";
 import { FaMale, FaFemale, FaArrowLeft } from "react-icons/fa";
 import { ColorIndicator } from "../sorting-algorithm/colorIndicator/colorIndicator";
+import Button from "@material-ui/core/Button";
+
 import "./que.css";
 const maxMembers = 10;
 const Que = () => {
@@ -120,19 +122,23 @@ const Que = () => {
         </div>
         <div className="controlls-container">
           <div className="d-flex align-items-center col-sm-2 controlHandler">
-            <button className="btn btn-primary" onClick={enqueueMale}>
+            <Button className="Button" onClick={enqueueMale}>
               Enqueue Male
-            </button>
+            </Button>
           </div>
           <div className="d-flex align-items-center col-sm-2 controlHandler">
-            <button className="btn btn-primary" onClick={enqueueFeMale}>
+            <Button
+              className="Button"
+              variant="contained"
+              onClick={enqueueFeMale}
+            >
               Enqueue Female
-            </button>
+            </Button>
           </div>
           <div className="d-flex align-items-center col-sm-2 controlHandler">
-            <button className="btn btn-primary" onClick={deQueue}>
+            <Button className="Button" variant="contained" onClick={deQueue}>
               Dequeue
-            </button>
+            </Button>
           </div>
         </div>
       </div>

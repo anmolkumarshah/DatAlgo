@@ -6,6 +6,8 @@ import Information from "../../material-ui-components/information";
 import { ColorIndicator } from "../sorting-algorithm/colorIndicator/colorIndicator";
 import "./array.css";
 import ArrayElement from "./element/ArrayElement";
+import Button from "@material-ui/core/Button";
+
 const InitialElements = 15;
 
 const Arr = () => {
@@ -264,9 +266,14 @@ const Arr = () => {
               placeholder="Value"
               className="pl-2"
             />
-            <button className="btn btn-primary w-100" onClick={handleNewInput}>
+            <Button
+              className="Button"
+              variant="contained"
+              color="primary"
+              onClick={handleNewInput}
+            >
               Insert
-            </button>
+            </Button>
           </div>
           <div className="col-sm-3 controlHandler">
             <input
@@ -278,16 +285,44 @@ const Arr = () => {
               placeholder="Index"
               className="pl-2"
             />
-            <button onClick={handleDelete}>Delete</button>
+            <Button
+              className="Button"
+              variant="contained"
+              color="primary"
+              onClick={handleDelete}
+            >
+              Delete
+            </Button>
           </div>
           <div className="col-sm-1" considerColor>
-            <button onClick={findMin}>Find Min</button>
+            <Button
+              className="Button"
+              variant="contained"
+              color="primary"
+              onClick={findMin}
+            >
+              Find Min
+            </Button>
           </div>
           <div className="col-sm-1" considerColor>
-            <button onClick={findMax}>Find Max</button>
+            <Button
+              className="Button"
+              variant="contained"
+              color="primary"
+              onClick={findMax}
+            >
+              Find Max
+            </Button>
           </div>
           <div className="col-sm-2">
-            <button onClick={removeDuplicate}>Remove Duplicate</button>
+            <Button
+              className="Button"
+              variant="contained"
+              color="primary"
+              onClick={removeDuplicate}
+            >
+              Remove Duplicate
+            </Button>
           </div>
         </div>
       </div>

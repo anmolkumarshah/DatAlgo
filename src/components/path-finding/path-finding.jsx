@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Node from "./Node";
 import "./main-style.css";
 import { dijkstra, getNodesInShortestPathOrder } from "./algorithms/dijkstra";
+import Button from "@material-ui/core/Button";
 
 import Switch from "@material-ui/core/Switch";
 import FormGroup from "@material-ui/core/FormGroup";
@@ -127,10 +128,14 @@ const PathFinding = () => {
   const handleClear = () => {};
 
   return (
-    <div className="nodes">
-      {/* <button className="btn btn-primary" onClick={handleClear}>
+    <div
+      className="mt-3 d-flex align-items-center justify-content-center"
+      style={{ height: "90vh" }}
+    >
+      <div className="nodes">
+        {/* <Button className="btn btn-primary" onClick={handleClear}>
         Clear
-      </button>
+      </Button>
 
       <FormGroup>
         <FormControlLabel
@@ -139,42 +144,48 @@ const PathFinding = () => {
         />
       </FormGroup> */}
 
-      <AlertDialog
-        open={open}
-        handleClose={handleClose}
-        title="Welcome to Path Finding"
-        content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
-      />
-      <Information />
-      {nodes.map((item, idx) => {
-        return (
-          <div key={idx} className="nodes">
-            {item.map((n, idx) => {
-              return (
-                <Node
-                  key={idx}
-                  isStart={n.isStart}
-                  isTarget={n.isTarget}
-                  row={n.row}
-                  col={n.col}
-                  isWall={n.isWall}
-                  mouseIsPressed={mouseIsPressed}
-                  onMouseDown={(row, col) => handleMouseDown(row, col)}
-                  onMouseEnter={(row, col) => handleMouseEnter(row, col)}
-                  onMouseUp={() => handleMouseUp()}
-                />
-              );
-            })}
-          </div>
-        );
-      })}
+        <AlertDialog
+          open={open}
+          handleClose={handleClose}
+          title="Welcome to Path Finding"
+          content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+        />
+        <Information />
+        {nodes.map((item, idx) => {
+          return (
+            <div key={idx} className="nodes">
+              {item.map((n, idx) => {
+                return (
+                  <Node
+                    key={idx}
+                    isStart={n.isStart}
+                    isTarget={n.isTarget}
+                    row={n.row}
+                    col={n.col}
+                    isWall={n.isWall}
+                    mouseIsPressed={mouseIsPressed}
+                    onMouseDown={(row, col) => handleMouseDown(row, col)}
+                    onMouseEnter={(row, col) => handleMouseEnter(row, col)}
+                    onMouseUp={() => handleMouseUp()}
+                  />
+                );
+              })}
+            </div>
+          );
+        })}
 
-      <div className="controller-path-finding">
-        <div className="row">
-          <div className="col">
-            <button className="btn btn-primary" onClick={visualizeDijkstra}>
-              Start
-            </button>
+        <div className="controlls-container">
+          <div className="row">
+            <div className="col">
+              <Button
+                className="Button"
+                variant="contained"
+                color="primary"
+                onClick={visualizeDijkstra}
+              >
+                Start
+              </Button>
+            </div>
           </div>
         </div>
       </div>
