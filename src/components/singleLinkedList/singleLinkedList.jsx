@@ -31,6 +31,7 @@ const SingleLinkedList = () => {
       setSll(temp);
       setIsStart(true);
     }
+    updateData();
   };
 
   const insertChangeHandler = (e) => {
@@ -81,14 +82,17 @@ const SingleLinkedList = () => {
     setIsStart(false);
   };
   return (
-    <div className="container  d-flex align-items-center justify-content-center" style={{height:"90vh"}}>
+    <div
+      className="container  d-flex align-items-center justify-content-center"
+      style={{ height: "90vh" }}
+    >
       <AlertDialog
         open={open}
         handleClose={handleClose}
         title="Welcome to Single Linked List"
         content="Click on the Create Button at the bottom left corner of screen and you are ready to play with linked list."
       />
-    
+
       <Tree
         data={data}
         height={200}
@@ -102,7 +106,6 @@ const SingleLinkedList = () => {
           className: "joins",
         }}
       />
-
 
       <div className="controlls-container">
         <div className="row justify-content-center">

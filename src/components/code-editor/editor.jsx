@@ -4,15 +4,19 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-c_cpp";
+
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/theme-solarized_light";
-import Output from "../../material-ui-components/output";
+import "ace-builds/src-noconflict/theme-tomorrow_night_blue";
+import "ace-builds/src-noconflict/theme-twilight";
+import "ace-builds/src-noconflict/theme-xcode";
+import "ace-builds/src-noconflict/theme-nord_dark";
+import "ace-builds/src-noconflict/theme-terminal";
 
-const Editor = ({
-  theme = "monokai",
-  language = "python",
-  value = "Enter Code here",
-}) => {
+import Output from "../../material-ui-components/output";
+import "./editor.css";
+
+const Editor = ({ language = "python", value = "Enter Code here" }) => {
   const backend = "https://datalgo.herokuapp.com/";
   const [code, setCode] = useState("");
   const changeHandler = (e) => {
@@ -22,6 +26,7 @@ const Editor = ({
   const [output, setOutput] = useState("");
   const [title, setTitle] = useState("");
   const [token, setToken] = useState(null);
+  const [theme, setTheme] = useState("terminal");
 
   useEffect(() => {
     setOpen(false);
@@ -60,6 +65,9 @@ const Editor = ({
       setOpen(true);
     }
   };
+  const themeHandler = (e) => {
+    setTheme(e.target.value);
+  };
   return (
     <>
       <Output
@@ -69,33 +77,58 @@ const Editor = ({
         content={output}
         code={true}
       />
-      <AceEditor
-        placeholder="Placeholder Text"
-        mode={language}
-        theme={theme}
-        width="1300px"
-        name="blah2"
-        onLoad={() => {}}
-        onChange={changeHandler}
-        fontSize={15}
-        showPrintMargin={true}
-        showGutter={true}
-        highlightActiveLine={true}
-        defaultValue={value}
-        value={code}
-        setOptions={{
-          enableBasicAutocompletion: true,
-          enableLiveAutocompletion: true,
-          enableSnippets: true,
-          showLineNumbers: true,
-          tabSize: 2,
-        }}
-      />
-      {language === "python" && (
-        <button onClick={runHandler} className="btn btn-dark mt-1">
-          Run
-        </button>
-      )}
+
+      <div className="editor-container">
+        <div className="form-group">
+          <label className="text-dark" htmlFor="exampleFormControlSelect2">
+            Theme
+          </label>
+          <select
+            onChange={themeHandler}
+            className="form-control"
+            id="exampleFormControlSelect2"
+          >
+            <option>monokai</option>
+            <option>solarized_light</option>
+            <option>nord_dark</option>
+            <option>xcode</option>
+            <option>twilight</option>
+            <option>tomorrow_night_blue</option>
+            <option selected>terminal</option>
+          </select>
+        </div>
+        <AceEditor
+          className="editor-item"
+          placeholder="Placeholder Text"
+          mode={language}
+          theme={theme}
+          width="100%"
+          name="blah2"
+          onLoad={() => {}}
+          onChange={changeHandler}
+          fontSize={15}
+          showPrintMargin={true}
+          showGutter={true}
+          highlightActiveLine={true}
+          defaultValue={value}
+          value={code}
+          setOptions={{
+            enableBasicAutocompletion: true,
+            enableLiveAutocompletion: true,
+            enableSnippets: true,
+            showLineNumbers: true,
+            tabSize: 2,
+          }}
+        />
+        {language === "python" && (
+          <button
+            onClick={runHandler}
+            className="btn btn-dark mt-1 editor-item"
+          >
+            Run
+          </button>
+        )}
+      </div>
     </>
   );
 };
