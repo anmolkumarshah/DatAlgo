@@ -3,6 +3,7 @@ import BTree from "./Tree";
 import Tree from "react-tree-graph";
 import "./style.css";
 import TraversedList from "./TraverseList";
+import Button from "@material-ui/core/Button";
 import AlertDialog from "../../material-ui-components/alertDialog";
 import Information from "../../material-ui-components/information";
 
@@ -216,22 +217,34 @@ const BinaryTree = () => {
               </form>
             </div>
             <div className="col-2">
-              <button
+              <Button
                 onClick={() => animateList(treeData)}
-                className="btn btn-primary"
+                className="Button"
+                variant="contained"
+                color="primary"
               >
                 Start
-              </button>
+              </Button>
             </div>
             <div className="col-2">
-              <button onClick={reset} className="btn btn-danger">
+              <Button
+                onClick={reset}
+                className="Button"
+                variant="contained"
+                color="primary"
+              >
                 Clear
-              </button>
+              </Button>
             </div>
             <div className="col-4">
-              <button onClick={customInput} className="btn btn-info">
+              <Button
+                onClick={customInput}
+                className="Button"
+                variant="contained"
+                color="primary"
+              >
                 Custom Input
-              </button>
+              </Button>
             </div>
           </div>
         </div>

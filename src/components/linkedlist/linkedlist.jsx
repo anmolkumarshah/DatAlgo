@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import Xarrow from "react-xarrows";
 import { toast } from "react-toastify";
+import Button from "@material-ui/core/Button";
+
 import "./styles.css";
 import Node from "./Node";
 
@@ -239,13 +241,15 @@ const LinkedList = () => {
                   ></input>
                 </div>
                 <div className="col-3">
-                  <button
+                  <Button
+                    className="Button"
+                    variant="contained"
+                    color="primary"
                     type="submit"
                     onClick={handleAdd}
-                    className="btn btn-primary"
                   >
                     Add Node
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -254,14 +258,17 @@ const LinkedList = () => {
 
             <div className="col-sm-4">
               <div className="row form-group">
-                <button
+                <Button
+                  className="Button"
+                  variant="contained"
+                  color="primary"
                   type="submit"
                   onClick={handleClear}
                   disabled={nodes.length === 0 ? true : false}
                   className="btn btn-danger btn-block"
                 >
                   Clear All
-                </button>
+                </Button>
               </div>
             </div>
           </div>
@@ -281,13 +288,15 @@ const LinkedList = () => {
                   ></input>
                 </div>
                 <div className="col-3">
-                  <button
+                  <Button
                     type="submit"
                     onClick={handleFind}
-                    className="btn btn-primary"
+                    className="Button"
+                    variant="contained"
+                    color="primary"
                   >
                     Find Node
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -311,13 +320,15 @@ const LinkedList = () => {
                   ></input>
                 </div>
                 <div className="col-2">
-                  <button
+                  <Button
+                    className="Button"
+                    variant="contained"
+                    color="primary"
                     type="submit"
                     onClick={handleInsert}
-                    className="btn btn-primary"
                   >
                     Add
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>

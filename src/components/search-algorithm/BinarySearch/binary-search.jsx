@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import AlertDialog from "../../../material-ui-components/alertDialog";
 import Information from "../../../material-ui-components/information";
-import "./styles.css";
+import Button from "@material-ui/core/Button";
 
+import "./styles.css";
 const BinarySearch = () => {
   const [cellArray, setCellArray] = useState([]);
   const [TargetSelected, setTargetSelected] = useState("");
@@ -248,30 +249,35 @@ const BinarySearch = () => {
       <div className="controlls-container w-100">
         {TargetSelected ? (
           stack ? (
-            <button
+            <Button
               onClick={handleNext}
-              className="btn btn-primary controller-bs"
-              style={{ backgroundColor: "rgb(63,81,181)" }}
+              className="Button"
+              variant="contained"
+              color="primary"
             >
               Next
-            </button>
+            </Button>
           ) : (
-            <button
+            <Button
               onClick={handleCompute}
-              className="btn btn-primary controller-bs"
-              style={{ backgroundColor: "rgb(63,81,181)" }}
+              className="Button"
+              variant="contained"
+              color="primary"
             >
               Start
-            </button>
+            </Button>
           )
         ) : (
-          <button
+          <Button
             onClick={start}
-            className="btn btn-primary controller-bs"
+            className=" controller-bs"
+            className="Button"
+            variant="contained"
+            color="primary"
             style={{ backgroundColor: "rgb(63,81,181)" }}
           >
             Full Reset
-          </button>
+          </Button>
         )}
       </div>
     </div>

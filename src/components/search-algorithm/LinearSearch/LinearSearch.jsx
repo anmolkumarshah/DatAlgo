@@ -3,6 +3,7 @@ import AlertDialog from "../../../material-ui-components/alertDialog";
 import Information from "../../../material-ui-components/information";
 import ArrayElement from "../../array/element/ArrayElement";
 import { ColorIndicator } from "../../sorting-algorithm/colorIndicator/colorIndicator";
+import Button from "@material-ui/core/Button";
 
 const InitialElements = 15;
 const LinearSearch = () => {
@@ -142,9 +143,14 @@ const LinearSearch = () => {
                 placeholder="Search Element "
                 className="pl-2"
               />
-              <button className="btn btn-primary" onClick={handleSearch}>
+              <Button
+                className="Button"
+                variant="contained"
+                color="primary"
+                onClick={handleSearch}
+              >
                 Search
-              </button>
+              </Button>
             </div>
           </div>
         </div>
