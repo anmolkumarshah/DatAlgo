@@ -2,9 +2,6 @@ class Node {
   constructor(data) {
     this.name = data;
     this.children = [];
-    // this.gProps = {
-    //   className: "node-style",
-    // }
     this.nodeProps = {
       className: "node-style",
     };
@@ -34,8 +31,12 @@ export default class SLinkedList {
   }
 
   insertAfter(index, data) {
+    if (index + 1 === this.length) {
+      this.insertBack(data);
+      return;
+    }
     let temp = this.head;
-    if (index <= this.length) {
+    if (index + 1 <= this.length) {
       while (index) {
         temp = temp.children[0];
         index--;
@@ -44,7 +45,7 @@ export default class SLinkedList {
       const tempNew = new Node(data);
       tempNew.children.push(prevChild);
       temp.children[0] = tempNew;
-    } else if (index > this.length) {
+    } else {
       alert("Index is out of range`");
     }
   }

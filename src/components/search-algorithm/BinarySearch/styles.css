@@ -78,6 +78,7 @@
   align-items: center;
   justify-content: center;
   padding: 0.3rem 0.8rem;
+  cursor: none;
 }
 
 .target-marker {
@@ -117,6 +118,7 @@
 .unactive {
   opacity: 0.5;
   background: #ccc;
+  cursor: not-allowed;
   /* transform: translateY(25%); */
 }
 

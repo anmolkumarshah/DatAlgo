@@ -22,7 +22,7 @@ const BubbleSort = () => {
   const returnColor = "rgb(63,81,181)"; // return and initial color are same
   const compareColor = "rgb(216, 10, 74)";
   const swapColor = "#32CD30";
-  const sortedColor = "rgb(63,81,181)";
+  const sortedColor = "green";
 
   //    MARGIN VARIABLES
   const normalMargin = "2px";
