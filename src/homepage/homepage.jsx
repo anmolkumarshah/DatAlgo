@@ -7,7 +7,13 @@ import "./home.css";
 const Homepage = () => {
   return (
     <>
-      <div style={{ marginTop: "80px" }}>
+      <div
+        className="homeCompo px-0"
+        style={{
+          paddingTop:
+            "80px",
+        }}
+      >
         <div className="container-fluid">
           <div
             className="d-flex flex-wrap justify-content-center"
