@@ -4,6 +4,10 @@
   padding: 0;
 }
 
-label{
+label {
   color: white;
+}
+
+ul {
+  list-style-type: none;
 }
