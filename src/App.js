@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Compare from "./components/compare-sorting-algorithm/compareSortingAlgorithm";
 import DrawerLeft from "./material-ui-components/drawer";
 
 class App extends Component {
@@ -9,6 +10,7 @@ class App extends Component {
       <React.Fragment>
         <ToastContainer />
         <DrawerLeft />
+        {/* <Compare /> */}
       </React.Fragment>
     );
   }

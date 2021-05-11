@@ -10,10 +10,10 @@ const randonIntFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const InsertionSort = () => {
+const InsertionSort = ({ size = 25, noController = false }) => {
   const [array, setArray] = useState([]);
   const [animationSpeed, setAnimationSpeed] = useState(1);
-  const [noBars, setNoBars] = useState(25);
+  const [noBars, setNoBars] = useState(size);
 
   //   --------------------------------------------------------------------------------
   //    COLORS HERE
@@ -143,13 +143,15 @@ const InsertionSort = () => {
 
   return (
     <div className="container">
-      <AlertDialog
-        open={open}
-        handleClose={handleClose}
-        title="Welcome to Insertion Sort"
-        content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
-      />
-      <Information />
+      {!noController && (
+        <AlertDialog
+          open={open}
+          handleClose={handleClose}
+          title="Welcome to Insertion Sort"
+          content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+        />
+      )}
+      {!noController && <Information />}
       <ColorIndicator
         indicator={[
           { name: "selected key", color: keySelectionColor },
@@ -172,14 +174,16 @@ const InsertionSort = () => {
         })}
       </div>
       <hr />
-      <div className="controlls-container w-100">
-        <Controller
-          resetArray={resetArray}
-          operation={insertionSort}
-          handleSpeedChange={handleSpeedChange}
-          handleSizeChange={handleSizeChange}
-        />
-      </div>
+      {!noController && (
+        <div className="controlls-container w-100">
+          <Controller
+            resetArray={resetArray}
+            operation={insertionSort}
+            handleSpeedChange={handleSpeedChange}
+            handleSizeChange={handleSizeChange}
+          />
+        </div>
+      )}
     </div>
   );
 };
