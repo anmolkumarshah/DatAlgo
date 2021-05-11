@@ -24,7 +24,7 @@ export const algorithmsData = [
     title: "Linked List",
     image:
       "https://i.pinimg.com/originals/80/b7/86/80b786e6c049bba93d7c187d9e4c32ab.gif",
-    url: "/singly-linkedlist",
+    url: "/single-LL",
   },
 
   {

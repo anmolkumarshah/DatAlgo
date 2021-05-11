@@ -6,24 +6,12 @@ import TraversedList from "./TraverseList";
 import Button from "@material-ui/core/Button";
 import AlertDialog from "../../material-ui-components/alertDialog";
 import Information from "../../material-ui-components/information";
+import { toast } from "react-toastify";
 
 const BinaryTree = () => {
   const t1 = new BTree([
-    34,
-    23,
-    92,
-    12,
-    4,
-    -1,
-    -1,
-    -1,
-    -1,
-    16,
-    9,
-    -1,
-    -1,
-    -1,
-    -1,
+    34, 23, 92, 12, 4, 7, 80, -1, -1, 16, 9, -1, -1, -1, -1, -1, -1, 50, 45, 75,
+    11, 98, 6, -1, -1, -1, -1, -1, -1, -1, -1,
   ]);
 
   const [data, setData] = useState([]);
@@ -59,7 +47,9 @@ const BinaryTree = () => {
 
   const reset = () => {
     setTraverlist([]);
-
+    toast.info(
+      "Please continue clicking CLEAR button until all red node are cleared"
+    );
     const temp = { ...data };
     if (temp["gProps"]) {
       delete temp["gProps"];
@@ -188,8 +178,8 @@ const BinaryTree = () => {
         />
         <Tree
           data={data}
-          height={600}
-          width={400}
+          height={650}
+          width={500}
           animated={true}
           duration={1000}
           svgProps={{
@@ -203,7 +193,7 @@ const BinaryTree = () => {
 
         <div className="controlls-container w-100">
           <div className="row">
-            <div className="col-4">
+            <div className="col-6">
               <form>
                 <select onChange={changeHandler} className="form-control">
                   <option selected value={"title"}>
@@ -216,7 +206,7 @@ const BinaryTree = () => {
                 </select>
               </form>
             </div>
-            <div className="col-2">
+            <div className="col-3">
               <Button
                 onClick={() => animateList(treeData)}
                 className="Button"
@@ -226,7 +216,7 @@ const BinaryTree = () => {
                 Start
               </Button>
             </div>
-            <div className="col-2">
+            <div className="col-3">
               <Button
                 onClick={reset}
                 className="Button"
@@ -236,7 +226,7 @@ const BinaryTree = () => {
                 Clear
               </Button>
             </div>
-            <div className="col-4">
+            {/* <div className="col-4">
               <Button
                 onClick={customInput}
                 className="Button"
@@ -245,7 +235,7 @@ const BinaryTree = () => {
               >
                 Custom Input
               </Button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

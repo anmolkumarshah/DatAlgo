@@ -1,4 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, {
+  useState,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import AlertDialog from "../../../material-ui-components/alertDialog";
 import Information from "../../../material-ui-components/information";
 import { Bar } from "../bar/bar";
@@ -10,7 +15,7 @@ const randonIntFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const QuickSort = ({ size = 25, noController = false }) => {
+const QuickSort = forwardRef(({ size = 25, noController = false }, ref) => {
   const [array, setArray] = useState([]);
   const [animationSpeed, setAnimationSpeed] = useState(1);
   const [noBars, setNoBars] = useState(size);
@@ -118,6 +123,12 @@ const QuickSort = ({ size = 25, noController = false }) => {
 
     return animation;
   };
+
+  useImperativeHandle(ref, () => ({
+    start() {
+      quickSort();
+    },
+  }));
 
   const quickSort = () => {
     const animations = compute(array);
@@ -248,6 +259,6 @@ const QuickSort = ({ size = 25, noController = false }) => {
       )}
     </div>
   );
-};
+});
 
 export default QuickSort;

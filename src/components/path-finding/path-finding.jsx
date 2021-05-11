@@ -19,8 +19,8 @@ const PathFinding = () => {
   const [FINISH_NODE_ROW, SET_FINISH_NODE_ROW] = useState(10);
   const [FINISH_NODE_COL, SET_FINISH_NODE_COL] = useState(35);
 
-  const ALL_ROWS = 20;
-  const ALL_COLS = 51;
+  const ALL_ROWS = 23;
+  const ALL_COLS = 58;
 
   const [checked, setChecked] = React.useState(false);
 
@@ -151,28 +151,30 @@ const PathFinding = () => {
           content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
         />
         <Information />
-        {nodes.map((item, idx) => {
-          return (
-            <div key={idx} className="nodes">
-              {item.map((n, idx) => {
-                return (
-                  <Node
-                    key={idx}
-                    isStart={n.isStart}
-                    isTarget={n.isTarget}
-                    row={n.row}
-                    col={n.col}
-                    isWall={n.isWall}
-                    mouseIsPressed={mouseIsPressed}
-                    onMouseDown={(row, col) => handleMouseDown(row, col)}
-                    onMouseEnter={(row, col) => handleMouseEnter(row, col)}
-                    onMouseUp={() => handleMouseUp()}
-                  />
-                );
-              })}
-            </div>
-          );
-        })}
+        <div className="over-cover">
+          {nodes.map((item, idx) => {
+            return (
+              <div key={idx} className="nodes">
+                {item.map((n, idx) => {
+                  return (
+                    <Node
+                      key={idx}
+                      isStart={n.isStart}
+                      isTarget={n.isTarget}
+                      row={n.row}
+                      col={n.col}
+                      isWall={n.isWall}
+                      mouseIsPressed={mouseIsPressed}
+                      onMouseDown={(row, col) => handleMouseDown(row, col)}
+                      onMouseEnter={(row, col) => handleMouseEnter(row, col)}
+                      onMouseUp={() => handleMouseUp()}
+                    />
+                  );
+                })}
+              </div>
+            );
+          })}
+        </div>
 
         <div className="controlls-container">
           <div className="row">

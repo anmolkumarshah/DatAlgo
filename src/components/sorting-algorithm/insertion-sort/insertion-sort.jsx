@@ -1,4 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, {
+  useState,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import AlertDialog from "../../../material-ui-components/alertDialog";
 import Information from "../../../material-ui-components/information";
 import { Bar } from "../bar/bar";
@@ -10,7 +15,7 @@ const randonIntFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const InsertionSort = ({ size = 25, noController = false }) => {
+const InsertionSort = forwardRef(({ size = 25, noController = false }, ref) => {
   const [array, setArray] = useState([]);
   const [animationSpeed, setAnimationSpeed] = useState(1);
   const [noBars, setNoBars] = useState(size);
@@ -58,6 +63,12 @@ const InsertionSort = ({ size = 25, noController = false }) => {
   };
 
   //   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+  useImperativeHandle(ref, () => ({
+    start() {
+      insertionSort();
+    },
+  }));
 
   const compute = (array) => {
     const animation = [];
@@ -186,6 +197,6 @@ const InsertionSort = ({ size = 25, noController = false }) => {
       )}
     </div>
   );
-};
+});
 
 export default InsertionSort;

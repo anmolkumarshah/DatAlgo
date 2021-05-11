@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, {
+  useState,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import "./bubble-sort-style.css";
 import { Bar } from "./../bar/bar";
 import { ColorIndicator } from "./../colorIndicator/colorIndicator";
 import { Controller } from "./../controller/controller.jsx";
 import { randonIntFromInterval } from "../helper.jsx";
-import SimpleAccordion from "../../../material-ui-components/accordian";
 import AlertDialog from "../../../material-ui-components/alertDialog";
 import Information from "../../../material-ui-components/information";
 
-const BubbleSort = ({ size = 25, noController = false }) => {
+const BubbleSort = forwardRef(({ size = 25, noController = false }, ref) => {
   console.log(size);
   const [array, setArray] = useState([]);
   const [animationSpeed, setAnimationSpeed] = useState(1);
   const [noBars, setNoBars] = useState(size);
-  const [log, setLog] = useState([]);
   let animations = [];
 
   //   --------------------------------------------------------------------------------
@@ -83,6 +86,12 @@ const BubbleSort = ({ size = 25, noController = false }) => {
     animation.push({ type: "sorted", value: [0, 0] });
     return animation;
   };
+
+  useImperativeHandle(ref, () => ({
+    start() {
+      bubbleSort();
+    },
+  }));
 
   const bubbleSort = () => {
     animations = compute(array);
@@ -197,6 +206,6 @@ const BubbleSort = ({ size = 25, noController = false }) => {
       )}
     </div>
   );
-};
+});
 
 export default BubbleSort;
