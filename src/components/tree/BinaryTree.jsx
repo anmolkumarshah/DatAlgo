@@ -10,12 +10,8 @@ import { toast } from "react-toastify";
 
 const BinaryTree = () => {
   const t1 = new BTree([
-<<<<<<< HEAD
-    34, 23, 92, 12, 4, -1, -1, -1, -1, 16, 9, -1, -1, -1, -1,
-=======
     34, 23, 92, 12, 4, 7, 80, -1, -1, 16, 9, -1, -1, -1, -1, -1, -1, 50, 45, 75,
     11, 98, 6, -1, -1, -1, -1, -1, -1, -1, -1,
->>>>>>> 41fe91263b3a4d2c42993ec0b4882367f90fae17
   ]);
 
   const [data, setData] = useState([]);
@@ -172,7 +168,7 @@ const BinaryTree = () => {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center">
+    <div className="container d-flex justify-content-center align-items-center pt-2">
       <div>
         <AlertDialog
           open={open}
@@ -219,10 +215,6 @@ const BinaryTree = () => {
                 Start
               </Button>
             </div>
-<<<<<<< HEAD
-            <div className="col-2">
-              <Button onClick={reset} className="Button" variant="outlined">
-=======
             <div className="col-3">
               <Button
                 onClick={reset}
@@ -230,7 +222,6 @@ const BinaryTree = () => {
                 variant="contained"
                 color="primary"
               >
->>>>>>> 41fe91263b3a4d2c42993ec0b4882367f90fae17
                 Clear
               </Button>
             </div>
