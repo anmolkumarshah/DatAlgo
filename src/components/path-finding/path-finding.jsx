@@ -4,9 +4,6 @@ import "./main-style.css";
 import { dijkstra, getNodesInShortestPathOrder } from "./algorithms/dijkstra";
 import Button from "@material-ui/core/Button";
 
-import Switch from "@material-ui/core/Switch";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import AlertDialog from "../../material-ui-components/alertDialog";
 import Information from "../../material-ui-components/information";
 
@@ -186,6 +183,13 @@ const PathFinding = () => {
               >
                 Start
               </Button>
+            </div>
+            <div className="col">
+              <img alt="target" src="./images/source.png"></img>Initial Position
+            </div>
+            <div className="col">
+              <img alt="target" src="./images/target.jpg"></img>
+              Destination
             </div>
           </div>
         </div>

@@ -123,7 +123,7 @@ const Arr = () => {
       setNewElement("");
       setIndex("");
     } else if (isNaN(newElement)) {
-      setErrorMessage("Incorrect Value");
+      setErrorMessage("Please Enter Numbers");
       setWarningOpen(!warningOpen);
       setNewElement("");
       setIndex("");
@@ -252,7 +252,7 @@ const Arr = () => {
       <Warning
         open={warningOpen}
         handleClose={handleWarning}
-        title="Warning....!!!"
+        title="Warning"
         content={errorMessage}
       />
       <ColorIndicator

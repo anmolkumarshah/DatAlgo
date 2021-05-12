@@ -128,6 +128,7 @@ const SingleLinkedList = () => {
                   <div className="align-items-center controlHandler">
                     <div className="col-6">
                       <input
+                        placeholder="value"
                         className="pl-2"
                         onChange={insertChangeHandler}
                         value={toInsert}
@@ -153,6 +154,7 @@ const SingleLinkedList = () => {
                   <div className="align-items-center controlHandler">
                     <div className="col-6">
                       <input
+                        placeholder="value"
                         onChange={insertChangeHandler}
                         value={toInsert}
                         className="pl-2"
@@ -176,7 +178,7 @@ const SingleLinkedList = () => {
               <div className=" col-4">
                 <form onSubmit={insertAfterSubmitHandler}>
                   <div className="align-items-center controlHandler">
-                    <div className=" col-4">
+                    <div className=" col-4 mr-1">
                       <input
                         onChange={idxChangeHandler}
                         value={idx}
@@ -184,7 +186,7 @@ const SingleLinkedList = () => {
                         placeholder="Index"
                       ></input>
                     </div>
-                    <div className="col-4">
+                    <div className="col-4 ml-1">
                       <input
                         onChange={insertChangeHandler}
                         value={toInsert}

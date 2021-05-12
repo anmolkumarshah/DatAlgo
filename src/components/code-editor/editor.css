@@ -1,6 +1,5 @@
 .editor-container {
-  padding: 0;
-  margin: 0;
+  padding: 20px;
   height: 100vh;
   display: flex;
   align-items: flex-start;

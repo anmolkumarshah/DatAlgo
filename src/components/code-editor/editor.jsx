@@ -108,7 +108,7 @@ const Editor = ({ language = "python", value = "Enter Code here" }) => {
         </div>
         <AceEditor
           className="editor-item"
-          placeholder="Placeholder Text"
+          placeholder="# write your code here"
           mode={language}
           theme={theme}
           width="100%"

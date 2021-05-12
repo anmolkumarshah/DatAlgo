@@ -4,6 +4,7 @@ import Tree from "react-tree-graph";
 import "./style.css";
 import AlertDialog from "../../material-ui-components/alertDialog";
 import Information from "../../material-ui-components/information";
+import { Button } from "@material-ui/core";
 
 const AVLTrees = () => {
   const [considerTree, setConsiderTree] = useState(new AVLTree(""));
@@ -122,18 +123,22 @@ const AVLTrees = () => {
         <div className="controlls-container w-100">
           {!isCreated && (
             <div className="col-1 d-flex align-items-center controlHandler">
-              <button onClick={create} className="btn btn-primary">
+              <Button onClick={create} className="Button" varient="outlined">
                 Create
-              </button>
+              </Button>
             </div>
           )}
 
           <div className="row">
             <div className="col">
               {isCreated && (
-                <button onClick={handleClear} className="btn btn-dark">
+                <Button
+                  onClick={handleClear}
+                  className="Button"
+                  varient="outlined"
+                >
                   Clear
-                </button>
+                </Button>
               )}
             </div>
 
@@ -143,15 +148,20 @@ const AVLTrees = () => {
                   <div className="row">
                     <div className="col">
                       <input
+                        placeholder="value"
                         value={value}
                         onChange={changeHandler}
                         className="form-control"
                       ></input>
                     </div>
                     <div className="col">
-                      <button type="submit" className="btn btn-primary">
+                      <Button
+                        type="submit"
+                        className="Button"
+                        varient="outlined"
+                      >
                         insert
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </form>
@@ -164,15 +174,20 @@ const AVLTrees = () => {
                   <div className="row">
                     <div className="col">
                       <input
+                        placeholder="value"
                         onChange={deleteValHandler}
                         className="form-control"
                         value={toDel}
                       ></input>
                     </div>
                     <div className="col">
-                      <button type="submit" className="btn btn-danger">
+                      <Button
+                        type="submit"
+                        className="Button"
+                        varient="outlined"
+                      >
                         Delete
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </form>

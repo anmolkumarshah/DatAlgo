@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AlertDialog from "../../../material-ui-components/alertDialog";
 import { toast } from "react-toastify";
+import { CircularProgress } from "@material-ui/core";
 
 const SignupForm = (props) => {
   const backend = "https://datalgo.herokuapp.com/";
@@ -10,6 +11,7 @@ const SignupForm = (props) => {
 
   const [err, setErr] = useState([]);
   const [open, setOpen] = useState(false);
+  const [wait, setWait] = useState(false);
 
   useEffect(() => {
     setOpen(false);
@@ -32,6 +34,7 @@ const SignupForm = (props) => {
   };
 
   const handleSubmit = async (e) => {
+    setWait(true);
     e.preventDefault();
     const url = backend + "auth/signup";
     const method = "PUT";
@@ -54,12 +57,13 @@ const SignupForm = (props) => {
         setErr(display);
         setOpen(true);
       } else {
-        console.log(responseJson);
         toast.success(`Your Account Has Been Created`);
         toast.info(`You are redirecting to Login`);
         props.history.push("/login");
       }
+      setWait(false);
     } catch (e) {
+      setWait(false);
       setErr(e);
       setOpen(true);
     }
@@ -131,7 +135,7 @@ const SignupForm = (props) => {
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Signup
+          {wait ? <CircularProgress color="secondary" /> : "Signup"}
         </button>
         <button
           onClick={() => {

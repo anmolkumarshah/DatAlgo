@@ -1,3 +1,4 @@
+import { CircularProgress } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import AlertDialog from "../../../material-ui-components/alertDialog";
@@ -10,6 +11,7 @@ const LoginForm = (props) => {
   const [err, setErr] = useState([]);
 
   const [open, setOpen] = useState(false);
+  const [wait, setWait] = useState(false);
 
   useEffect(() => {
     setOpen(false);
@@ -28,6 +30,7 @@ const LoginForm = (props) => {
   };
 
   const handleSubmit = async (e) => {
+    setWait(true);
     e.preventDefault();
     const url = backend + "auth/login";
     const method = "POST";
@@ -44,14 +47,17 @@ const LoginForm = (props) => {
       if (responseJson.error) {
         setErr(responseJson.message);
         console.log(responseJson);
+        setWait(false);
         setOpen(true);
         return;
       }
       localStorage.setItem("token", responseJson.token);
+      setWait(false);
       toast.success(`You are logged in`);
       props.history.push("/");
     } catch (e) {
       setErr(e);
+      setWait(false);
       setOpen(true);
     }
 
@@ -62,7 +68,10 @@ const LoginForm = (props) => {
   return (
     <div
       style={{
+        width: "100vw",
+        height: "100vh",
         backgroundImage: `url(${"https://cdn.pixabay.com/photo/2019/11/28/07/21/butterfly-4658565_1280.jpg"})`,
+        overflow: "hidden",
         backgroundSize: "cover",
       }}
     >
@@ -102,7 +111,7 @@ const LoginForm = (props) => {
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Login
+          {wait ? <CircularProgress color="secondary" /> : "Login"}
         </button>
         <button
           onClick={() => {
