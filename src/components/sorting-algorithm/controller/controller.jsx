@@ -7,23 +7,17 @@ export const Controller = ({
   handleSizeChange,
 }) => {
   return (
-    <div className="controller container justify-content-md-cente d-flex w-100">
-      <div className="col-sm-3 ">
-        <Button
-          onClick={resetArray}
-          className="Button"
-          variant="contained"
-          color="primary"
-        >
+    <div className="controller container justify-content-md-center d-flex w-100">
+      <div className="col-sm-2 ">
+        <Button onClick={resetArray} className="Button" variant="outlined">
           New Array
         </Button>
       </div>
-      <div className="col-sm-3">
+      <div className="col-sm-2">
         <Button
           onClick={() => operation()}
           className="Button"
-          variant="contained"
-          color="primary"
+          variant="outlined"
         >
           Sort
         </Button>

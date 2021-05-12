@@ -249,20 +249,14 @@ const BinarySearch = () => {
       <div className="controlls-container w-100">
         {TargetSelected ? (
           stack ? (
-            <Button
-              onClick={handleNext}
-              className="Button"
-              variant="contained"
-              color="primary"
-            >
+            <Button onClick={handleNext} className="Button" variant="outlined">
               Next
             </Button>
           ) : (
             <Button
               onClick={handleCompute}
               className="Button"
-              variant="contained"
-              color="primary"
+              variant="outlined"
             >
               Start
             </Button>
@@ -272,9 +266,7 @@ const BinarySearch = () => {
             onClick={start}
             className=" controller-bs"
             className="Button"
-            variant="contained"
-            color="primary"
-            style={{ backgroundColor: "rgb(63,81,181)" }}
+            variant="outlined"
           >
             Full Reset
           </Button>

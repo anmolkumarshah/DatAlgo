@@ -7,6 +7,7 @@ import { ColorIndicator } from "../sorting-algorithm/colorIndicator/colorIndicat
 import "./array.css";
 import ArrayElement from "./element/ArrayElement";
 import Button from "@material-ui/core/Button";
+import Warning from "../errorMessage/Warning";
 
 const InitialElements = 15;
 
@@ -23,20 +24,19 @@ const Arr = () => {
   // index
   const [index, setIndex] = useState("");
   const newIndex = (event) => {
-    setIndex(parseInt(event.target.value));
+    setIndex(event.target.value);
   };
   // value
   const [newElement, setNewElement] = useState("");
   const newInput = (event) => {
-    let abc = parseInt(event.target.value);
-    setNewElement(abc);
+    setNewElement(event.target.value);
   };
 
   // index for delete
   const [deleteIndex, setDeleteIndex] = useState("");
 
   const newDeleteIndex = (event) => {
-    setDeleteIndex(parseInt(event.target.value));
+    setDeleteIndex(event.target.value);
   };
 
   // generate random elements
@@ -66,6 +66,15 @@ const Arr = () => {
 
   const handleClose = () => {
     setOpen(!open);
+  };
+
+  // Warning Message
+  const [errorMessage, setErrorMessage] = useState("");
+  const [warningOpen, setWarningOpen] = useState(false);
+
+  const handleWarning = () => {
+    setWarningOpen(!warningOpen);
+    setErrorMessage("");
   };
 
   //   Heighlighting sorted
@@ -103,13 +112,29 @@ const Arr = () => {
     }, 150 * delay);
   };
   const handleNewInput = () => {
-    if (isNaN(newElement) || isNaN(index)) {
-      alert("Incorrect Element or Incorrect Index");
-      setNewElement([]);
+    if (isNaN(newElement) && isNaN(index)) {
+      setErrorMessage("Incorrect Element & Incorrect Index");
+      setWarningOpen(!warningOpen);
+      setNewElement("");
+      setIndex("");
+    } else if (isNaN(index) || index > elements.length) {
+      setErrorMessage("Incorrect Index");
+      setWarningOpen(!warningOpen);
+      setNewElement("");
+      setIndex("");
+    } else if (isNaN(newElement)) {
+      setErrorMessage("Incorrect Value");
+      setWarningOpen(!warningOpen);
+      setNewElement("");
+      setIndex("");
+    } else if (parseInt(newElement) > 999) {
+      setErrorMessage("Pleasse Enter Value Smaller or Equal to 999");
+      setWarningOpen(!warningOpen);
+      setNewElement("");
       setIndex("");
     } else {
-      addElement(index);
-      setNewElement([]);
+      addElement(parseInt(index));
+      setNewElement("");
       setIndex("");
     }
   };
@@ -137,10 +162,16 @@ const Arr = () => {
 
   const handleDelete = () => {
     if (isNaN(deleteIndex)) {
-      alert("Incorrect Index");
+      setErrorMessage("Please Enter Positive Integer Value.");
+      setWarningOpen(!warningOpen);
+      setDeleteIndex("");
+    }
+    if (deleteIndex > elements.length - 1 || deleteIndex < 0) {
+      setErrorMessage("Incorrect Index");
+      setWarningOpen(!warningOpen);
       setDeleteIndex("");
     } else {
-      deleteFromIndex(deleteIndex);
+      deleteFromIndex(parseInt(deleteIndex));
       setDeleteIndex("");
     }
   };
@@ -210,12 +241,19 @@ const Arr = () => {
   };
   return (
     <div className="container">
-      {" "}
       <AlertDialog
         open={open}
         handleClose={handleClose}
         title="Welcome to Array"
         content="An array is a data structure that contains a group of elements. Typically these elements are all of the same data type, such as an integer or string. Arrays are commonly used in computer programs to organize data so that a related set of values can be easily sorted or searched."
+      />
+
+      {/* Erroe Message */}
+      <Warning
+        open={warningOpen}
+        handleClose={handleWarning}
+        title="Warning....!!!"
+        content={errorMessage}
       />
       <ColorIndicator
         indicator={[
@@ -268,8 +306,7 @@ const Arr = () => {
             />
             <Button
               className="Button"
-              variant="contained"
-              color="primary"
+              varient="outlined"
               onClick={handleNewInput}
             >
               Insert
@@ -287,38 +324,26 @@ const Arr = () => {
             />
             <Button
               className="Button"
-              variant="contained"
-              color="primary"
+              variant="outlined"
               onClick={handleDelete}
             >
               Delete
             </Button>
           </div>
-          <div className="col-sm-1" considerColor>
-            <Button
-              className="Button"
-              variant="contained"
-              color="primary"
-              onClick={findMin}
-            >
+          <div className="col-sm-1">
+            <Button className="Button" varient="outlined" onClick={findMin}>
               Find Min
             </Button>
           </div>
-          <div className="col-sm-1" considerColor>
-            <Button
-              className="Button"
-              variant="contained"
-              color="primary"
-              onClick={findMax}
-            >
+          <div className="col-sm-1">
+            <Button className="Button" varient="outlined" onClick={findMax}>
               Find Max
             </Button>
           </div>
           <div className="col-sm-2">
             <Button
               className="Button"
-              variant="contained"
-              color="primary"
+              varient="outlined"
               onClick={removeDuplicate}
             >
               Remove Duplicate

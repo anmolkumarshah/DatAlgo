@@ -129,14 +129,14 @@ const Que = () => {
           <div className="d-flex align-items-center col-sm-2 controlHandler">
             <Button
               className="Button"
-              variant="contained"
+              variant="outlined"
               onClick={enqueueFeMale}
             >
               Enqueue Female
             </Button>
           </div>
           <div className="d-flex align-items-center col-sm-2 controlHandler">
-            <Button className="Button" variant="contained" onClick={deQueue}>
+            <Button className="Button" variant="outlined" onClick={deQueue}>
               Dequeue
             </Button>
           </div>
