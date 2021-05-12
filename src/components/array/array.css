@@ -74,12 +74,10 @@ label {
   outline: none;
   height: 30px;
   padding: 0 10px !important;
-  border-color: white !important;
+  border: 1px solid white !important;
   border: none;
   color: white !important;
-  background-color: red !important;
   text-decoration: none;
   font-size: 16px;
-  /* margin: 4px 2px; */
-  cursor: pointer;
+  text-transform: capitalize !important;
 }

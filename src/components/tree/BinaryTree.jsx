@@ -9,21 +9,7 @@ import Information from "../../material-ui-components/information";
 
 const BinaryTree = () => {
   const t1 = new BTree([
-    34,
-    23,
-    92,
-    12,
-    4,
-    -1,
-    -1,
-    -1,
-    -1,
-    16,
-    9,
-    -1,
-    -1,
-    -1,
-    -1,
+    34, 23, 92, 12, 4, -1, -1, -1, -1, 16, 9, -1, -1, -1, -1,
   ]);
 
   const [data, setData] = useState([]);
@@ -220,19 +206,13 @@ const BinaryTree = () => {
               <Button
                 onClick={() => animateList(treeData)}
                 className="Button"
-                variant="contained"
-                color="primary"
+                variant="outlined"
               >
                 Start
               </Button>
             </div>
             <div className="col-2">
-              <Button
-                onClick={reset}
-                className="Button"
-                variant="contained"
-                color="primary"
-              >
+              <Button onClick={reset} className="Button" variant="outlined">
                 Clear
               </Button>
             </div>
@@ -240,8 +220,7 @@ const BinaryTree = () => {
               <Button
                 onClick={customInput}
                 className="Button"
-                variant="contained"
-                color="primary"
+                variant="outlined"
               >
                 Custom Input
               </Button>

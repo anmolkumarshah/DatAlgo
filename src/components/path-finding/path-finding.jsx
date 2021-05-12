@@ -179,8 +179,7 @@ const PathFinding = () => {
             <div className="col">
               <Button
                 className="Button"
-                variant="contained"
-                color="primary"
+                variant="outlined"
                 onClick={visualizeDijkstra}
               >
                 Start

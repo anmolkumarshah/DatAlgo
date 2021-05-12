@@ -145,8 +145,7 @@ const LinearSearch = () => {
               />
               <Button
                 className="Button"
-                variant="contained"
-                color="primary"
+                variant="outlined"
                 onClick={handleSearch}
               >
                 Search
