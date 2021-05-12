@@ -1,4 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, {
+  useState,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import AlertDialog from "../../../material-ui-components/alertDialog";
 import Information from "../../../material-ui-components/information";
 import { Bar } from "../bar/bar";
@@ -10,10 +15,10 @@ const randonIntFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const SelectionSort = () => {
+const SelectionSort = forwardRef(({ size = 25, noController = false }, ref) => {
   const [array, setArray] = useState([]);
   const [animationSpeed, setAnimationSpeed] = useState(1);
-  const [noBars, setNoBars] = useState(25);
+  const [noBars, setNoBars] = useState(size);
 
   //   --------------------------------------------------------------------------------
   //    COLORS HERE
@@ -82,6 +87,12 @@ const SelectionSort = () => {
     return animation;
   };
 
+  useImperativeHandle(ref, () => ({
+    start() {
+      insertionSort();
+    },
+  }));
+
   const insertionSort = () => {
     const animations = compute(array);
     const arrayBar = document.getElementsByClassName("array-bar");
@@ -146,13 +157,15 @@ const SelectionSort = () => {
 
   return (
     <div className="container">
-      <AlertDialog
-        open={open}
-        handleClose={handleClose}
-        title="Welcome to Selection Sorts"
-        content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
-      />
-      <Information />
+      {!noController && (
+        <AlertDialog
+          open={open}
+          handleClose={handleClose}
+          title="Welcome to Selection Sorts"
+          content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+        />
+      )}
+      {!noController && <Information />}
       <ColorIndicator
         indicator={[
           { name: "j variable", color: j_variable },
@@ -176,16 +189,18 @@ const SelectionSort = () => {
         })}
       </div>
       <hr />
-      <div className="controlls-container w-100">
-        <Controller
-          resetArray={resetArray}
-          operation={insertionSort}
-          handleSpeedChange={handleSpeedChange}
-          handleSizeChange={handleSizeChange}
-        />
-      </div>
+      {!noController && (
+        <div className="controlls-container w-100">
+          <Controller
+            resetArray={resetArray}
+            operation={insertionSort}
+            handleSpeedChange={handleSpeedChange}
+            handleSizeChange={handleSizeChange}
+          />
+        </div>
+      )}
     </div>
   );
-};
+});
 
 export default SelectionSort;

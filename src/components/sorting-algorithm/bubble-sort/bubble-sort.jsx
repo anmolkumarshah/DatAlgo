@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, {
+  useState,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import "./bubble-sort-style.css";
 import { Bar } from "./../bar/bar";
 import { ColorIndicator } from "./../colorIndicator/colorIndicator";
 import { Controller } from "./../controller/controller.jsx";
 import { randonIntFromInterval } from "../helper.jsx";
-import SimpleAccordion from "../../../material-ui-components/accordian";
 import AlertDialog from "../../../material-ui-components/alertDialog";
 import Information from "../../../material-ui-components/information";
 
-const BubbleSort = () => {
+const BubbleSort = forwardRef(({ size = 25, noController = false }, ref) => {
+  console.log(size);
   const [array, setArray] = useState([]);
   const [animationSpeed, setAnimationSpeed] = useState(1);
-  const [noBars, setNoBars] = useState(25);
-  const [log, setLog] = useState([]);
+  const [noBars, setNoBars] = useState(size);
   let animations = [];
 
   //   --------------------------------------------------------------------------------
@@ -83,6 +87,12 @@ const BubbleSort = () => {
     return animation;
   };
 
+  useImperativeHandle(ref, () => ({
+    start() {
+      bubbleSort();
+    },
+  }));
+
   const bubbleSort = () => {
     animations = compute(array);
     const arrayBar = document.getElementsByClassName("array-bar");
@@ -152,14 +162,15 @@ const BubbleSort = () => {
 
   return (
     <div className="container">
-      {" "}
-      <AlertDialog
-        open={open}
-        handleClose={handleClose}
-        title="Welcome to Bubble Sort"
-        content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
-      />
-      <Information />
+      {!noController && (
+        <AlertDialog
+          open={open}
+          handleClose={handleClose}
+          title="Welcome to Bubble Sort"
+          content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+        />
+      )}
+      {!noController && <Information />}
       <ColorIndicator
         indicator={[
           { name: "consider", color: considerColor },
@@ -183,16 +194,18 @@ const BubbleSort = () => {
         })}
       </div>
       <hr />
-      <div className="controlls-container w-100">
-        <Controller
-          resetArray={resetArray}
-          operation={bubbleSort}
-          handleSpeedChange={handleSpeedChange}
-          handleSizeChange={handleSizeChange}
-        />
-      </div>
+      {!noController && (
+        <div className="controlls-container w-100">
+          <Controller
+            resetArray={resetArray}
+            operation={bubbleSort}
+            handleSpeedChange={handleSpeedChange}
+            handleSizeChange={handleSizeChange}
+          />
+        </div>
+      )}
     </div>
   );
-};
+});
 
 export default BubbleSort;

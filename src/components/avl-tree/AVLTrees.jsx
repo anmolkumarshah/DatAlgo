@@ -69,6 +69,7 @@ const AVLTrees = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     insert(value);
+    setValue("");
   };
 
   const changeHandler = (e) => {
@@ -76,15 +77,15 @@ const AVLTrees = () => {
   };
 
   const deleteValHandler = (e) => {
-    setToDel(parseInt(e.target.value));
+    setToDel(e.target.value);
   };
 
   const handleDelete = (e) => {
     e.preventDefault();
-    let v = considerTree.Delete(considerTree.getRoot(), toDel);
-    console.log(v);
+    let v = considerTree.Delete(considerTree.getRoot(), parseInt(toDel));
     let result = refactor(v);
     setData(result);
+    setToDel("");
   };
 
   const handleClear = () => {
@@ -117,6 +118,7 @@ const AVLTrees = () => {
           />
         )}
 
+        <Information />
         <div className="controlls-container w-100">
           {!isCreated && (
             <div className="col-1 d-flex align-items-center controlHandler">
@@ -126,21 +128,22 @@ const AVLTrees = () => {
             </div>
           )}
 
-          <div className="row controller-avl">
-            <div className="col-1">
-              <Information />
+          <div className="row">
+            <div className="col">
               {isCreated && (
                 <button onClick={handleClear} className="btn btn-dark">
                   Clear
                 </button>
               )}
             </div>
-            <div className="col-5">
+
+            <div className="col">
               {isCreated && (
                 <form onSubmit={handleSubmit}>
                   <div className="row">
                     <div className="col">
                       <input
+                        value={value}
                         onChange={changeHandler}
                         className="form-control"
                       ></input>
@@ -153,52 +156,27 @@ const AVLTrees = () => {
                   </div>
                 </form>
               )}
+            </div>
 
-              <div className="col-1 d-flex align-items-center controlHandler controlHandler">
-                {isCreated && (
-                  <button onClick={handleClear} className="btn btn-dark">
-                    Clear
-                  </button>
-                )}
-              </div>
-              <div className="col-5 d-flex align-items-center controlHandler">
-                {isCreated && (
-                  <form onSubmit={handleSubmit}>
-                    <div className="row">
-                      <div className="col">
-                        <input
-                          onChange={changeHandler}
-                          className="form-control"
-                        ></input>
-                      </div>
-                      <div className="col">
-                        <button type="submit" className="btn btn-primary">
-                          insert
-                        </button>
-                      </div>
+            <div className="col d-flex align-items-center controlHandler">
+              {isCreated && (
+                <form onSubmit={handleDelete}>
+                  <div className="row">
+                    <div className="col">
+                      <input
+                        onChange={deleteValHandler}
+                        className="form-control"
+                        value={toDel}
+                      ></input>
                     </div>
-                  </form>
-                )}
-              </div>
-              <div className="col-5 d-flex align-items-center controlHandler">
-                {isCreated && (
-                  <form onSubmit={handleDelete}>
-                    <div className="row">
-                      <div className="col">
-                        <input
-                          onChange={deleteValHandler}
-                          className="form-control"
-                        ></input>
-                      </div>
-                      <div className="col">
-                        <button type="submit" className="btn btn-danger">
-                          Delete
-                        </button>
-                      </div>
+                    <div className="col">
+                      <button type="submit" className="btn btn-danger">
+                        Delete
+                      </button>
                     </div>
-                  </form>
-                )}
-              </div>
+                  </div>
+                </form>
+              )}
             </div>
           </div>
         </div>

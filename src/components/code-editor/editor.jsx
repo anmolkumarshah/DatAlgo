@@ -15,6 +15,7 @@ import "ace-builds/src-noconflict/theme-terminal";
 
 import Output from "../../material-ui-components/output";
 import "./editor.css";
+import { toast } from "react-toastify";
 
 const Editor = ({ language = "python", value = "Enter Code here" }) => {
   const backend = "https://datalgo.herokuapp.com/";
@@ -32,6 +33,8 @@ const Editor = ({ language = "python", value = "Enter Code here" }) => {
     setOpen(false);
     const t = localStorage.getItem("token");
     setToken(t);
+
+    toast.info("Only supports Python Programming language");
   }, []);
 
   const handleClose = () => {
