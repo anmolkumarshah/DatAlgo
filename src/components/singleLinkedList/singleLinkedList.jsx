@@ -116,8 +116,7 @@ const SingleLinkedList = () => {
                 <Button
                   onClick={createHandler}
                   className="Button"
-                  variant="contained"
-                  color="primary"
+                  variant="outlined"
                 >
                   Create
                 </Button>
@@ -129,16 +128,15 @@ const SingleLinkedList = () => {
                   <div className="align-items-center controlHandler">
                     <div className="col-6">
                       <input
+                        className="pl-2"
                         onChange={insertChangeHandler}
                         value={toInsert}
-                        className="form-control"
-                      ></input>
+                      />
                     </div>
                     <div className="col-6">
                       <Button
                         className="Button"
-                        variant="contained"
-                        color="primary"
+                        variant="outlined"
                         type="submit"
                       >
                         Insert Back
@@ -157,14 +155,13 @@ const SingleLinkedList = () => {
                       <input
                         onChange={insertChangeHandler}
                         value={toInsert}
-                        className="form-control"
+                        className="pl-2"
                       ></input>
                     </div>
                     <div className="col-6">
                       <Button
                         className="Button"
-                        variant="contained"
-                        color="primary"
+                        variant="outlined"
                         type="submit"
                       >
                         Insert Front
@@ -183,7 +180,7 @@ const SingleLinkedList = () => {
                       <input
                         onChange={idxChangeHandler}
                         value={idx}
-                        className="form-control"
+                        className="pl-2"
                         placeholder="Index"
                       ></input>
                     </div>
@@ -191,15 +188,14 @@ const SingleLinkedList = () => {
                       <input
                         onChange={insertChangeHandler}
                         value={toInsert}
-                        className="form-control"
+                        className="pl-2"
                         placeholder="Value"
                       ></input>
                     </div>
                     <div className="col-4">
                       <Button
                         className="Button"
-                        variant="contained"
-                        color="primary"
+                        variant="outlined"
                         type="submit"
                       >
                         Insert After
@@ -218,15 +214,14 @@ const SingleLinkedList = () => {
                       <input
                         onChange={idxChangeHandler}
                         value={idx}
-                        className="form-control"
+                        className="pl-2"
                         placeholder="Index"
                       ></input>
                     </div>
                     <div className="col-2">
                       <Button
                         className="Button"
-                        variant="contained"
-                        color="primary"
+                        variant="outlined"
                         type="submit"
                       >
                         Delete
@@ -241,8 +236,7 @@ const SingleLinkedList = () => {
               <div className="text-center mt-3 col-2">
                 <Button
                   className="Button"
-                  variant="contained"
-                  color="primary"
+                  variant="outlined"
                   onClick={clearHandler}
                 >
                   Clear
@@ -252,12 +246,7 @@ const SingleLinkedList = () => {
 
             {isStart && (
               <div className="text-center  mt-3 col-1">
-                <Button
-                  onClick={reverse}
-                  className="Button"
-                  variant="contained"
-                  color="primary"
-                >
+                <Button onClick={reverse} className="Button" variant="outlined">
                   Reverse
                 </Button>
               </div>

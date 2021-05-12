@@ -166,22 +166,12 @@ const Stack = () => {
               placeholder="Value"
               className="pl-2"
             />
-            <Button
-              className="Button"
-              variant="contained"
-              color="primary"
-              onClick={handlePush}
-            >
+            <Button className="Button" variant="outlined" onClick={handlePush}>
               Push
             </Button>
           </div>
           <div className="col-sm-2">
-            <Button
-              className="Button"
-              variant="contained"
-              color="primary"
-              onClick={handlePop}
-            >
+            <Button className="Button" variant="outlined" onClick={handlePop}>
               Pop
             </Button>
           </div>

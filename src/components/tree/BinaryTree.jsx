@@ -168,7 +168,7 @@ const BinaryTree = () => {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center">
+    <div className="container d-flex justify-content-center align-items-center pt-2">
       <div>
         <AlertDialog
           open={open}
@@ -210,8 +210,7 @@ const BinaryTree = () => {
               <Button
                 onClick={() => animateList(treeData)}
                 className="Button"
-                variant="contained"
-                color="primary"
+                variant="outlined"
               >
                 Start
               </Button>
@@ -230,8 +229,7 @@ const BinaryTree = () => {
               <Button
                 onClick={customInput}
                 className="Button"
-                variant="contained"
-                color="primary"
+                variant="outlined"
               >
                 Custom Input
               </Button>
