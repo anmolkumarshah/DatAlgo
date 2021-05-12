@@ -16,6 +16,7 @@ import "ace-builds/src-noconflict/theme-terminal";
 import Output from "../../material-ui-components/output";
 import "./editor.css";
 import { toast } from "react-toastify";
+import { CircularProgress } from "@material-ui/core";
 
 const Editor = ({ language = "python", value = "Enter Code here" }) => {
   const backend = "https://datalgo.herokuapp.com/";
@@ -28,6 +29,7 @@ const Editor = ({ language = "python", value = "Enter Code here" }) => {
   const [title, setTitle] = useState("");
   const [token, setToken] = useState(null);
   const [theme, setTheme] = useState("terminal");
+  const [wait, setWait] = useState(false);
 
   useEffect(() => {
     setOpen(false);
@@ -41,6 +43,7 @@ const Editor = ({ language = "python", value = "Enter Code here" }) => {
     setOpen(false);
   };
   const runHandler = async () => {
+    setWait(true);
     const url = backend + "interprete/run";
     const method = "POST";
     try {
@@ -57,14 +60,17 @@ const Editor = ({ language = "python", value = "Enter Code here" }) => {
         setOutput(responseJson.message + ", Please login before running code");
         setOpen(true);
         setTitle("You get an error");
+        setWait(false);
         return;
       }
       setOutput(responseJson.output.stdout);
       setTitle("Code Output");
+      setWait(false);
       setOpen(true);
     } catch (e) {
       setTitle("You get an error");
       setOutput(e.message);
+      setWait(false);
       setOpen(true);
     }
   };
@@ -128,7 +134,7 @@ const Editor = ({ language = "python", value = "Enter Code here" }) => {
             onClick={runHandler}
             className="btn btn-dark mt-1 editor-item"
           >
-            Run
+            {wait ? <CircularProgress /> : "Run"}
           </button>
         )}
       </div>
