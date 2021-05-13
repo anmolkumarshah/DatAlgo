@@ -31,22 +31,18 @@ export default class SLinkedList {
   }
 
   insertAfter(index, data) {
-    if (index + 1 === this.length) {
-      this.insertBack(data);
-      return;
+    if (index === "0") {
+      return this.insertFront(data);
     }
     let temp = this.head;
-    if (index + 1 <= this.length) {
-      while (index) {
-        temp = temp.children[0];
-        index--;
-      }
+    while (index) {
+      temp = temp.children[0];
+      index--;
+
       const prevChild = temp.children[0];
       const tempNew = new Node(data);
       tempNew.children.push(prevChild);
       temp.children[0] = tempNew;
-    } else {
-      alert("Index is out of range`");
     }
   }
 
