@@ -25,7 +25,6 @@ import SimpleAccordion from "./accordian";
 
 import { Link, Route, Switch } from "react-router-dom";
 import BinarySearch from "../components/search-algorithm/BinarySearch/binary-search";
-// import LinearSearch from "./../components/search-algorithm/LinearSearch/LinearSearch";
 import BubbleSort from "./../components/sorting-algorithm/bubble-sort/bubble-sort";
 import InsertionSort from "../components/sorting-algorithm/insertion-sort/insertion-sort";
 import SelectionSort from "../components/sorting-algorithm/selection-sort/selection-sort";
