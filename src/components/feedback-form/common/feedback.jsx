@@ -1,3 +1,4 @@
+import { CircularProgress } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import AlertDialog from "../../../material-ui-components/alertDialog";
 
@@ -8,6 +9,7 @@ const FeedbackForm = () => {
   const [err, setErr] = useState([]);
   const [done, setDone] = useState(false);
   const [open, setOpen] = useState(false);
+  const [wait, setWait] = useState(false);
 
   useEffect(() => {
     setOpen(false);
@@ -30,6 +32,7 @@ const FeedbackForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    setWait(true);
     e.preventDefault();
     const url = backend + "feedback/create";
     const method = "POST";
@@ -43,20 +46,21 @@ const FeedbackForm = () => {
         }),
       });
       const responseJson = await result.json();
-      console.log(responseJson);
       if (responseJson.error) {
         let display = "";
         responseJson.desc.forEach((item) => {
           display += `${item.param} : ${item.msg}`;
         });
         setErr(display);
+        setWait(false);
         setOpen(true);
       } else {
-        console.log(responseJson);
+        setWait(false);
         setDone(true);
       }
     } catch (e) {
       setErr(e);
+      setWait(false);
       setOpen(true);
     }
 
@@ -119,7 +123,7 @@ const FeedbackForm = () => {
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Send
+          {wait ? <CircularProgress color="secondary" /> : "Send"}
         </button>
       </form>
     </div>
