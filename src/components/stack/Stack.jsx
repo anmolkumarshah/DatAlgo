@@ -6,6 +6,8 @@ import Button from "@material-ui/core/Button";
 
 import Information from "../../material-ui-components/information";
 import "./stack.css";
+import Warning from "../errorMessage/Warning";
+
 const InitialElements = 5;
 const maxElements = 10;
 const Stack = () => {
@@ -48,6 +50,15 @@ const Stack = () => {
     setOpen(false);
   };
 
+  // Warning Message
+  const [errorMessage, setErrorMessage] = useState("");
+  const [warningOpen, setWarningOpen] = useState(false);
+
+  const handleWarning = () => {
+    setWarningOpen(!warningOpen);
+    setErrorMessage("");
+  };
+
   const heighlightAction = (index, delay, color) => {
     const bar = document.getElementsByClassName("element");
     setTimeout(() => {
@@ -61,53 +72,52 @@ const Stack = () => {
 
   //   Push Element
   const pushElement = () => {
-    if (noElement < maxElements) {
-      setTimeout(() => {
-        setElements((oldItems) => {
-          return [...oldItems, newElement];
-        });
-        heighlightAction(elements.length, 10, "#32CD30");
-      }, 150 * 2);
-    } else {
-      setErrorMessage("Stack is Full");
-    }
+    setTimeout(() => {
+      setElements((oldItems) => {
+        return [...oldItems, parseInt(newElement)];
+      });
+      heighlightAction(elements.length, 5, "#32CD30");
+    }, 150 * 2);
   };
 
-  const [errorMessage, setErrorMessage] = useState("");
   const handlePush = () => {
-    setNoElement(noElement + 1);
-    if (isNaN(newElement)) {
-      setNoElement(noElement);
-      setErrorMessage("Enter Element");
-    } else if (noElement <= maxElements && newElement !== "") {
+    if (isNaN(newElement) || newElement == "") {
+      setErrorMessage("Pleasse Enter Numeric Value");
+      setWarningOpen(!warningOpen);
+      setNewElement("");
+    } else if (parseInt(newElement) > 1000) {
+      setErrorMessage("Pleasse Enter Smaller Value");
+      setWarningOpen(!warningOpen);
+      setNewElement("");
+    } else if (elements.length < maxElements) {
       pushElement();
+      setNewElement("");
     } else {
-      setNoElement(noElement);
+      setErrorMessage("Stack is Full");
+      setWarningOpen(!warningOpen);
+      setNewElement("");
     }
   };
 
   //   popElement
   const popElement = () => {
-    heighlightAction(elements.length - 1, 8, "red");
+    // setTimeout(() => {
     setTimeout(() => {
-      setTimeout(() => {
-        setElements((oldItems) => {
-          return [...oldItems.filter((ele, i) => i !== elements.length - 1)];
-        });
-        setNoElement(noElement - 1);
-        if (elements.length - 1 === 0) {
-          setErrorMessage("Stack is Empty");
-        }
-        // setErrorMessage(`No Elements : ${elements.length - 1}`);
-      }, 400 * 2);
+      setElements((oldItems) => {
+        return [...oldItems.filter((ele, i) => i !== elements.length - 1)];
+      });
     }, 200 * 2);
+    heighlightAction(elements.length - 1, 1.5, "red");
+    // }, 100 * 2);
   };
 
   const handlePop = () => {
-    if (noElement > 0) popElement();
-    else if (elements.length - 1 === 0) {
+    if (elements.length - 1 >= 0) {
       popElement();
-      setErrorMessage("");
+    } else {
+      setErrorMessage("Stack is Empty");
+      setWarningOpen(!warningOpen);
+      setNewElement("");
     }
   };
 
@@ -119,21 +129,16 @@ const Stack = () => {
         title="Welcome to Stack"
         content="In computing, a stack is a data structure used to store a collection of objects. Individual items can be added and stored in a stack using a push operation. Objects can be retrieved using a pop operation, which removes an item from the stack."
       />
+      {/* Erroe Message */}
+      <Warning
+        open={warningOpen}
+        handleClose={handleWarning}
+        title="Warning"
+        content={errorMessage}
+      />
+
       <div className="container mx-auto stack-container d-flex justify-content-center">
-        <div className="stack d-flex flex-column-reverse justify-content-start">
-          <p
-            style={{
-              position: "absolute",
-              top: "-30px",
-              left: "0",
-              textAlign: "center",
-              width: "100%",
-              fontSize: "20px",
-              fontWeight: "bold",
-            }}
-          >
-            {errorMessage}
-          </p>
+        <div className="stack d-flex flex-column-reverse justify-content-start align-items-center">
           {elements.map((value, idx) => {
             if (value !== null && !value.isNaN)
               return (
@@ -170,9 +175,43 @@ const Stack = () => {
               Push
             </Button>
           </div>
-          <div className="col-sm-2">
+          <div className="col-sm-1 text-center">
             <Button className="Button" variant="outlined" onClick={handlePop}>
               Pop
+            </Button>
+          </div>
+          <div className="col-sm-2 text-center">
+            <Button
+              className="Button"
+              variant="outlined"
+              onClick={() => {
+                if (elements.length === maxElements) {
+                  setErrorMessage("True");
+                  setWarningOpen(!warningOpen);
+                } else {
+                  setErrorMessage("False");
+                  setWarningOpen(!warningOpen);
+                }
+              }}
+            >
+              Is Full ?
+            </Button>
+          </div>
+          <div className="col-sm-2">
+            <Button
+              className="Button"
+              variant="outlined"
+              onClick={() => {
+                if (elements.length === 0) {
+                  setErrorMessage("True");
+                  setWarningOpen(!warningOpen);
+                } else {
+                  setErrorMessage("False");
+                  setWarningOpen(!warningOpen);
+                }
+              }}
+            >
+              Is Empty ?
             </Button>
           </div>
         </div>
