@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import Algorithms from "./Algorithms";
 import { algorithmsData } from "./algorithmsData";
-import homeImg from "./homeImg.png";
 import "./home.css";
 import Footer from "./footer/Footer";
 
@@ -22,8 +21,7 @@ const Homepage = () => {
               <b style={{ color: "#4B8378" }}>Algo</b>
             </h1>
             <h3 className="pt-3">
-              A New Online Platform For Learning <br /> Data Structure &
-              Algorithms
+              A tool to Visualize Data Structure & Algorithm
             </h3>
           </div>
 
