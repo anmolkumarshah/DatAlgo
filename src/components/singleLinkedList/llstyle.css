@@ -14,11 +14,10 @@
 }
 
 .node-style {
-  fill: rgb(133, 230, 133);
+  fill: rgb(23, 206, 54);
   stroke-width: 0.5px;
   width: 50px;
   height: 30px;
-  margin: 10px;
 }
 
 .node-text-style {

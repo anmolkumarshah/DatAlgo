@@ -5,16 +5,6 @@
 }
 
 .link {
-  fill: rgba(253, 248, 248, 0);
+  fill: transparent;
   stroke: rgb(0, 0, 0);
-}
-
-.controller-tree {
-  position: absolute;
-  bottom: 0px;
-  left: 0%;
-  background-color: burlywood;
-  width: 100vw;
-  padding: 10px;
-  border-top: 5px solid rgb(73, 73, 245);
 }

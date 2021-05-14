@@ -140,7 +140,7 @@ const Stack = () => {
       <div className="container mx-auto stack-container d-flex justify-content-center">
         <div className="stack d-flex flex-column-reverse justify-content-start align-items-center">
           {elements.map((value, idx) => {
-            if (value !== null && value !== NaN)
+            if (value !== null && !value.isNaN)
               return (
                 <>
                   <div className="element-box">

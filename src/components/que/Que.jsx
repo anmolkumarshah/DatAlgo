@@ -6,6 +6,7 @@ import AlertDialog from "../../material-ui-components/alertDialog";
 import Warning from "../errorMessage/Warning";
 
 import "./que.css";
+import Information from "../../material-ui-components/information";
 const maxMembers = 10;
 const Que = () => {
   const initialColor = "rgb(63, 81, 181)";
@@ -22,17 +23,7 @@ const Que = () => {
     <FaMale className="male" />,
   ]);
 
-  const heighlightAction = (index, delay, color) => {
-    const bar = document.getElementsByClassName("queue-element");
-    setTimeout(() => {
-      bar[index].style.backgroundColor = color;
-    }, delay);
-    setTimeout(() => {
-      bar[index].style.backgroundColor = color;
-      bar[index].style.backgroundColor = initialColor;
-    }, 150 * delay);
-  };
-
+  
   //   Welcome
   const [open, setOpen] = useState(false);
 
@@ -51,6 +42,17 @@ const Que = () => {
   const handleWarning = () => {
     setWarningOpen(!warningOpen);
     setErrorMessage("");
+  };
+
+  const heighlightAction = (index, delay, color) => {
+    const bar = document.getElementsByClassName("queue-element");
+    setTimeout(() => {
+      bar[index].style.backgroundColor = color;
+    }, delay);
+    setTimeout(() => {
+      bar[index].style.backgroundColor = color;
+      bar[index].style.backgroundColor = initialColor;
+    }, 150 * delay);
   };
 
   //   Male
@@ -119,6 +121,12 @@ const Que = () => {
 
   return (
     <div className="container">
+      <AlertDialog
+        open={open}
+        handleClose={handleClose}
+        title="Welcome to Queue"
+        content="An array is a data structure that contains a group of elements. Typically these elements are all of the same data type, such as an integer or string. Arrays are commonly used in computer programs to organize data so that a related set of values can be easily sorted or searched."
+      />
       <ColorIndicator
         indicator={[
           { name: "Queue", color: initialColor },

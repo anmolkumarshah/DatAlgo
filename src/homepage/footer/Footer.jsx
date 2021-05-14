@@ -13,6 +13,9 @@ const data = [
     name: "Surendra Jangid",
     LinkedInUrl: "https://www.linkedin.com/in/cse-surendra-jangid",
   },
+];
+
+const other = [
   {
     id: 3,
     name: "Harshit Barde",
@@ -23,46 +26,137 @@ const data = [
     name: "Shivam Grover",
     LinkedInUrl: "https://www.linkedin.com/in/shivam-grover-1aa14b169/",
   },
+  {
+    id: 4,
+    name: "Nisarg Gandhewar",
+    LinkedInUrl: "https://www.linkedin.com/in/shivam-grover-1aa14b169/",
+  },
+];
+
+const sourceCode = [
+  {
+    id: 33,
+    name: "Frontend",
+    LinkedInUrl: "https://github.com/AnmolkumarShah/DatAlgo",
+  },
+  {
+    id: 4,
+    name: "Backend",
+    LinkedInUrl: "https://github.com/AnmolkumarShah/DatAlgo-Backend",
+  },
+];
+
+const tech = [
+  {
+    id: 33222222,
+    name: "ReactJS",
+  },
+  {
+    id: 423,
+    name: "NodeJS",
+  },
+  {
+    id: 44,
+    name: "MongoDB",
+  },
 ];
 
 const Footer = () => {
   return (
     <>
       <div className="footer py-3 mt-5">
-        <div className="footerLogo d-flex justify-content-center">
+        {/* <div className="footerLogo d-flex justify-content-center">
           <h1> DatAlgo</h1>
-        </div>
-        <div className="footerContent text-center">
-          <p className="py-3">Designed & Developed By </p>
-          <ul className="members d-flex justify-content-center align-items-center">
-            {data.map((memb, idx) => {
-              return (
-                <>
-                  <Member
-                    key={idx}
-                    name={memb.name}
-                    LinkedInUrl={memb.LinkedInUrl}
-                  />
-                  {idx < data.length - 1 ? (
-                    <HiOutlineDotsVertical size={25} />
-                  ) : (
-                    ""
-                  )}
-                </>
-              );
-            })}
-          </ul>
-          <p className="pt-4" style={{ color: "yellow", fontWeight: "bold" }}>
-            At
-          </p>
-          <p> S. B. Jain Institute Of Technology , Management & Research </p>
+        </div> */}
+        <div className="row">
+          <div className="col-6">
+            <div className="footerContent text-center">
+              <h4 className="py-3">Designed & Developed By </h4>
+              <ul className="members d-flex justify-content-center align-items-center">
+                {data.map((memb, idx) => {
+                  return (
+                    <>
+                      <Member
+                        key={idx}
+                        name={memb.name}
+                        LinkedInUrl={memb.LinkedInUrl}
+                      />
+                      {idx < data.length - 1 ? (
+                        <HiOutlineDotsVertical size={25} />
+                      ) : (
+                        ""
+                      )}
+                    </>
+                  );
+                })}
+              </ul>
+              <h4 className="py-3">Co-ordinated By </h4>
+              <ul className="members d-flex justify-content-center align-items-center">
+                {other.map((memb, idx) => {
+                  return (
+                    <>
+                      <Member
+                        key={idx}
+                        name={memb.name}
+                        LinkedInUrl={memb.LinkedInUrl}
+                      />
+                      {idx < data.length ? (
+                        <HiOutlineDotsVertical size={25} />
+                      ) : (
+                        ""
+                      )}
+                    </>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+          <div className="col-6">
+            <div className="footerContent text-center">
+              <h4 className="py-3">Source Code</h4>
+              <ul className="members d-flex justify-content-center align-items-center">
+                {sourceCode.map((memb, idx) => {
+                  return (
+                    <>
+                      <Member
+                        key={idx}
+                        name={memb.name}
+                        LinkedInUrl={memb.LinkedInUrl}
+                      />
+                      {idx < data.length - 1 ? (
+                        <HiOutlineDotsVertical size={25} />
+                      ) : (
+                        ""
+                      )}
+                    </>
+                  );
+                })}
+              </ul>
+            </div>
+            <div className="footerContent text-center">
+              <h4 className="py-3">Technology Used</h4>
+              <ul className="members d-flex justify-content-center align-items-center">
+                {tech.map((memb, idx) => {
+                  return (
+                    <>
+                      <Member key={idx} name={memb.name} LinkedInUrl={"/"} />
+                      {idx < data.length ? (
+                        <HiOutlineDotsVertical size={25} />
+                      ) : (
+                        ""
+                      )}
+                    </>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="conpyRights text-white bg-dark py-2">
-        <p className="text-center m-0">
-          <span>&#169;</span>
-          2021 All Rights Reserved
+      <div className="conpyRights text-white bg-danger">
+        <p className="text-center m-0 lead">
+          Made with <span>&#9829;</span> in India
         </p>
       </div>
     </>

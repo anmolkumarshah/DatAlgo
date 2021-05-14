@@ -8,13 +8,19 @@ import AlertDialog from "../../material-ui-components/alertDialog";
 import Information from "../../material-ui-components/information";
 
 const SingleLinkedList = () => {
-  const [sll, setSll] = useState(new SLinkedList(""));
-  const [data, setData] = useState(sll.display());
-  const [toInsert, setToInsert] = useState("");
+  const [sll, setSll] = useState();
+  const [data, setData] = useState([]);
+  const [open, setOpen] = useState(false);
   const [isStart, setIsStart] = useState(false);
 
-  const [idx, setIdx] = useState("");
-  const [open, setOpen] = useState(false);
+  const [, setRender] = useState({});
+  const forceRerender = () => setRender({});
+
+  const [insertBack, setInsertBack] = useState("");
+  const [insertFront, setInsertFront] = useState("");
+  const [insertAfterValue, setInsertAfterValue] = useState("");
+  const [insertAfterIdx, setInsertAfterIdx] = useState("");
+  const [deleteIndex, setDeleteIndex] = useState("");
 
   useEffect(() => {
     setOpen(true);
@@ -30,46 +36,72 @@ const SingleLinkedList = () => {
       const temp = new SLinkedList(head);
       setSll(temp);
       setIsStart(true);
+      setData(temp.display());
     }
+    forceRerender();
+  };
+
+  // ---------------------------------------------
+
+  const insertBackChangeHandler = (e) => {
+    let data = e.target.value;
+    setInsertBack(data);
+  };
+  const insertBackHandler = (e) => {
+    if (e) e.preventDefault();
+    sll.insertBack(insertBack);
     updateData();
   };
 
-  const insertChangeHandler = (e) => {
-    let data = parseInt(e.target.value);
-    setToInsert(data);
+  // ---------------------------------------------
+
+  const insertFrontChangeHandler = (e) => {
+    let data = e.target.value;
+    setInsertFront(data);
   };
-  const insertSubmitHandler = (e) => {
+  const insertFrontHandler = (e) => {
     e.preventDefault();
-    sll.insertBack(toInsert);
+    sll.insertFront(insertFront);
     updateData();
   };
+
+  // ---------------------------------------------
+
+  const insertAfterValueChangeHandler = (e) => {
+    let data = e.target.value;
+    setInsertAfterValue(data);
+  };
+  const insertAfterIndexChangeHandler = (e) => {
+    let data = e.target.value;
+    setInsertAfterIdx(data);
+  };
+  const insertAfterHandler = (e) => {
+    e.preventDefault();
+    sll.insertAfter(insertAfterIdx, insertAfterValue);
+    updateData();
+  };
+
+  // ---------------------------------------------
+  const deleteIndexChangeHandler = (e) => {
+    let data = e.target.value;
+    setDeleteIndex(data);
+  };
+  const deleteIndexHandler = (e) => {
+    e.preventDefault();
+    sll.delete(deleteIndex);
+    updateData();
+  };
+
+  // ---------------------------------------------
+
   const updateData = () => {
-    setToInsert("");
-    setIdx("");
+    setInsertBack("");
+    setInsertFront("");
+    setInsertAfterValue("");
+    setInsertAfterIdx("");
+    setDeleteIndex("");
     setData(sll.display());
-  };
-
-  const insertFrontSubmitHandler = (e) => {
-    e.preventDefault();
-    sll.insertFront(toInsert);
-    updateData();
-  };
-
-  const insertAfterSubmitHandler = (e) => {
-    e.preventDefault();
-    sll.insertAfter(idx, toInsert);
-    updateData();
-  };
-
-  const idxChangeHandler = (e) => {
-    let data = parseInt(e.target.value);
-    setIdx(data);
-  };
-
-  const deleteIndex = (e) => {
-    e.preventDefault();
-    sll.delete(idx);
-    updateData();
+    console.log(sll.display());
   };
 
   const reverse = () => {
@@ -78,7 +110,7 @@ const SingleLinkedList = () => {
   };
 
   const clearHandler = () => {
-    setData(new SLinkedList("").display());
+    setData(null);
     setIsStart(false);
   };
   return (
@@ -93,19 +125,20 @@ const SingleLinkedList = () => {
         content="Click on the Create Button at the bottom left corner of screen and you are ready to play with linked list."
       />
 
-      <Tree
-        data={data}
-        height={200}
-        width={1200}
-        animated={true}
-        nodeShape="rect"
-        nodeProps={{ rx: 2 }}
-        duration={1000}
-        svgProps={{
-          transform: "rotate(0)",
-          className: "joins",
-        }}
-      />
+      {sll && data && (
+        <Tree
+          data={data}
+          height={200}
+          width={1200}
+          animated={true}
+          nodeShape="rect"
+          nodeProps={{ rx: 2 }}
+          duration={500}
+          svgProps={{
+            transform: "rotate(0)",
+          }}
+        />
+      )}
 
       <div className="controlls-container">
         <div className="row justify-content-center">
@@ -124,14 +157,14 @@ const SingleLinkedList = () => {
             )}
             {isStart && (
               <div className="col-3">
-                <form onSubmit={insertSubmitHandler}>
+                <form onSubmit={insertBackHandler}>
                   <div className="align-items-center controlHandler">
                     <div className="col-6">
                       <input
                         placeholder="value"
                         className="pl-2"
-                        onChange={insertChangeHandler}
-                        value={toInsert}
+                        onChange={insertBackChangeHandler}
+                        value={insertBack}
                       />
                     </div>
                     <div className="col-6">
@@ -150,13 +183,13 @@ const SingleLinkedList = () => {
 
             {isStart && (
               <div className="col-3">
-                <form onSubmit={insertFrontSubmitHandler}>
+                <form onSubmit={insertFrontHandler}>
                   <div className="align-items-center controlHandler">
                     <div className="col-6">
                       <input
                         placeholder="value"
-                        onChange={insertChangeHandler}
-                        value={toInsert}
+                        onChange={insertFrontChangeHandler}
+                        value={insertFront}
                         className="pl-2"
                       ></input>
                     </div>
@@ -176,20 +209,20 @@ const SingleLinkedList = () => {
 
             {isStart && (
               <div className=" col-4">
-                <form onSubmit={insertAfterSubmitHandler}>
+                <form onSubmit={insertAfterHandler}>
                   <div className="align-items-center controlHandler">
                     <div className=" col-4 mr-1">
                       <input
-                        onChange={idxChangeHandler}
-                        value={idx}
+                        onChange={insertAfterIndexChangeHandler}
+                        value={insertAfterIdx}
                         className="pl-2"
                         placeholder="Index"
                       ></input>
                     </div>
                     <div className="col-4 ml-1">
                       <input
-                        onChange={insertChangeHandler}
-                        value={toInsert}
+                        onChange={insertAfterValueChangeHandler}
+                        value={insertAfterValue}
                         className="pl-2"
                         placeholder="Value"
                       ></input>
@@ -210,12 +243,12 @@ const SingleLinkedList = () => {
 
             {isStart && (
               <div className="mt-3 col-3">
-                <form onSubmit={deleteIndex}>
+                <form onSubmit={deleteIndexHandler}>
                   <div className="align-items-center controlHandler">
                     <div className="col-8">
                       <input
-                        onChange={idxChangeHandler}
-                        value={idx}
+                        onChange={deleteIndexChangeHandler}
+                        value={deleteIndex}
                         className="pl-2"
                         placeholder="Index"
                       ></input>
