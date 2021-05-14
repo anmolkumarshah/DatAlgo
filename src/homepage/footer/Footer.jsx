@@ -17,6 +17,11 @@ const data = [
 
 const other = [
   {
+    id: 4,
+    name: "Prof. Nisarg Gandhewar",
+    LinkedInUrl: "https://www.linkedin.com/in/shivam-grover-1aa14b169/",
+  },
+  {
     id: 3,
     name: "Harshit Barde",
     LinkedInUrl: "https://www.linkedin.com/in/harshit-a-barde-b783861b8/",
@@ -24,11 +29,6 @@ const other = [
   {
     id: 4,
     name: "Shivam Grover",
-    LinkedInUrl: "https://www.linkedin.com/in/shivam-grover-1aa14b169/",
-  },
-  {
-    id: 4,
-    name: "Nisarg Gandhewar",
     LinkedInUrl: "https://www.linkedin.com/in/shivam-grover-1aa14b169/",
   },
 ];
