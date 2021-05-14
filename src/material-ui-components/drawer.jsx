@@ -344,12 +344,11 @@ export default function DrawerLeft() {
         className={clsx(classes.content, {
           [classes.contentShift]: open,
         })}
-        // style={{
-        //   height: "100vh",
-        //   backgroundImage: `url(${"https://cdn.pixabay.com/photo/2016/06/20/13/42/paper-1468878_1280.jpg"})`,
-        //   backgroundSize: "cover",
-        //   overflowX: "hidden",
-        // }}
+        style={{
+          backgroundImage: `url(${"https://images.pexels.com/photos/242236/pexels-photo-242236.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"})`,
+          backgroundSize: "cover",
+          overflowX: "hidden",
+        }}
       >
         <Switch>
           <Route path="/array" component={Arr} />

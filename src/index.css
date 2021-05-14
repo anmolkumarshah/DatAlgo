@@ -8,10 +8,6 @@
 }
 
 main {
-  background-image: url("https://images.pexels.com/photos/242236/pexels-photo-242236.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   min-height: calc(100vh - 70px);
   margin: 0;
