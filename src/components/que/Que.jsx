@@ -1,9 +1,11 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { FaMale, FaFemale, FaArrowLeft } from "react-icons/fa";
 import { ColorIndicator } from "../sorting-algorithm/colorIndicator/colorIndicator";
 import Button from "@material-ui/core/Button";
 
 import "./que.css";
+import Information from "../../material-ui-components/information";
+import AlertDialog from "../../material-ui-components/alertDialog";
 const maxMembers = 10;
 const Que = () => {
   const initialColor = "rgb(63, 81, 181)";
@@ -19,6 +21,16 @@ const Que = () => {
     <FaFemale className="female" />,
     <FaMale className="male" />,
   ]);
+
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(!open);
+  }, []);
+
+  const handleClose = () => {
+    setOpen(!open);
+  };
 
   const heighlightAction = (index, delay, color) => {
     const bar = document.getElementsByClassName("queue-element");
@@ -94,6 +106,12 @@ const Que = () => {
 
   return (
     <div className="container">
+      <AlertDialog
+        open={open}
+        handleClose={handleClose}
+        title="Welcome to Queue"
+        content="An array is a data structure that contains a group of elements. Typically these elements are all of the same data type, such as an integer or string. Arrays are commonly used in computer programs to organize data so that a related set of values can be easily sorted or searched."
+      />
       <ColorIndicator
         indicator={[
           { name: "Queue", color: initialColor },
@@ -104,6 +122,7 @@ const Que = () => {
         ]}
       />
       <hr />
+      <Information />
       <div className="container queue-container d-flex align-items-center justify-content-center">
         <div class="queue">
           {elements.map((val, i) => {

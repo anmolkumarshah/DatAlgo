@@ -7,10 +7,10 @@ import Information from "../../material-ui-components/information";
 import { Button } from "@material-ui/core";
 
 const AVLTrees = () => {
-  const [considerTree, setConsiderTree] = useState(new AVLTree(""));
+  const [considerTree, setConsiderTree] = useState(null);
   const [isCreated, setCreated] = useState(false);
   const [value, setValue] = useState(null);
-  const [data, setData] = useState(considerTree.getRoot());
+  const [data, setData] = useState([]);
   const [toDel, setToDel] = useState(0);
 
   const [open, setOpen] = useState(false);
@@ -28,6 +28,9 @@ const AVLTrees = () => {
     if (!isNaN(rootvalue)) {
       const temp = new AVLTree(rootvalue);
       setConsiderTree(temp);
+      const v = temp.getRoot();
+      let result = refactor(v);
+      setData(result);
       setCreated(true);
     }
   };
@@ -90,7 +93,7 @@ const AVLTrees = () => {
   };
 
   const handleClear = () => {
-    setData(considerTree.getRoot());
+    setConsiderTree(null);
     setCreated(false);
   };
 
@@ -109,7 +112,7 @@ const AVLTrees = () => {
             height={600}
             width={400}
             animated={true}
-            duration={1000}
+            duration={500}
             svgProps={{
               transform: "rotate(90)",
             }}

@@ -8,7 +8,7 @@ import AlertDialog from "../../material-ui-components/alertDialog";
 import Information from "../../material-ui-components/information";
 
 const SingleLinkedList = () => {
-  const [sll, setSll] = useState(null);
+  const [sll, setSll] = useState();
   const [data, setData] = useState([]);
   const [open, setOpen] = useState(false);
   const [isStart, setIsStart] = useState(false);
@@ -36,9 +36,9 @@ const SingleLinkedList = () => {
       const temp = new SLinkedList(head);
       setSll(temp);
       setIsStart(true);
-      forceRerender();
+      setData(temp.display());
     }
-    // updateData();
+    forceRerender();
   };
 
   // ---------------------------------------------
@@ -48,7 +48,7 @@ const SingleLinkedList = () => {
     setInsertBack(data);
   };
   const insertBackHandler = (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     sll.insertBack(insertBack);
     updateData();
   };
@@ -101,7 +101,7 @@ const SingleLinkedList = () => {
     setInsertAfterIdx("");
     setDeleteIndex("");
     setData(sll.display());
-    forceRerender();
+    console.log(sll.display());
   };
 
   const reverse = () => {
@@ -136,7 +136,6 @@ const SingleLinkedList = () => {
           duration={500}
           svgProps={{
             transform: "rotate(0)",
-            className: "joins",
           }}
         />
       )}

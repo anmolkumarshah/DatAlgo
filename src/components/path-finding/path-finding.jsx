@@ -184,6 +184,16 @@ const PathFinding = () => {
                 Start
               </Button>
             </div>
+            <form className="col">
+              <Button
+                type="submit"
+                className="Button"
+                variant="outlined"
+                onClick={handleClear}
+              >
+                Clear
+              </Button>
+            </form>
             <div className="col">
               <img alt="target" src="./images/source.png"></img>Initial Position
             </div>

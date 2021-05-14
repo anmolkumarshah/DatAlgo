@@ -5,7 +5,7 @@
 }
 
 .link {
-  fill: rgb(241, 241, 241);
+  fill: rgba(241, 241, 241, 0);
   stroke: rgb(7, 7, 7);
   stroke-width: 1.5px;
 }

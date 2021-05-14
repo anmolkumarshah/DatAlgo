@@ -154,7 +154,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="conpyRights text-white bg-danger py-2">
+      <div className="conpyRights text-white bg-danger">
         <p className="text-center m-0 lead">
           Made with <span>&#9829;</span> in India
         </p>

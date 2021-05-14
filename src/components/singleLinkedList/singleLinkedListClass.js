@@ -16,7 +16,16 @@ export default class SLinkedList {
     this.length = 1;
   }
 
+  len() {
+    return this.length;
+  }
+
   insertFront(data) {
+    if (data.length > 2 || data.length === 0) {
+      return alert(
+        "Please only enter number between 0 to 100, greater number may spoil the styling."
+      );
+    }
     let temp = new Node(data);
     temp.children.push(this.head);
     this.head = temp;
@@ -24,6 +33,11 @@ export default class SLinkedList {
   }
 
   insertBack(data) {
+    if (data.length > 2 || data.length === 0) {
+      return alert(
+        "Please only enter number between 0 to 100, greater number may spoil the styling."
+      );
+    }
     let temp = new Node(data);
     this.tail.children.push(temp);
     this.tail = this.tail.children[0];
@@ -31,9 +45,25 @@ export default class SLinkedList {
   }
 
   insertAfter(index, data) {
-    if (index === "0") {
-      return this.insertFront(data);
+    index = parseInt(index);
+    if (data.length > 2 || data.length === 0) {
+      return alert(
+        "Please only enter number between 0 to 100, greater number may spoil the styling."
+      );
     }
+
+    if (index === this.length - 1) {
+      return this.insertBack(data);
+    }
+
+    if (index === 0) {
+      let val = this.head.name;
+      this.delete("0");
+      this.insertFront(data);
+      this.insertFront(val);
+      return;
+    }
+
     let temp = this.head;
     while (index) {
       temp = temp.children[0];
@@ -47,6 +77,8 @@ export default class SLinkedList {
   }
 
   delete(index) {
+    index = parseInt(index);
+    console.log(index, this.length);
     if (index === 0) {
       let temp = this.head.children[0];
       this.head = temp;
@@ -55,13 +87,19 @@ export default class SLinkedList {
       if (index < this.length) {
         let temp = this.head;
         let prev = null;
-        while (index && temp) {
+        while (index && temp && temp.children.length !== 0) {
           prev = temp;
-          temp = temp.children[0];
+          temp = temp.children.length > 0 ? temp.children[0] : null;
           index--;
         }
-        prev.children[0] = temp.children[0];
+        if (temp.children.length > 0) {
+          prev.children[0] = temp.children[0];
+        } else {
+          prev.children = [];
+        }
         this.length--;
+      } else {
+        return alert("Invalid Index");
       }
     }
   }

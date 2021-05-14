@@ -135,7 +135,7 @@ const Stack = () => {
             {errorMessage}
           </p>
           {elements.map((value, idx) => {
-            if (value !== null && value !== NaN)
+            if (value !== null && !value.isNaN)
               return (
                 <>
                   <div className="element-box">

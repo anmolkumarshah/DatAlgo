@@ -181,7 +181,7 @@ const BinaryTree = () => {
           height={650}
           width={500}
           animated={true}
-          duration={1000}
+          duration={500}
           svgProps={{
             transform: "rotate(90)",
           }}
