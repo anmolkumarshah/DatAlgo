@@ -266,7 +266,7 @@ const Arr = () => {
         ]}
       />
       <hr />
-      <div className="container array-container d-flex align-items-center justify-content-center">
+      <div className=" array-container d-flex align-items-center justify-content-center">
         <div className="array d-flex">
           {elements.map((value, idx) => {
             if (value != null)

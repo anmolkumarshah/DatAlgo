@@ -1,14 +1,12 @@
-.stack-container  {
+.stack-container {
   margin: 0 auto;
-  margin-top: 120px ;
+  margin-top: 100px;
 }
-.enter {
-  transition: all 0.5s;
-}
+
 .stack {
-  gap: 5px;
-  margin-top: 30px;
   gap: 10px;
+  padding: 0;
+  margin: 0;
   padding: 20px;
   padding-bottom: 5px;
   border-left: 5px solid black;
@@ -20,19 +18,22 @@
   background-color: #eae7fa;
   position: relative;
 }
+
 .element-box {
   width: 200px;
   background-color: #050a30;
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
 }
+
 .element-box p {
   width: 100%;
-  color: red;
+  color: yellow;
   text-align: center;
   font-size: 16px;
   letter-spacing: 2px;
 }
+
 .element {
   padding: 2px !important;
   background-color: rgb(63, 81, 181);
@@ -44,6 +45,7 @@
   border-bottom-right-radius: 100px;
   transition: all 0.5s;
 }
+
 .element p {
   color: white;
   font-size: 20px;
