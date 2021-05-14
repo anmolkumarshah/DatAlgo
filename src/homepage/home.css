@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto+Mono:wght@600&display=swap');
 
+.homeCompo {
+    background: linear-gradient(to bottom, #f6f9ff, #f6f9ff) !important;
+}
+
 .homeTop {
     height: auto;
     width: 100%;

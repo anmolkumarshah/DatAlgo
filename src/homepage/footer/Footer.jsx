@@ -64,11 +64,11 @@ const tech = [
 const Footer = () => {
   return (
     <>
-      <div className="footer py-3 mt-5">
+      <div className="footer py-3 mt-5 mx-0">
         {/* <div className="footerLogo d-flex justify-content-center">
           <h1> DatAlgo</h1>
         </div> */}
-        <div className="row">
+        <div className="row mx-0">
           <div className="col-6">
             <div className="footerContent text-center">
               <h4 className="py-3">Designed & Developed By </h4>
