@@ -5,6 +5,7 @@ import "./style.css";
 import AlertDialog from "../../material-ui-components/alertDialog";
 import Information from "../../material-ui-components/information";
 import { Button } from "@material-ui/core";
+import codeData from "./../../data";
 
 const AVLTrees = () => {
   const [considerTree, setConsiderTree] = useState(null);
@@ -122,7 +123,7 @@ const AVLTrees = () => {
           />
         )}
 
-        <Information />
+        <Information codeData={codeData.avl} />
         <div className="controlls-container w-100">
           {!isCreated && (
             <div className="col-1 d-flex align-items-center controlHandler">

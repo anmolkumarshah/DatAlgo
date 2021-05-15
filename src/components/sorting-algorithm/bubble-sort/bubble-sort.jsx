@@ -11,6 +11,7 @@ import { Controller } from "./../controller/controller.jsx";
 import { randonIntFromInterval } from "../helper.jsx";
 import AlertDialog from "../../../material-ui-components/alertDialog";
 import Information from "../../../material-ui-components/information";
+import codeData from "./../../../data";
 
 const BubbleSort = forwardRef(({ size = 25, noController = false }, ref) => {
   console.log(size);
@@ -170,7 +171,7 @@ const BubbleSort = forwardRef(({ size = 25, noController = false }, ref) => {
           content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
         />
       )}
-      {!noController && <Information />}
+      {!noController && <Information codeData={codeData.bso} />}
       <ColorIndicator
         indicator={[
           { name: "consider", color: considerColor },

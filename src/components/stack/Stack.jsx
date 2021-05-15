@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import Information from "../../material-ui-components/information";
 import "./stack.css";
 import Warning from "../errorMessage/Warning";
+import codeData from "./../../data";
 
 const InitialElements = 5;
 const maxElements = 10;
@@ -159,7 +160,7 @@ const Stack = () => {
           })}
         </div>
         <hr />
-        <Information />
+        <Information codeData={codeData.stack} />
         <div className="controlls-container">
           <div className="col-sm-3 controlHandler">
             <input

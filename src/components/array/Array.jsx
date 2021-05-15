@@ -9,6 +9,8 @@ import ArrayElement from "./element/ArrayElement";
 import Button from "@material-ui/core/Button";
 import Warning from "../errorMessage/Warning";
 
+import codeData from "../../data";
+
 const InitialElements = 15;
 
 const Arr = () => {
@@ -283,7 +285,7 @@ const Arr = () => {
           })}
         </div>
         <hr />
-        <Information />
+        <Information codeData={codeData.array} />
         <div className="controlls-container">
           <div className="d-flex align-items-center col-sm-4 controlHandler">
             <input

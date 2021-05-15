@@ -4,6 +4,7 @@ import Information from "../../../material-ui-components/information";
 import Button from "@material-ui/core/Button";
 
 import "./styles.css";
+import codeData from "./../../../data";
 const BinarySearch = () => {
   const [cellArray, setCellArray] = useState([]);
   const [TargetSelected, setTargetSelected] = useState("");
@@ -179,7 +180,7 @@ const BinarySearch = () => {
         title="Welcome to Binary Search"
         content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
       />
-      <Information />
+      <Information codeData={codeData.bs} />
       <div className="row">
         <div className="col-12 text-center">
           {!TargetSelected && !isFound && (

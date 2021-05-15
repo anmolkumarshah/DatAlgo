@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import AlertDialog from "../../material-ui-components/alertDialog";
 import Information from "../../material-ui-components/information";
 import { toast } from "react-toastify";
+import codeData from "./../../data";
 
 const BinaryTree = () => {
   const t1 = new BTree([
@@ -189,6 +190,7 @@ const BinaryTree = () => {
             transform: "rotate(270)",
           }}
         />
+        <Information codeData={codeData.bt} />
         <TraversedList list={traverlist} />
 
         <div className="controlls-container w-100">

@@ -49,7 +49,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleTabs() {
+export default function SimpleTabs({ codeData }) {
+  console.log(codeData);
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -71,10 +72,10 @@ export default function SimpleTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Editor language="c_cpp" value="C++ ABC" theme="solarized_light" />
+        <Editor language="c_cpp" value={codeData.cpp} theme="solarized_light" />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Editor language="java" value="Java ABC" />
+        <Editor language="java" value={codeData.java} />
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Chip
@@ -82,7 +83,11 @@ export default function SimpleTabs() {
           color="primary"
           label="you can run your python code"
         />
-        <Editor language="python" value="Python ABC" theme="solarized_light" />
+        <Editor
+          language="python"
+          value={codeData.python}
+          theme="solarized_light"
+        />
       </TabPanel>
     </div>
   );
