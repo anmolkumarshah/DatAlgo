@@ -51,7 +51,6 @@ export default function Information({ codeData }) {
           </div>
         ) : (
           <div className="p-5">
-            <h1>Heading</h1>
             <Info codeData={codeData} />
           </div>
         )}

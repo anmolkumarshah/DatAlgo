@@ -1,5 +1,7 @@
 const codeData = {
   array: {
+    name: ``,
+    intro: ``,
     cpp: `#include <stdio.h>
 
 #include <stdlib.h>
@@ -413,6 +415,8 @@ void del()
     python: ``,
   },
   stack: {
+    name: `Stack`,
+    intro: ``,
     cpp: `#include <stdio.h>
 
 #include <stdlib.h>
@@ -593,6 +597,8 @@ void show()
     python: ``,
   },
   queue: {
+    name: ``,
+    intro: ``,
     cpp: `#include <stdio.h>
 #define SIZE 100
 void enqueue();
@@ -768,51 +774,71 @@ void show()
     python: ``,
   },
   sll: {
+    name: ``,
+    intro: ``,
     cpp: ``,
     java: ``,
     python: ``,
   },
   ls: {
+    name: ``,
+    intro: ``,
     cpp: ``,
     java: ``,
     python: ``,
   },
   bs: {
+    name: ``,
+    intro: ``,
     cpp: ``,
     java: ``,
     python: ``,
   },
   bso: {
+    name: ``,
+    intro: ``,
     cpp: ``,
     java: ``,
     python: ``,
   },
   is: {
+    name: ``,
+    intro: ``,
     cpp: ``,
     java: ``,
     python: ``,
   },
   ss: {
+    name: ``,
+    intro: ``,
     cpp: ``,
     java: ``,
     python: ``,
   },
   qs: {
+    name: ``,
+    intro: ``,
     cpp: ``,
     java: ``,
     python: ``,
   },
   bt: {
+    name: ``,
+    intro: ``,
     cpp: ``,
     java: ``,
     python: ``,
   },
   avl: {
+    name: ``,
+    intro: ``,
     cpp: ``,
     java: ``,
     python: ``,
   },
   pf: {
+    name: ``,
+    intro: ``,
     cpp: ``,
     java: ``,
     python: ``,
