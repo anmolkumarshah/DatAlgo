@@ -13,5 +13,3 @@ There is also a section for online code editor which is visible to the user in t
 
 The section for feedback is also given to the user so that they can ask the authors about queries regarding the application. It would be done via email integration and the authors can directly communicate and solve the query of the user via emails itself.
 The Interface of DatAlgo is very user friendly. Also, all the custom input arrays work perfectly well for all the Data Structures and Algorithms. The application provides intuitive learning for students, researchers and even teaching professors. The user can also Interact with the code and make changes into them and save them into their account. Overall, its very simple to use application with the access of codes in different languages and also with the provision of visualizing and comparing the Data Structures and Algorithms.
-
-![image1](./docImages/datalgo flowchart.jpeg)
