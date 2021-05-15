@@ -9,7 +9,7 @@ export default function Info({ codeData }) {
   return (
     <>
       <h1>{codeData.name}</h1>
-      <p>{codeData.intro}</p>
+      <p className="lead text-justify">{codeData.intro}</p>
       <SimpleTabs codeData={codeData} />
     </>
   );
