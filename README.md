@@ -13,3 +13,27 @@ There is also a section for online code editor which is visible to the user in t
 
 The section for feedback is also given to the user so that they can ask the authors about queries regarding the application. It would be done via email integration and the authors can directly communicate and solve the query of the user via emails itself.
 The Interface of DatAlgo is very user friendly. Also, all the custom input arrays work perfectly well for all the Data Structures and Algorithms. The application provides intuitive learning for students, researchers and even teaching professors. The user can also Interact with the code and make changes into them and save them into their account. Overall, its very simple to use application with the access of codes in different languages and also with the provision of visualizing and comparing the Data Structures and Algorithms.
+
+## System Design : Flowchart
+
+![datalgo flowchart](https://user-images.githubusercontent.com/52107296/118369611-9bac2d80-b5c1-11eb-8748-f3b442d92fa0.jpeg)
+
+## Use case Diagram
+
+![datalgo usecase](https://user-images.githubusercontent.com/52107296/118369684-f3e32f80-b5c1-11eb-9d0e-724535ca5de7.jpeg)
+
+## Class Diagram
+
+![uml datalgo](https://user-images.githubusercontent.com/52107296/118369767-4b819b00-b5c2-11eb-86b1-a324e3cd36f0.jpeg)
+
+## Sequence Diagram
+
+![sequence diagram datalgo](https://user-images.githubusercontent.com/52107296/118369789-62c08880-b5c2-11eb-8c99-f1048989795f.jpeg)
+
+## System Architecture
+
+![system architecture datalgo](https://user-images.githubusercontent.com/52107296/118369809-7835b280-b5c2-11eb-99dd-5858c3949f36.jpeg)
+
+# Backend Code
+
+[Datalgo Backend](https://github.com/AnmolkumarShah/DatAlgo-Backend)
