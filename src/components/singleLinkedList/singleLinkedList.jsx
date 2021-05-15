@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import "./llstyle.css";
 import AlertDialog from "../../material-ui-components/alertDialog";
 import Information from "../../material-ui-components/information";
+import codeData from "./../../data";
 
 const SingleLinkedList = () => {
   const [sll, setSll] = useState();
@@ -101,7 +102,6 @@ const SingleLinkedList = () => {
     setInsertAfterIdx("");
     setDeleteIndex("");
     setData(sll.display());
-    console.log(sll.display());
   };
 
   const reverse = () => {
@@ -140,9 +140,9 @@ const SingleLinkedList = () => {
         />
       )}
 
+      <Information codeData={codeData.sll} />
       <div className="controlls-container">
         <div className="row justify-content-center">
-          <Information />
           <div className="row justify-content-md-center">
             {!isStart && (
               <div className="col-1">

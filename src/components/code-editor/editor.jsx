@@ -18,7 +18,7 @@ import "./editor.css";
 import { toast } from "react-toastify";
 import { CircularProgress } from "@material-ui/core";
 
-const Editor = ({ language = "python", value = "Enter Code here" }) => {
+const Editor = ({ language = "python", value }) => {
   const backend = "https://datalgo.herokuapp.com/";
   const [code, setCode] = useState("");
   const changeHandler = (e) => {
@@ -36,7 +36,12 @@ const Editor = ({ language = "python", value = "Enter Code here" }) => {
     const t = localStorage.getItem("token");
     setToken(t);
 
-    toast.info("Only supports Python Programming language");
+    if (value) {
+      setCode(value);
+    }
+
+    language === "python" &&
+      toast.info("Only supports Python Programming language");
   }, []);
 
   const handleClose = () => {

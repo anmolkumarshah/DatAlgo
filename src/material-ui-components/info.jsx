@@ -5,7 +5,7 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import SimpleTabs from "./tab";
 
-export default function Info() {
+export default function Info({ codeData }) {
   return (
     <>
       <p>
@@ -65,7 +65,7 @@ export default function Info() {
         itaque, dolorem soluta distinctio sunt asperiores vitae quos est
         voluptate. Est!
       </p>
-      <SimpleTabs />
+      <SimpleTabs codeData={codeData} />
     </>
   );
 }

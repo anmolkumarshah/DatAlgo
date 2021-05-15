@@ -140,7 +140,15 @@ export default function DrawerLeft() {
   };
 
   return (
-    <div className={classes.root}>
+    <div
+      className={classes.root}
+      style={{
+        height: "100vh",
+        backgroundImage: `url(${themeBack})`,
+        backgroundSize: "cover",
+        overflowX: "hidden",
+      }}
+    >
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -382,12 +390,6 @@ export default function DrawerLeft() {
         className={clsx(classes.content, {
           [classes.contentShift]: open,
         })}
-        style={{
-          height: "100vh",
-          backgroundImage: `url(${themeBack})`,
-          backgroundSize: "cover",
-          overflowX: "hidden",
-        }}
       >
         <Switch>
           <Route path="/array" component={Arr} />

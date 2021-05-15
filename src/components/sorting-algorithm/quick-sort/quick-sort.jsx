@@ -10,6 +10,7 @@ import { Bar } from "../bar/bar";
 import { ColorIndicator } from "../colorIndicator/colorIndicator";
 import { Controller } from "../controller/controller";
 import "./quick-sort-style.css";
+import codeData from "./../../../data";
 
 const randonIntFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -221,7 +222,7 @@ const QuickSort = forwardRef(({ size = 25, noController = false }, ref) => {
           content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
         />
       )}
-      {!noController && <Information />}
+      {!noController && <Information codeData={codeData.qs} />}
       <ColorIndicator
         indicator={[
           { name: "pivot", color: pivotColor },

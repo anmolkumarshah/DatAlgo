@@ -7,6 +7,7 @@ import Warning from "../errorMessage/Warning";
 
 import "./que.css";
 import Information from "../../material-ui-components/information";
+import codeData from "./../../data";
 const maxMembers = 10;
 const Que = () => {
   const initialColor = "rgb(63, 81, 181)";
@@ -141,7 +142,7 @@ const Que = () => {
         title="Queue"
         content="A collection of items in which only the earliest added item may be accessed. Basic operations are add (to the tail) or enqueue and delete (from the head) or dequeue. Delete returns the item removed. Also known as `first-in, first-out` or FIFO."
       />
-      <Information />
+      <Information codeData={codeData.queue} />
       {/* Erroe Message */}
       <Warning
         open={warningOpen}

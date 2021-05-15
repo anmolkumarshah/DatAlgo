@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 
 import AlertDialog from "../../material-ui-components/alertDialog";
 import Information from "../../material-ui-components/information";
+import codeData from "./../../data";
 
 const PathFinding = () => {
   const [nodes, setNodes] = useState([]);
@@ -147,7 +148,7 @@ const PathFinding = () => {
           title="Welcome to Path Finding"
           content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
         />
-        <Information />
+        <Information codeData={codeData.pf} />
         <div className="over-cover">
           {nodes.map((item, idx) => {
             return (

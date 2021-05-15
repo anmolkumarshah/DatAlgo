@@ -4,7 +4,7 @@ import Info from "./info";
 import FloatingActionButtonSize from "./floatingButton";
 import { Link } from "react-router-dom";
 
-export default function Information(props) {
+export default function Information({ codeData }) {
   const [state, setState] = React.useState({
     bottom: false,
   });
@@ -52,7 +52,7 @@ export default function Information(props) {
         ) : (
           <div className="p-5">
             <h1>Heading</h1>
-            <Info />
+            <Info codeData={codeData} />
           </div>
         )}
       </SwipeableDrawer>

@@ -4,6 +4,7 @@ import Information from "../../../material-ui-components/information";
 import ArrayElement from "../../array/element/ArrayElement";
 import { ColorIndicator } from "../../sorting-algorithm/colorIndicator/colorIndicator";
 import Button from "@material-ui/core/Button";
+import codeData from "./../../../data";
 
 const InitialElements = 15;
 const LinearSearch = () => {
@@ -131,7 +132,7 @@ const LinearSearch = () => {
                 );
             })}
           </div>
-          <Information />
+          <Information codeData={codeData.ls} />
           <div className="controlls-container w-100">
             <div className="d-flex align-items-center col-sm-3 controlHandler">
               <input
