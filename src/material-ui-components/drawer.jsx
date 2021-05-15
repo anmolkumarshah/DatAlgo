@@ -16,11 +16,11 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import Home from "@material-ui/icons/Home";
 import Account from "@material-ui/icons/AccountBox";
 import Face from "@material-ui/icons/Face";
+import NewReleasesTwoTone from "@material-ui/icons/NewReleasesTwoTone";
 import PinDrop from "@material-ui/icons/PinDrop";
 import QuestionAnswer from "@material-ui/icons/QuestionAnswer";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-
 import SimpleAccordion from "./accordian";
 
 import { Link, Route, Switch } from "react-router-dom";
@@ -45,6 +45,7 @@ import LoginForm from "../components/feedback-form/common/login";
 import Logout from "../components/feedback-form/common/logout";
 import LinearSearch from "../components/search-algorithm/LinearSearch/LinearSearch";
 import Que from "../components/que/Que";
+import SimpleMenu from "./menu";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -132,6 +133,12 @@ export default function DrawerLeft() {
     setOpen(false);
   };
 
+  const [themeBack, setTheme] = useState("");
+
+  const changeTheme = (t) => {
+    setTheme(t);
+  };
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -174,6 +181,7 @@ export default function DrawerLeft() {
             )}
           </IconButton>
         </div>
+
         <Divider />
         <List>
           <ListItem button key={""}>
@@ -244,9 +252,39 @@ export default function DrawerLeft() {
           )}
         </List>
         <Divider />
-
         <Divider />
-
+        <List>
+          <ListItem>
+            <ListItemIcon>
+              <NewReleasesTwoTone />
+            </ListItemIcon>
+            <SimpleMenu
+              name="Select Theme"
+              array={[
+                { title: "None", link: "" },
+                {
+                  title: "Paper",
+                  link: "https://cdn.pixabay.com/photo/2016/06/20/13/42/paper-1468878_1280.jpg",
+                },
+                {
+                  title: "Paper Old",
+                  link: "https://cdn.pixabay.com/photo/2015/12/03/08/50/paper-1074131_1280.jpg",
+                },
+                {
+                  title: "Textile : Jute",
+                  link: "https://cdn.pixabay.com/photo/2017/11/04/21/09/textile-2918844_1280.jpg",
+                },
+                {
+                  title: "Wall",
+                  link: "https://cdn.pixabay.com/photo/2016/02/23/07/37/wall-1217083_1280.jpg",
+                },
+              ]}
+              fun={changeTheme}
+            />
+          </ListItem>
+        </List>
+        <Divider />
+        <Divider />
         <List>
           <ListItem button key={""}>
             <ListItemIcon>
@@ -345,7 +383,8 @@ export default function DrawerLeft() {
           [classes.contentShift]: open,
         })}
         style={{
-          backgroundImage: `url(${"https://images.pexels.com/photos/242236/pexels-photo-242236.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"})`,
+          height: "100vh",
+          backgroundImage: `url(${themeBack})`,
           backgroundSize: "cover",
           overflowX: "hidden",
         }}

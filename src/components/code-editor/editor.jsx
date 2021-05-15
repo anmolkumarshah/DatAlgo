@@ -113,11 +113,10 @@ const Editor = ({ language = "python", value = "Enter Code here" }) => {
           theme={theme}
           width="100%"
           name="blah2"
-          onLoad={() => {}}
           onChange={changeHandler}
-          fontSize={15}
+          fontSize={14}
           showPrintMargin={true}
-          showGutter={true}
+          // showGutter={true}
           highlightActiveLine={true}
           defaultValue={value}
           value={code}

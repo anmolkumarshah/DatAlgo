@@ -1,94 +1,99 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto+Mono:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto+Mono:wght@600&display=swap");
 
 .homeCompo {
-    background: linear-gradient(to bottom, #f6f9ff, #f6f9ff) !important;
+  background: linear-gradient(to bottom, #f6f9ff, #f6f9ff) !important;
 }
 
 .homeTop {
-    height: auto;
-    width: 100%;
-    position: relative;
+  height: auto;
+  width: 100%;
+  position: relative;
 }
 
-.homeimg {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    bottom: 100px;
+
+.homeHeadings p {
+  font-size: 15px;
 }
 
 .homeHeadings h1 {
-    color: #0c6170;
-    font-size: 60px;
-    font-weight: 100;
-    font-family: 'Roboto Mono', monospace;
+  color: #0c6170;
+  font-size: 60px;
+  font-weight: 100;
+  font-family: "Roboto Mono", monospace;
+
 }
 
 .homeHeadings h3 {
-    color: blackF;
-    letter-spacing: 1px;
-    font-family: 'Montserrat', sans-serif;
-    word-spacing: 10px;
-    line-height: 40px;
+  color: blackF;
+  letter-spacing: 1px;
+  font-family: "Montserrat", sans-serif;
+  word-spacing: 5px;
+  line-height: 40px;
+}
+
+.homeTopImg img {
+  max-height: 650px;
+  max-width: 650px;
+  filter: drop-shadow(5px 6px 04px #cfdef3);
 }
 
 /* Footer */
 
 .footer {
-    font-family: 'Montserrat', sans-serif;
-    border-top: 3px solid #EB773E;
-    background-color: #0C6170;
-    color: white;
-    box-shadow: 0px -2px 4px -1px rgb(0 0 0 / 20%),
-        0px -4px 5px 0px rgb(0 0 0 / 14%), 0px -1px 10px 0px rgb(0 0 0 / 12%);
+  font-family: "Montserrat", sans-serif;
+  border-top: 3px solid #eb773e;
+  background-color: #0c6170;
+  color: white;
+  box-shadow: 0px -2px 4px -1px rgb(0 0 0 / 20%),
+    0px -4px 5px 0px rgb(0 0 0 / 14%), 0px -1px 10px 0px rgb(0 0 0 / 12%);
 }
 
 .footerLogo h1 {
-    color: #F7B301;
+  color: #f7b301;
 }
 
 .footer p {
-    letter-spacing: 2px;
-    word-spacing: 5px;
-    font-size: 14px;
-    font-weight: 600F;
+  letter-spacing: 2px;
+  word-spacing: 5px;
+  font-size: 14px;
+  font-weight: 600f;
 }
 
 .members {
-    gap: 20px;
-    list-style-type: none;
+  gap: 20px;
+  list-style-type: none;
 }
 
 .members li {
-    padding: 5px 10px;
-    font-size: 16px;
-    width: max-content;
-    color: #000;
-    display: flex !important;
-    align-items: baseline !important;
+  padding: 5px 10px;
+  font-size: 16px;
+  width: max-content;
+  color: #000;
+  display: flex !important;
+  align-items: baseline !important;
 }
 
 .linkedin-icon {
-    color: white;
-    /* padding: 7px; */
-    margin: 0;
-    margin-right: 10px;
-    border-radius: 5px;
-    display: inline-block;
-    transition: color 0.3s ease-in-out;
+  color: white;
+  /* padding: 7px; */
+  margin: 0;
+  margin-right: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  transition: color 0.3s ease-in-out;
 }
 
 .members li:hover .linkedin-icon {
-    background-color: blue;
-    color: white;
-    transition: color 0.3s ease-in-out;
+  background-color: blue;
+  color: white;
+  transition: color 0.3s ease-in-out;
 }
 
 .members li a {
-    color: white;
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
+  color: white;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
 }

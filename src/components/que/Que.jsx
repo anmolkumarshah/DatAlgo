@@ -23,7 +23,6 @@ const Que = () => {
     <FaMale className="male" />,
   ]);
 
-  
   //   Welcome
   const [open, setOpen] = useState(false);
 
@@ -142,6 +141,7 @@ const Que = () => {
         title="Queue"
         content="A collection of items in which only the earliest added item may be accessed. Basic operations are add (to the tail) or enqueue and delete (from the head) or dequeue. Delete returns the item removed. Also known as `first-in, first-out` or FIFO."
       />
+      <Information />
       {/* Erroe Message */}
       <Warning
         open={warningOpen}
