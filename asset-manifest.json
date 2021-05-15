@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/datalgo/static/css/main.e32a47ca.chunk.css",
+    "main.js": "/datalgo/static/js/main.e6f4f537.chunk.js",
+    "main.js.map": "/datalgo/static/js/main.e6f4f537.chunk.js.map",
+    "runtime-main.js": "/datalgo/static/js/runtime-main.578e84d7.js",
+    "runtime-main.js.map": "/datalgo/static/js/runtime-main.578e84d7.js.map",
+    "static/css/2.26cf2148.chunk.css": "/datalgo/static/css/2.26cf2148.chunk.css",
+    "static/js/2.f6671791.chunk.js": "/datalgo/static/js/2.f6671791.chunk.js",
+    "static/js/2.f6671791.chunk.js.map": "/datalgo/static/js/2.f6671791.chunk.js.map",
+    "static/js/3.cb691ad9.chunk.js": "/datalgo/static/js/3.cb691ad9.chunk.js",
+    "static/js/3.cb691ad9.chunk.js.map": "/datalgo/static/js/3.cb691ad9.chunk.js.map",
+    "index.html": "/datalgo/index.html",
+    "static/css/2.26cf2148.chunk.css.map": "/datalgo/static/css/2.26cf2148.chunk.css.map",
+    "static/css/main.e32a47ca.chunk.css.map": "/datalgo/static/css/main.e32a47ca.chunk.css.map",
+    "static/js/2.f6671791.chunk.js.LICENSE.txt": "/datalgo/static/js/2.f6671791.chunk.js.LICENSE.txt",
+    "static/media/node-style.css": "/datalgo/static/media/target.f80927d7.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.578e84d7.js",
+    "static/css/2.26cf2148.chunk.css",
+    "static/js/2.f6671791.chunk.js",
+    "static/css/main.e32a47ca.chunk.css",
+    "static/js/main.e6f4f537.chunk.js"
+  ]
+}
