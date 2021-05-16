@@ -3,10 +3,12 @@ import Node from "./Node";
 import "./main-style.css";
 import { dijkstra, getNodesInShortestPathOrder } from "./algorithms/dijkstra";
 import Button from "@material-ui/core/Button";
-
 import AlertDialog from "../../material-ui-components/alertDialog";
 import Information from "../../material-ui-components/information";
 import codeData from "./../../data";
+// Images of target and destination
+import source from "./images/source.png";
+import target from "./images/target.jpg";
 
 const PathFinding = () => {
   const [nodes, setNodes] = useState([]);
@@ -175,8 +177,8 @@ const PathFinding = () => {
         </div>
 
         <div className="controlls-container">
-          <div className="row">
-            <div className="col">
+          <div className="d-flex justify-content-center w-100">
+            <div className="col-sm-1">
               <Button
                 className="Button"
                 variant="outlined"
@@ -185,7 +187,7 @@ const PathFinding = () => {
                 Start
               </Button>
             </div>
-            <form className="col">
+            <form className="col-sm-1">
               <Button
                 type="submit"
                 className="Button"
@@ -195,12 +197,13 @@ const PathFinding = () => {
                 Clear
               </Button>
             </form>
-            <div className="col">
-              <img alt="target" src="./images/source.png"></img>Initial Position
+            <div className="col-sm-2 d-flex align-items-center justify-content-center">
+              <p className="text-white pr-3 m-0">Initial Position</p>
+              <img alt="target" src={source} style={{ height: "20px" }} />
             </div>
-            <div className="col">
-              <img alt="target" src="./images/target.jpg"></img>
-              Destination
+            <div className="col-sm-2 d-flex align-items-center justify-content-center">
+              <p className="text-white pr-3 m-0">Destination</p>
+              <img alt="target" src={target} style={{ height: "20px" }} />
             </div>
           </div>
         </div>
