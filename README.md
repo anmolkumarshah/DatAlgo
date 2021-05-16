@@ -4,7 +4,7 @@
 
 ## Flow of DatAlgo:
 
-Firstly you visit the application at [DatAlgo](https://datalgo-frontend.herokuapp.com/). There you can find the Login, Signup & Logout buttons along with a separate section for Feedback for the users where they can provide the authors any queries/feedbacks.
+Firstly you visit the application at [DatAlgo](https://datalgo.tech/). There you can find the Login, Signup & Logout buttons along with a separate section for Feedback for the users where they can provide the authors any queries/feedbacks.
 When a user does their Login/Signup for the application, they are redirected to the section of Data Structures and Algorithms where they can Visualize and compare the different Data Structures and Algorithms. In the application, the user can visualize Array, Stack, Queue, LinkedList, Searching Algorithm, Sorting Algorithm, Tree Algorithm and Path Finding Algorithm. Every component has a ‘learn more’ section where they can learn about the basics of data structures & algorithms and they can even get their code in different programming languages.
 
 The visualization for the Data Structures and Algorithm can be done in a very effective manner using DatAlgo. There is also the provision of real time conversion and comparison of the algorithms. You can also view the conversions from front and rear view of the input array. You can do the conversions via DatAlgo with your custom array in any component and can also view the conversions of the same array with different components.
