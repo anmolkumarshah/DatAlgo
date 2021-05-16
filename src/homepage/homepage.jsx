@@ -2,34 +2,23 @@ import React from "react";
 import { useState } from "react";
 import Algorithms from "./Algorithms";
 import { algorithmsData } from "./algorithmsData";
+import { BsCodeSlash } from "react-icons/bs";
 import "./home.css";
 import Footer from "./footer/Footer";
+import HomeTopComp from "./HomeTop";
+// import homeImg from "./images/homeImg.png";
 
 const Homepage = () => {
   return (
     <>
       <div
-        className="homeCompo px-0"
+        className="homeCompo px-0 container-fluid"
         style={{
-          paddingTop: "90px",
+          paddingTop: "70px",
         }}
       >
-        <div className="homeTop text-center pb-5">
-          <div className="homeHeadings">
-            <h1>
-              <b style={{ color: "#0A4158" }}>Dat</b>
-              <b style={{ color: "#4B8378" }}>Algo</b>
-            </h1>
-            <h3 className="pt-3">
-              A tool to Visualize Data Structure & Algorithm
-            </h3>
-          </div>
-
-          {/* <div className="homeimg">
-            <img src={homeImg} alt="Home" className="mg-thumbnail" />
-          </div> */}
-        </div>
-
+        <HomeTopComp />
+        
         <div className="container-fluid">
           <div
             className="d-flex flex-wrap justify-content-center"

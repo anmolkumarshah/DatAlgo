@@ -1,16 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto+Mono:wght@600&display=swap");
 
+.homeCompo {
+  background: linear-gradient(to bottom, #f6f9ff, #f6f9ff) !important;
+}
+
 .homeTop {
   height: auto;
   width: 100%;
   position: relative;
 }
 
-.homeimg {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  bottom: 100px;
+
+.homeHeadings p {
+  font-size: 15px;
 }
 
 .homeHeadings h1 {
@@ -18,14 +20,21 @@
   font-size: 60px;
   font-weight: 100;
   font-family: "Roboto Mono", monospace;
+
 }
 
 .homeHeadings h3 {
   color: blackF;
   letter-spacing: 1px;
   font-family: "Montserrat", sans-serif;
-  word-spacing: 10px;
+  word-spacing: 5px;
   line-height: 40px;
+}
+
+.homeTopImg img {
+  max-height: 650px;
+  max-width: 650px;
+  filter: drop-shadow(5px 6px 04px #cfdef3);
 }
 
 /* Footer */
