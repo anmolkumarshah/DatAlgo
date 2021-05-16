@@ -18,8 +18,8 @@ const PathFinding = () => {
 
   const [START_NODE_ROW, SET_START_NODE_ROW] = useState(3);
   const [START_NODE_COL, SET_START_NODE_COL] = useState(5);
-  const [FINISH_NODE_ROW, SET_FINISH_NODE_ROW] = useState(10);
-  const [FINISH_NODE_COL, SET_FINISH_NODE_COL] = useState(35);
+  const [FINISH_NODE_ROW, SET_FINISH_NODE_ROW] = useState(19);
+  const [FINISH_NODE_COL, SET_FINISH_NODE_COL] = useState(53);
 
   const ALL_ROWS = 23;
   const ALL_COLS = 58;

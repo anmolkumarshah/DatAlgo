@@ -70,7 +70,7 @@ const LoginForm = (props) => {
       style={{
         width: "100vw",
         height: "100vh",
-        backgroundImage: `url(${"https://cdn.pixabay.com/photo/2019/11/28/07/21/butterfly-4658565_1280.jpg"})`,
+        backgroundImage: `url(${"https://cdn.pixabay.com/photo/2018/10/27/15/43/fog-3776796_1280.jpg"})`,
         overflow: "hidden",
         backgroundSize: "cover",
       }}

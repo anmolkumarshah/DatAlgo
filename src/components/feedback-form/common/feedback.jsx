@@ -32,6 +32,9 @@ const FeedbackForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    if (description === "") {
+      return alert("Please write something.");
+    }
     setWait(true);
     e.preventDefault();
     const url = backend + "feedback/create";
