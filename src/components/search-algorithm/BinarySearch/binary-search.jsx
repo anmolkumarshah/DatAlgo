@@ -180,7 +180,7 @@ const BinarySearch = () => {
         open={open}
         handleClose={handleClose}
         title="Welcome to Binary Search"
-        content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+        content="An Array is already been created, from the array itself you can click and select one element as target, and from the below controller, you can proceed the finding process, until the element is not found."
       />
       <Information codeData={codeData.bs} />
       <div className="row">

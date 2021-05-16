@@ -177,7 +177,7 @@ const BinaryTree = () => {
           open={open}
           handleClose={handleClose}
           title="Welcome to Binary Tree"
-          content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+          content="A Tree is Already been created, from the below controller you can choose any one of the Tree traversing method, and initialize the process by clicking start button, before selecting other method you have to clear the tree, the red ones by repeatedly clicking clear button."
         />
         <Tree
           data={data}

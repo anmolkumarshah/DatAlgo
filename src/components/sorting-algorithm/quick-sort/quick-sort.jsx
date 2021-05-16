@@ -221,7 +221,7 @@ const QuickSort = forwardRef(({ size = 25, noController = false }, ref) => {
           open={open}
           handleClose={handleClose}
           title="Welcome to Quick Sort"
-          content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+          content="The bars show depicts an array of different value element, from the controller below you can Create a random new array, set new size for new array, change the speed of sorting, and initialize the sorting process."
         />
       )}
       {!noController && <Information codeData={codeData.qs} />}

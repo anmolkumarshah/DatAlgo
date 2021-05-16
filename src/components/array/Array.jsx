@@ -249,7 +249,7 @@ const Arr = () => {
         open={open}
         handleClose={handleClose}
         title="Welcome to Array"
-        content="An array is a data structure that contains a group of elements. Typically these elements are all of the same data type, such as an integer or string. Arrays are commonly used in computer programs to organize data so that a related set of values can be easily sorted or searched."
+        content="An Array is already been created, from the below controllers you can insert value at particular index, delete value from a particular index, find the minimum value, maximum value and also remove duplicate elements."
       />
 
       {/* Erroe Message */}

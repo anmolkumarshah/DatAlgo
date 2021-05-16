@@ -411,8 +411,41 @@ void del()
 }
 
 `,
-    java: ``,
-    python: ``,
+    java: `//Java Program to illustrate how to declare, instantiate, initialize  
+//and traverse the Java array.  
+class Testarray{  
+public static void main(String args[]){  
+int a[]=new int[5];//declaration and instantiation  
+a[0]=10;//initialization  
+a[1]=20;  
+a[2]=70;  
+a[3]=40;  
+a[4]=50;  
+//traversing array  
+for(int i=0;i<a.length;i++)//length is the property of array  
+System.out.println(a[i]);  
+}}  
+`,
+    python: `# Python program to demonstrate
+# Creation of Array
+
+# importing "array" for array creations
+import array as arr
+
+# creating an array with integer type
+a = arr.array('i', [1, 2, 3])
+
+# printing original array
+print ("The new created array is : ", end =" ")
+for i in range (0, 3):
+	print (a[i], end =" ")
+print()
+
+# creating an array with float type
+b = arr.array('d', [2.5, 3.2, 3.3])
+
+# printing original array
+`,
   },
   stack: {
     name: `Stack Data Structure`,
@@ -595,8 +628,135 @@ void show()
     }
 }
 `,
-    java: ``,
-    python: ``,
+    java: `// Java Code for Linked List Implementation
+
+public class StackAsLinkedList {
+
+	StackNode root;
+
+	static class StackNode {
+		int data;
+		StackNode next;
+
+		StackNode(int data) { this.data = data; }
+	}
+
+	public boolean isEmpty()
+	{
+		if (root == null) {
+			return true;
+		}
+		else
+			return false;
+	}
+
+	public void push(int data)
+	{
+		StackNode newNode = new StackNode(data);
+
+		if (root == null) {
+			root = newNode;
+		}
+		else {
+			StackNode temp = root;
+			root = newNode;
+			newNode.next = temp;
+		}
+		System.out.println(data + " pushed to stack");
+	}
+
+	public int pop()
+	{
+		int popped = Integer.MIN_VALUE;
+		if (root == null) {
+			System.out.println("Stack is Empty");
+		}
+		else {
+			popped = root.data;
+			root = root.next;
+		}
+		return popped;
+	}
+
+	public int peek()
+	{
+		if (root == null) {
+			System.out.println("Stack is empty");
+			return Integer.MIN_VALUE;
+		}
+		else {
+			return root.data;
+		}
+	}
+
+	// Driver code
+	public static void main(String[] args)
+	{
+
+		StackAsLinkedList sll = new StackAsLinkedList();
+
+		sll.push(10);
+		sll.push(20);
+		sll.push(30);
+
+		System.out.println(sll.pop()
+						+ " popped from stack");
+
+		System.out.println("Top element is " + sll.peek());
+	}
+}
+`,
+    python: `# Python program for linked list implementation of stack
+
+# Class to represent a node
+
+
+class StackNode:
+
+	# Constructor to initialize a node
+	def __init__(self, data):
+		self.data = data
+		self.next = None
+
+
+class Stack:
+
+	# Constructor to initialize the root of linked list
+	def __init__(self):
+		self.root = None
+
+	def isEmpty(self):
+		return True if self.root is None else False
+
+	def push(self, data):
+		newNode = StackNode(data)
+		newNode.next = self.root
+		self.root = newNode
+		print "% d pushed to stack" % (data)
+
+	def pop(self):
+		if (self.isEmpty()):
+			return float("-inf")
+		temp = self.root
+		self.root = self.root.next
+		popped = temp.data
+		return popped
+
+	def peek(self):
+		if self.isEmpty():
+			return float("-inf")
+		return self.root.data
+
+
+# Driver code
+stack = Stack()
+stack.push(10)
+stack.push(20)
+stack.push(30)
+
+print "% d popped from stack" % (stack.pop())
+print "Top element is % d " % (stack.peek())
+`,
   },
   queue: {
     name: `Queue Data Structure`,
@@ -772,8 +932,77 @@ void show()
 }
 
 `,
-    java: ``,
-    python: ``,
+    java: `// Java program to demonstrate a Queue
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class QueueExample {
+
+	public static void main(String[] args)
+	{
+		Queue<Integer> q
+			= new LinkedList<>();
+
+		// Adds elements {0, 1, 2, 3, 4} to
+		// the queue
+		for (int i = 0; i < 5; i++)
+			q.add(i);
+
+		// Display contents of the queue.
+		System.out.println("Elements of queue "
+						+ q);
+
+		// To remove the head of queue.
+		int removedele = q.remove();
+		System.out.println("removed element-"
+						+ removedele);
+
+		System.out.println(q);
+
+		// To view the head of queue
+		int head = q.peek();
+		System.out.println("head of queue-"
+						+ head);
+
+		// Rest all methods of collection
+		// interface like size and contains
+		// can be used with this
+		// implementation.
+		int size = q.size();
+		System.out.println("Size of queue-"
+						+ size);
+	}
+}
+`,
+    python: `# Python program to
+# demonstrate queue implementation
+# using list
+
+# Initializing a queue
+queue = []
+
+# Adding elements to the queue
+queue.append('a')
+queue.append('b')
+queue.append('c')
+
+print("Initial queue")
+print(queue)
+
+# Removing elements from the queue
+print("\nElements dequeued from queue")
+print(queue.pop(0))
+print(queue.pop(0))
+print(queue.pop(0))
+
+print("\nQueue after removing elements")
+print(queue)
+
+# Uncommenting print(queue.pop(0))
+# will raise and IndexError
+# as the queue is now empty
+`,
   },
   //   single linked list
   sll: {
@@ -1151,9 +1380,111 @@ else:
   bso: {
     name: `Bubble Sort`,
     intro: `Bubble sort is a simple sorting algorithm. This sorting algorithm is comparison-based algorithm in which each pair of adjacent elements is compared and the elements are swapped if they are not in order. This algorithm is not suitable for large data sets as its average and worst-case complexity are of Ο(n2) where n is the number of items.`,
-    cpp: ``,
-    java: ``,
-    python: ``,
+    cpp: `#include<iostream>
+using namespace std;
+void swapping(int &a, int &b) {      //swap the content of a and b
+   int temp;
+   temp = a;
+   a = b;
+   b = temp;
+}
+void display(int *array, int size) {
+   for(int i = 0; i<size; i++)
+      cout << array[i] << " ";
+   cout << endl;
+}
+void bubbleSort(int *array, int size) {
+   for(int i = 0; i<size; i++) {
+      int swaps = 0;         //flag to detect any swap is there or not
+      for(int j = 0; j<size-i-1; j++) {
+         if(array[j] > array[j+1]) {       //when the current item is bigger than next
+            swapping(array[j], array[j+1]);
+            swaps = 1;    //set swap flag
+         }
+      }
+      if(!swaps)
+         break;       // No swap in this pass, so array is sorted
+   }
+}
+int main() {
+   int n;
+   cout << "Enter the number of elements: ";
+   cin >> n;
+   int arr[n];     //create an array with given number of elements
+   cout << "Enter elements:" << endl;
+   for(int i = 0; i<n; i++) {
+      cin >> arr[i];
+   }
+   cout << "Array before Sorting: ";
+   display(arr, n);
+   bubbleSort(arr, n);
+   cout << "Array after Sorting: ";
+   display(arr, n);
+}
+`,
+    java: `public class BubbleSortExample {  
+    static void bubbleSort(int[] arr) {  
+        int n = arr.length;  
+        int temp = 0;  
+         for(int i=0; i < n; i++){  
+                 for(int j=1; j < (n-i); j++){  
+                          if(arr[j-1] > arr[j]){  
+                                 //swap elements  
+                                 temp = arr[j-1];  
+                                 arr[j-1] = arr[j];  
+                                 arr[j] = temp;  
+                         }  
+                          
+                 }  
+         }  
+  
+    }  
+    public static void main(String[] args) {  
+                int arr[] ={3,60,35,2,45,320,5};  
+                 
+                System.out.println("Array Before Bubble Sort");  
+                for(int i=0; i < arr.length; i++){  
+                        System.out.print(arr[i] + " ");  
+                }  
+                System.out.println();  
+                  
+                bubbleSort(arr);//sorting array elements using bubble sort  
+                 
+                System.out.println("Array After Bubble Sort");  
+                for(int i=0; i < arr.length; i++){  
+                        System.out.print(arr[i] + " ");  
+                }  
+   
+        }  
+}  
+`,
+    python: `# Python program for implementation of Bubble Sort
+
+def bubbleSort(arr):
+	n = len(arr)
+
+	# Traverse through all array elements
+	for i in range(n-1):
+	# range(n) also work but outer loop will repeat one time more than needed.
+
+		# Last i elements are already in place
+		for j in range(0, n-i-1):
+
+			# traverse the array from 0 to n-i-1
+			# Swap if the element found is greater
+			# than the next element
+			if arr[j] > arr[j+1] :
+				arr[j], arr[j+1] = arr[j+1], arr[j]
+
+# Driver code to test above
+arr = [64, 34, 25, 12, 22, 11, 90]
+
+bubbleSort(arr)
+
+print ("Sorted array is:")
+for i in range(len(arr)):
+	print ("%d" %arr[i]),
+`,
   },
   //   insertion Sort
   is: {
@@ -1165,9 +1496,122 @@ To sort an array of size n in ascending order:
 2: Compare the current element (key) to its predecessor. 
 3: If the key element is smaller than its predecessor, compare it to the elements before. Move the greater elements one position up to make space for the swapped element.
 `,
-    cpp: ``,
-    java: ``,
-    python: ``,
+    cpp: `++:// C++ program for insertion sort
+#include <bits/stdc++.h>
+using namespace std;
+
+/* Function to sort an array using insertion sort*/
+void insertionSort(int arr[], int n)
+{
+	int i, key, j;
+	for (i = 1; i < n; i++)
+	{
+		key = arr[i];
+		j = i - 1;
+
+		/* Move elements of arr[0..i-1], that are
+		greater than key, to one position ahead
+		of their current position */
+		while (j >= 0 && arr[j] > key)
+		{
+			arr[j + 1] = arr[j];
+			j = j - 1;
+		}
+		arr[j + 1] = key;
+	}
+}
+
+// A utility function to print an array of size n
+void printArray(int arr[], int n)
+{
+	int i;
+	for (i = 0; i < n; i++)
+		cout << arr[i] << " ";
+	cout << endl;
+}
+
+/* Driver code */
+int main()
+{
+	int arr[] = { 12, 11, 13, 5, 6 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+
+	insertionSort(arr, n);
+	printArray(arr, n);
+
+	return 0;
+}
+`,
+    java: `// Java program for implementation of Insertion Sort
+class InsertionSort {
+	/*Function to sort array using insertion sort*/
+	void sort(int arr[])
+	{
+		int n = arr.length;
+		for (int i = 1; i < n; ++i) {
+			int key = arr[i];
+			int j = i - 1;
+
+			/* Move elements of arr[0..i-1], that are
+			greater than key, to one position ahead
+			of their current position */
+			while (j >= 0 && arr[j] > key) {
+				arr[j + 1] = arr[j];
+				j = j - 1;
+			}
+			arr[j + 1] = key;
+		}
+	}
+
+	/* A utility function to print array of size n*/
+	static void printArray(int arr[])
+	{
+		int n = arr.length;
+		for (int i = 0; i < n; ++i)
+			System.out.print(arr[i] + " ");
+
+		System.out.println();
+	}
+
+	// Driver method
+	public static void main(String args[])
+	{
+		int arr[] = { 12, 11, 13, 5, 6 };
+
+		InsertionSort ob = new InsertionSort();
+		ob.sort(arr);
+
+		printArray(arr);
+	}
+} 
+
+`,
+    python: `# Python program for implementation of Insertion Sort
+
+# Function to do insertion sort
+def insertionSort(arr):
+
+	# Traverse through 1 to len(arr)
+	for i in range(1, len(arr)):
+
+		key = arr[i]
+
+		# Move elements of arr[0..i-1], that are
+		# greater than key, to one position ahead
+		# of their current position
+		j = i-1
+		while j >= 0 and key < arr[j] :
+				arr[j + 1] = arr[j]
+				j -= 1
+		arr[j + 1] = key
+
+
+# Driver code to test above
+arr = [12, 11, 13, 5, 6]
+insertionSort(arr)
+for i in range(len(arr)):
+	print ("% d" % arr[i])
+`,
   },
   //   Selection sort
   ss: {
@@ -1177,9 +1621,123 @@ To sort an array of size n in ascending order:
 2) Remaining subarray which is unsorted.
 In every iteration of selection sort, the minimum element (considering ascending order) from the unsorted subarray is picked and moved to the sorted subarray.
 `,
-    cpp: ``,
-    java: ``,
-    python: ``,
+    cpp: `// C++ program for implementation of selection sort
+#include <bits/stdc++.h>
+using namespace std;
+
+void swap(int *xp, int *yp)
+{
+	int temp = *xp;
+	*xp = *yp;
+	*yp = temp;
+}
+
+void selectionSort(int arr[], int n)
+{
+	int i, j, min_idx;
+
+	// One by one move boundary of unsorted subarray
+	for (i = 0; i < n-1; i++)
+	{
+		// Find the minimum element in unsorted array
+		min_idx = i;
+		for (j = i+1; j < n; j++)
+		if (arr[j] < arr[min_idx])
+			min_idx = j;
+
+		// Swap the found minimum element with the first element
+		swap(&arr[min_idx], &arr[i]);
+	}
+}
+
+/* Function to print an array */
+void printArray(int arr[], int size)
+{
+	int i;
+	for (i=0; i < size; i++)
+		cout << arr[i] << " ";
+	cout << endl;
+}
+
+// Driver program to test above functions
+int main()
+{
+	int arr[] = {64, 25, 12, 22, 11};
+	int n = sizeof(arr)/sizeof(arr[0]);
+	selectionSort(arr, n);
+	cout << "Sorted array: \n";
+	printArray(arr, n);
+	return 0;
+}
+`,
+    java: `// Java program for implementation of Selection Sort
+class SelectionSort
+{
+	void sort(int arr[])
+	{
+		int n = arr.length;
+
+		// One by one move boundary of unsorted subarray
+		for (int i = 0; i < n-1; i++)
+		{
+			// Find the minimum element in unsorted array
+			int min_idx = i;
+			for (int j = i+1; j < n; j++)
+				if (arr[j] < arr[min_idx])
+					min_idx = j;
+
+			// Swap the found minimum element with the first
+			// element
+			int temp = arr[min_idx];
+			arr[min_idx] = arr[i];
+			arr[i] = temp;
+		}
+	}
+
+	// Prints the array
+	void printArray(int arr[])
+	{
+		int n = arr.length;
+		for (int i=0; i<n; ++i)
+			System.out.print(arr[i]+" ");
+		System.out.println();
+	}
+
+	// Driver code to test above
+	public static void main(String args[])
+	{
+		SelectionSort ob = new SelectionSort();
+		int arr[] = {64,25,12,22,11};
+		ob.sort(arr);
+		System.out.println("Sorted array");
+		ob.printArray(arr);
+	}
+}
+`,
+    python: `# Python program for implementation of Selection
+# Sort
+import sys
+A = [64, 25, 12, 22, 11]
+
+# Traverse through all array elements
+for i in range(len(A)):
+	
+	# Find the minimum element in remaining
+	# unsorted array
+	min_idx = i
+	for j in range(i+1, len(A)):
+		if A[min_idx] > A[j]:
+			min_idx = j
+			
+	# Swap the found minimum element with
+	# the first element		
+	A[i], A[min_idx] = A[min_idx], A[i]
+
+# Driver code to test above
+print ("Sorted array")
+for i in range(len(A)):
+	print("%d" %A[i]),
+`,
   },
   //   Quick Sort
   qs: {
@@ -1191,9 +1749,227 @@ In every iteration of selection sort, the minimum element (considering ascending
 4.	Pick median as pivot.
 The key process in quickSort is partition(). Target of partitions is, given an array and an element x of array as pivot, put x at its correct position in sorted array and put all smaller elements (smaller than x) before x, and put all greater elements (greater than x) after x. All this should be done in linear time.
 `,
-    cpp: ``,
-    java: ``,
-    python: ``,
+    cpp: `/* C++ implementation of QuickSort */
+#include <bits/stdc++.h>
+using namespace std;
+
+// A utility function to swap two elements
+void swap(int* a, int* b)
+{
+	int t = *a;
+	*a = *b;
+	*b = t;
+}
+
+/* This function takes last element as pivot, places
+the pivot element at its correct position in sorted
+array, and places all smaller (smaller than pivot)
+to left of pivot and all greater elements to right
+of pivot */
+int partition (int arr[], int low, int high)
+{
+	int pivot = arr[high]; // pivot
+	int i = (low - 1); // Index of smaller element and indicates the right position of pivot found so far
+
+	for (int j = low; j <= high - 1; j++)
+	{
+		// If current element is smaller than the pivot
+		if (arr[j] < pivot)
+		{
+			i++; // increment index of smaller element
+			swap(&arr[i], &arr[j]);
+		}
+	}
+	swap(&arr[i + 1], &arr[high]);
+	return (i + 1);
+}
+
+/* The main function that implements QuickSort
+arr[] --> Array to be sorted,
+low --> Starting index,
+high --> Ending index */
+void quickSort(int arr[], int low, int high)
+{
+	if (low < high)
+	{
+		/* pi is partitioning index, arr[p] is now
+		at right place */
+		int pi = partition(arr, low, high);
+
+		// Separately sort elements before
+		// partition and after partition
+		quickSort(arr, low, pi - 1);
+		quickSort(arr, pi + 1, high);
+	}
+}
+
+/* Function to print an array */
+void printArray(int arr[], int size)
+{
+	int i;
+	for (i = 0; i < size; i++)
+		cout << arr[i] << " ";
+	cout << endl;
+}
+
+// Driver Code
+int main()
+{
+	int arr[] = {10, 7, 8, 9, 1, 5};
+	int n = sizeof(arr) / sizeof(arr[0]);
+	quickSort(arr, 0, n - 1);
+	cout << "Sorted array: \n";
+	printArray(arr, n);
+	return 0;
+}
+`,
+    java: `// Java implementation of QuickSort
+import java.io.*;
+
+class GFG{
+	
+// A utility function to swap two elements
+static void swap(int[] arr, int i, int j)
+{
+	int temp = arr[i];
+	arr[i] = arr[j];
+	arr[j] = temp;
+}
+
+/* This function takes last element as pivot, places
+the pivot element at its correct position in sorted
+array, and places all smaller (smaller than pivot)
+to left of pivot and all greater elements to right
+of pivot */
+static int partition(int[] arr, int low, int high)
+{
+	
+	// pivot
+	int pivot = arr[high];
+	
+	// Index of smaller element and
+	// indicates the right position
+	// of pivot found so far
+	int i = (low - 1);
+
+	for(int j = low; j <= high - 1; j++)
+	{
+		
+		// If current element is smaller
+		// than the pivot
+		if (arr[j] < pivot)
+		{
+			
+			// Increment index of
+			// smaller element
+			i++;
+			swap(arr, i, j);
+		}
+	}
+	swap(arr, i + 1, high);
+	return (i + 1);
+}
+
+/* The main function that implements QuickSort
+		arr[] --> Array to be sorted,
+		low --> Starting index,
+		high --> Ending index
+*/
+static void quickSort(int[] arr, int low, int high)
+{
+	if (low < high)
+	{
+		
+		// pi is partitioning index, arr[p]
+		// is now at right place
+		int pi = partition(arr, low, high);
+
+		// Separately sort elements before
+		// partition and after partition
+		quickSort(arr, low, pi - 1);
+		quickSort(arr, pi + 1, high);
+	}
+}
+
+// Function to print an array
+static void printArray(int[] arr, int size)
+{
+	for(int i = 0; i < size; i++)
+		System.out.print(arr[i] + " ");
+		
+	System.out.println();
+}
+
+// Driver Code
+public static void main(String[] args)
+{
+	int[] arr = { 10, 7, 8, 9, 1, 5 };
+	int n = arr.length;
+	
+	quickSort(arr, 0, n - 1);
+	System.out.println("Sorted array: ");
+	printArray(arr, n);
+}
+}
+`,
+    python: `# Python3 implementation of QuickSort
+
+# This Function handles sorting part of quick sort
+# start and end points to first and last element of
+# an array respectively
+def partition(start, end, array):
+	
+	# Initializing pivot's index to start
+	pivot_index = start
+	pivot = array[pivot_index]
+	
+	# This loop runs till start pointer crosses
+	# end pointer, and when it does we swap the
+	# pivot with element on end pointer
+	while start < end:
+		
+		# Increment the start pointer till it finds an
+		# element greater than pivot
+		while start < len(array) and array[start] <= pivot:
+			start += 1
+			
+		# Decrement the end pointer till it finds an
+		# element less than pivot
+		while array[end] > pivot:
+			end -= 1
+		
+		# If start and end have not crossed each other,
+		# swap the numbers on start and end
+		if(start < end):
+			array[start], array[end] = array[end], array[start]
+	
+	# Swap pivot element with element on end pointer.
+	# This puts pivot on its correct sorted place.
+	array[end], array[pivot_index] = array[pivot_index], array[end]
+	
+	# Returning end pointer to divide the array into 2
+	return end
+	
+# The main function that implements QuickSort
+def quick_sort(start, end, array):
+	
+	if (start < end):
+		
+		# p is partitioning index, array[p]
+		# is at right place
+		p = partition(start, end, array)
+		
+		# Sort elements before partition
+		# and after partition
+		quick_sort(start, p - 1, array)
+		quick_sort(p + 1, end, array)
+		
+# Driver code
+array = [ 10, 7, 8, 9, 1, 5 ]
+quick_sort(0, len(array) - 1, array)
+
+print(f'Sorted array: {array}')
+`,
   },
   //   binary tree
   bt: {

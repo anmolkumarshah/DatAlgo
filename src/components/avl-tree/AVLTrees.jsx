@@ -107,7 +107,7 @@ const AVLTrees = () => {
           open={open}
           handleClose={handleClose}
           title="Welcome to AVL Tree"
-          content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+          content="You will see a empty screen, from the below controller first you have to create one AVL Tree, by clicking create, after you create AVL Tree, all options in controller will be enabled, you can insert value and delete value from the tree. You can clear the Tree at any time. "
         />
         {considerTree && (
           <Tree

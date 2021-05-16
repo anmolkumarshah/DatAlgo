@@ -1,8 +1,6 @@
 import React from "react";
-import { useState } from "react";
 import Algorithms from "./Algorithms";
 import { algorithmsData } from "./algorithmsData";
-import { BsCodeSlash } from "react-icons/bs";
 import "./home.css";
 import Footer from "./footer/Footer";
 import HomeTopComp from "./HomeTop";

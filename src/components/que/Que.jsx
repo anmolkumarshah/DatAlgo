@@ -127,7 +127,7 @@ const Que = () => {
         open={open}
         handleClose={handleClose}
         title="Welcome to Queue"
-        content="An array is a data structure that contains a group of elements. Typically these elements are all of the same data type, such as an integer or string. Arrays are commonly used in computer programs to organize data so that a related set of values can be easily sorted or searched."
+        content="A Queue is already been created, we taken the analogy of a real life example of peoples standing in queue ( Men and Women ), from the below controller you can add Men/Women to queue (Enqueue) and remove Men/Women from queue (Dequeue)."
       />
       <ColorIndicator
         indicator={[
@@ -138,12 +138,7 @@ const Que = () => {
           { name: "Dequeue", color: dequeueColor },
         ]}
       />
-      <AlertDialog
-        open={open}
-        handleClose={handleClose}
-        title="Queue"
-        content="A collection of items in which only the earliest added item may be accessed. Basic operations are add (to the tail) or enqueue and delete (from the head) or dequeue. Delete returns the item removed. Also known as `first-in, first-out` or FIFO."
-      />
+
       <Information codeData={codeData.queue} />
       {/* Erroe Message */}
       <Warning

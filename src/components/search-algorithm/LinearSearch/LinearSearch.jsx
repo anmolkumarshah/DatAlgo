@@ -80,14 +80,15 @@ const LinearSearch = () => {
         setTimeout(() => {
           heighlightAction(i, 20, "rgb(5,25,45)");
         }, 150 * delay);
-        break;
+        return;
       }
     }
+    return alert("Element not found!");
   };
 
   const handleSearch = () => {
     if (newElement === "") {
-      alert("Enter Element");
+      alert("Please Enter Element");
       setNewElement("");
     } else if (isNaN(newElement)) {
       alert("Please Enter Integer Value");
@@ -116,7 +117,7 @@ const LinearSearch = () => {
           open={open}
           handleClose={handleClose}
           title="Welcome to Linear Search"
-          content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis commodi molestiae accusamus? Quis tempore tempora at distinctio explicabo cumque amet, perferendis rem iste qui voluptate maxime sed obcaecati inventore accusamus."
+          content="An Array is already been created, from the below controller you can input a value and app will show how linear search works."
         />
         <div className="container">
           <div className="array d-flex">

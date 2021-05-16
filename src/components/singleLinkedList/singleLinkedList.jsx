@@ -124,7 +124,7 @@ const SingleLinkedList = () => {
         open={open}
         handleClose={handleClose}
         title="Welcome to Single Linked List"
-        content="Click on the Create Button at the bottom left corner of screen and you are ready to play with linked list."
+        content="You will see a empty screen, from the below controller first you have to create one Linked List, by clicking create, after you create Linked List, all options in controller will be enabled, you can insert at back, insert front, insert after the given index, delete at index, clear data and reverse all data  of linked list, "
       />
 
       {sll && data && (

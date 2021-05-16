@@ -129,7 +129,7 @@ const Stack = () => {
         open={open}
         handleClose={handleClose}
         title="Welcome to Stack"
-        content="In computing, a stack is a data structure used to store a collection of objects. Individual items can be added and stored in a stack using a push operation. Objects can be retrieved using a pop operation, which removes an item from the stack."
+        content="A Stack is already been created, from the below controllers you can push new element on top of stack, pop element from top of stack, you can see whether the stack is overflowed or is underflow."
       />
       {/* Erroe Message */}
       <Warning
