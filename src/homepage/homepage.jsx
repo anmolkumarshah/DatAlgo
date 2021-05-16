@@ -18,7 +18,7 @@ const Homepage = () => {
         }}
       >
         <HomeTopComp />
-        
+
         <div className="container-fluid">
           <div
             className="d-flex flex-wrap justify-content-center"
