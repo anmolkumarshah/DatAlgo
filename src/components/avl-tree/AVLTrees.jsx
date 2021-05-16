@@ -13,7 +13,7 @@ const AVLTrees = () => {
   const [isCreated, setCreated] = useState(false);
   const [value, setValue] = useState(null);
   const [data, setData] = useState([]);
-  const [toDel, setToDel] = useState(0);
+  const [toDel, setToDel] = useState("");
 
   const [open, setOpen] = useState(false);
 
@@ -80,7 +80,7 @@ const AVLTrees = () => {
   };
 
   const changeHandler = (e) => {
-    setValue(parseInt(e.target.value));
+    setValue(e.target.value);
   };
 
   const deleteValHandler = (e) => {
