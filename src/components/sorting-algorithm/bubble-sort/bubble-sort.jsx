@@ -12,9 +12,9 @@ import { randonIntFromInterval } from "../helper.jsx";
 import AlertDialog from "../../../material-ui-components/alertDialog";
 import Information from "../../../material-ui-components/information";
 import codeData from "./../../../data";
+import StartInformation from "./../../startInformation/startInformation";
 
 const BubbleSort = forwardRef(({ size = 25, noController = false }, ref) => {
-  console.log(size);
   const [array, setArray] = useState([]);
   const [animationSpeed, setAnimationSpeed] = useState(1);
   const [noBars, setNoBars] = useState(size);
@@ -61,6 +61,7 @@ const BubbleSort = forwardRef(({ size = 25, noController = false }, ref) => {
   }, []);
 
   const handleClose = () => {
+    StartInformation();
     setOpen(false);
   };
 

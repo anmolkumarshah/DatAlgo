@@ -7,6 +7,7 @@ import "./llstyle.css";
 import AlertDialog from "../../material-ui-components/alertDialog";
 import Information from "../../material-ui-components/information";
 import codeData from "./../../data";
+import StartInformation from "./../startInformation/startInformation";
 
 const SingleLinkedList = () => {
   const [sll, setSll] = useState();
@@ -28,6 +29,7 @@ const SingleLinkedList = () => {
   }, []);
 
   const handleClose = () => {
+    StartInformation();
     setOpen(false);
   };
 

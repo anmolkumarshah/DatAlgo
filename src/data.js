@@ -782,9 +782,159 @@ void show()
 So in Linked List Data Structure, A is the head which is connected to the next block (i.e B) which is connected to C & the C block is connected to the D block respectively. 
 In simple words, a linked list consists of nodes where each node contains a data field and a reference(link) to the next node in the list.
 `,
-    cpp: ``,
-    java: ``,
-    python: ``,
+    cpp: `#include <iostream>
+
+using namespace std;
+
+struct node
+{
+    int data;
+    node *next;
+};
+
+class linked_list
+{
+private:
+    node *head,*tail;
+public:
+    linked_list()
+    {
+        head = NULL;
+        tail = NULL;
+    }
+
+    void add_node(int n)
+    {
+        node *tmp = new node;
+        tmp->data = n;
+        tmp->next = NULL;
+
+        if(head == NULL)
+        {
+            head = tmp;
+            tail = tmp;
+        }
+        else
+        {
+            tail->next = tmp;
+            tail = tail->next;
+        }
+    }
+};
+
+int main()
+{
+    linked_list a;
+    a.add_node(1);
+    a.add_node(2);
+    return 0;
+}
+`,
+    java: `public class SinglyLinkedList {    
+    //Represent a node of the singly linked list    
+    class Node{    
+        int data;    
+        Node next;    
+            
+        public Node(int data) {    
+            this.data = data;    
+            this.next = null;    
+        }    
+    }    
+     
+    //Represent the head and tail of the singly linked list    
+    public Node head = null;    
+    public Node tail = null;    
+        
+    //addNode() will add a new node to the list    
+    public void addNode(int data) {    
+        //Create a new node    
+        Node newNode = new Node(data);    
+            
+        //Checks if the list is empty    
+        if(head == null) {    
+            //If list is empty, both head and tail will point to new node    
+            head = newNode;    
+            tail = newNode;    
+        }    
+        else {    
+            //newNode will be added after tail such that tail's next will point to newNode    
+            tail.next = newNode;    
+            //newNode will become new tail of the list    
+            tail = newNode;    
+        }    
+    }    
+        
+    //display() will display all the nodes present in the list    
+   public void display() {    
+        //Node current will point to head    
+        Node current = head;    
+            
+        if(head == null) {    
+            System.out.println("List is empty");    
+            return;    
+        }    
+        System.out.println("Nodes of singly linked list: ");    
+        while(current != null) {    
+            //Prints each node by incrementing pointer    
+            System.out.print(current.data + " ");    
+            current = current.next;    
+        }    
+        System.out.println();    
+    }    
+        
+    public static void main(String[] args) {    
+            
+        SinglyLinkedList sList = new SinglyLinkedList();    
+
+        //Add nodes to the list    
+        sList.addNode(1);    
+        sList.addNode(2);    
+        sList.addNode(3);    
+        sList.addNode(4);    
+            
+        //Displays the nodes present in the list    
+        sList.display();    
+    }    
+}    
+`,
+    python: `# A single node of a singly linked list
+class Node:
+  # constructor
+  def __init__(self, data = None, next=None): 
+    self.data = data
+    self.next = next
+
+# A Linked List class with a single head node
+class LinkedList:
+  def __init__(self):  
+    self.head = None
+  
+  # insertion method for the linked list
+  def insert(self, data):
+    newNode = Node(data)
+    if(self.head):
+      current = self.head
+      while(current.next):
+        current = current.next
+      current.next = newNode
+    else:
+      self.head = newNode
+  
+  # print method for the linked list
+  def printLL(self):
+    current = self.head
+    while(current):
+      print(current.data)
+      current = current.next
+
+# Singly Linked List with insertion and print methods
+LL = LinkedList()
+LL.insert(3)
+LL.insert(4)
+LL.insert(5)
+LL.printLL()
+`,
   },
   //   linear search
   ls: {
@@ -794,9 +944,90 @@ In simple words, a linked list consists of nodes where each node contains a data
 •	If x matches with an element, return the index.
 •	If x doesn’t match with any of elements, return -1.
 `,
-    cpp: ``,
-    java: ``,
-    python: ``,
+    cpp: `// C++ code to linearly search x in arr[]. If x
+// is present then return its location, otherwise
+// return -1
+
+#include <iostream>
+using namespace std;
+
+int search(int arr[], int n, int x)
+{
+	int i;
+	for (i = 0; i < n; i++)
+		if (arr[i] == x)
+			return i;
+	return -1;
+}
+
+// Driver code
+int main(void)
+{
+	int arr[] = { 2, 3, 4, 10, 40 };
+	int x = 10;
+	int n = sizeof(arr) / sizeof(arr[0]);
+
+	// Function call
+	int result = search(arr, n, x);
+	(result == -1)
+		? cout << "Element is not present in array"
+		: cout << "Element is present at index " << result;
+	return 0;
+`,
+    java: `import java.util.Scanner;  
+  
+public class Leniear_Search {  
+public static void main(String[] args) {  
+    int[] arr = {10, 23, 15, 8, 4, 3, 25, 30, 34, 2, 19};  
+    int item,flag=0;   
+    Scanner sc = new Scanner(System.in);  
+    System.out.println("Enter Item ?");  
+    item = sc.nextInt();  
+    for(int i = 0; i<10; i++)  
+    {  
+        if(arr[i]==item)  
+        {  
+            flag = i+1;  
+            break;  
+        }  
+        else   
+            flag = 0;   
+    }  
+    if(flag != 0)  
+    {  
+        System.out.println("Item found at location" + flag);  
+    }  
+    else   
+        System.out.println("Item not found");  
+      
+}  
+}  
+`,
+    python: `# Python3 code to linearly search x in arr[].
+# If x is present then return its location,
+# otherwise return -1
+
+
+def search(arr, n, x):
+
+	for i in range(0, n):
+		if (arr[i] == x):
+			return i
+	return -1
+
+
+# Driver Code
+arr = [2, 3, 4, 10, 40]
+x = 10
+n = len(arr)
+
+# Function call
+result = search(arr, n, x)
+if(result == -1):
+	print("Element is not present in array")
+else:
+	print("Element is present at index", result)
+`,
   },
   //   binary Search
   bs: {
@@ -813,9 +1044,108 @@ We basically ignore half of the elements just after one comparison.
 3.	Else If x is greater than the mid element, then x can only lie in the right half subarray after the mid element. So we recur for the right half.
 4.	Else (x is smaller) recur for the left half.
 `,
-    cpp: ``,
-    java: ``,
-    python: ``,
+    cpp: `// C++ program to implement recursive Binary Search
+#include <bits/stdc++.h>
+using namespace std;
+
+// A recursive binary search function. It returns
+// location of x in given array arr[l..r] is present,
+// otherwise -1
+int binarySearch(int arr[], int l, int r, int x)
+{
+	if (r >= l) {
+		int mid = l + (r - l) / 2;
+
+		// If the element is present at the middle
+		// itself
+		if (arr[mid] == x)
+			return mid;
+
+		// If element is smaller than mid, then
+		// it can only be present in left subarray
+		if (arr[mid] > x)
+			return binarySearch(arr, l, mid - 1, x);
+
+		// Else the element can only be present
+		// in right subarray
+		return binarySearch(arr, mid + 1, r, x);
+	}
+
+	// We reach here when element is not
+	// present in array
+	return -1;
+}
+
+int main(void)
+{
+	int arr[] = { 2, 3, 4, 10, 40 };
+	int x = 10;
+	int n = sizeof(arr) / sizeof(arr[0]);
+	int result = binarySearch(arr, 0, n - 1, x);
+	(result == -1) ? cout << "Element is not present in array"
+				: cout << "Element is present at index " << result;
+	return 0;
+}
+`,
+    java: `import java.util.*;  
+public class BinarySearch {  
+public static void main(String[] args) {  
+    int[] arr = {16, 19, 20, 23, 45, 56, 78, 90, 96, 100};  
+    int item, location = -1;  
+    System.out.println("Enter the item which you want to search");  
+    Scanner sc = new Scanner(System.in);  
+    item = sc.nextInt();  
+    location = binarySearch(arr,0,9,item);  
+    if(location != -1)  
+    System.out.println("the location of the item is "+location);  
+    else   
+        System.out.println("Item not found");  
+    }  
+public static int binarySearch(int[] a, int beg, int end, int item)  
+{  
+    int mid;  
+    if(end >= beg)   
+    {     
+        mid = (beg + end)/2;  
+        if(a[mid] == item)  
+        {  
+            return mid+1;  
+        }  
+        else if(a[mid] < item)   
+        {  
+            return binarySearch(a,mid+1,end,item);  
+        }  
+        else   
+        {  
+            return binarySearch(a,beg,mid-1,item);  
+        }  
+      
+    }  
+    return -1;   
+}  
+}  
+`,
+    python: `def binarySearch(arr,beg,end,item):  
+    if end >= beg:  
+        mid = int((beg+end)/2)  
+        if arr[mid] == item :  
+            return mid+1  
+        elif arr[mid] < item :   
+            return binarySearch(arr,mid+1,end,item)  
+        else:   
+            return binarySearch(arr,beg,mid-1,item)  
+    return -1  
+      
+  
+arr=[16, 19, 20, 23, 45, 56, 78, 90, 96, 100];  
+item = int(input("Enter the item which you want to search ?"))  
+location = -1;   
+location = binarySearch(arr,0,9,item);  
+if location != -1:   
+    print("Item found at location %d" %(location))  
+else:   
+    print("Item not found")  
+`,
   },
   //   bubble sort
   bso: {

@@ -81,7 +81,7 @@ export default function SimpleTabs({ codeData }) {
         <Chip
           className="mb-3"
           color="primary"
-          label="you can run your python code"
+          label="you can run your Python code"
         />
         <Editor
           language="python"
@@ -89,6 +89,11 @@ export default function SimpleTabs({ codeData }) {
           theme="solarized_light"
         />
       </TabPanel>
+      <Chip
+        className="mb-3"
+        color="secondary"
+        label="click again on red icon or press Esc key to close 'Learn More' "
+      />
     </div>
   );
 }

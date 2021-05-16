@@ -10,6 +10,7 @@ import Button from "@material-ui/core/Button";
 import Warning from "../errorMessage/Warning";
 
 import codeData from "../../data";
+import StartInformation from "./../startInformation/startInformation";
 
 const InitialElements = 15;
 
@@ -67,6 +68,7 @@ const Arr = () => {
   }, []);
 
   const handleClose = () => {
+    StartInformation();
     setOpen(!open);
   };
 

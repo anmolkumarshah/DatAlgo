@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 
 import "./styles.css";
 import codeData from "./../../../data";
+import StartInformation from "./../../startInformation/startInformation";
 const BinarySearch = () => {
   const [cellArray, setCellArray] = useState([]);
   const [TargetSelected, setTargetSelected] = useState("");
@@ -55,6 +56,7 @@ const BinarySearch = () => {
   }, []);
 
   const handleClose = () => {
+    StartInformation();
     setOpen(false);
   };
 

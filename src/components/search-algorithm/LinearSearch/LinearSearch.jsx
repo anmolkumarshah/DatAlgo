@@ -5,6 +5,7 @@ import ArrayElement from "../../array/element/ArrayElement";
 import { ColorIndicator } from "../../sorting-algorithm/colorIndicator/colorIndicator";
 import Button from "@material-ui/core/Button";
 import codeData from "./../../../data";
+import StartInformation from "./../../startInformation/startInformation";
 
 const InitialElements = 15;
 const LinearSearch = () => {
@@ -49,6 +50,7 @@ const LinearSearch = () => {
   }, []);
 
   const handleClose = () => {
+    StartInformation();
     setOpen(false);
   };
 

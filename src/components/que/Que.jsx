@@ -8,6 +8,7 @@ import Warning from "../errorMessage/Warning";
 import "./que.css";
 import Information from "../../material-ui-components/information";
 import codeData from "./../../data";
+import StartInformation from "./../startInformation/startInformation";
 const maxMembers = 10;
 const Que = () => {
   const initialColor = "rgb(63, 81, 181)";
@@ -32,6 +33,7 @@ const Que = () => {
   }, []);
 
   const handleClose = () => {
+    StartInformation();
     setOpen(false);
   };
 

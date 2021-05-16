@@ -11,6 +11,7 @@ import { ColorIndicator } from "../colorIndicator/colorIndicator";
 import { Controller } from "../controller/controller";
 import "./selection-sort-style.css";
 import codeData from "./../../../data";
+import StartInformation from "./../../startInformation/startInformation";
 
 const randonIntFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -61,6 +62,7 @@ const SelectionSort = forwardRef(({ size = 25, noController = false }, ref) => {
   }, []);
 
   const handleClose = () => {
+    StartInformation();
     setOpen(false);
   };
 

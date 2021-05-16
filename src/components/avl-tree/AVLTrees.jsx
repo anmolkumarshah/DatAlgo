@@ -6,6 +6,7 @@ import AlertDialog from "../../material-ui-components/alertDialog";
 import Information from "../../material-ui-components/information";
 import { Button } from "@material-ui/core";
 import codeData from "./../../data";
+import StartInformation from "../startInformation/startInformation";
 
 const AVLTrees = () => {
   const [considerTree, setConsiderTree] = useState(null);
@@ -21,6 +22,7 @@ const AVLTrees = () => {
   }, []);
 
   const handleClose = () => {
+    StartInformation();
     setOpen(false);
   };
 

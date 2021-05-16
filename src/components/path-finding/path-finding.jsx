@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import AlertDialog from "../../material-ui-components/alertDialog";
 import Information from "../../material-ui-components/information";
 import codeData from "./../../data";
+import StartInformation from "./../startInformation/startInformation";
 
 const PathFinding = () => {
   const [nodes, setNodes] = useState([]);
@@ -98,6 +99,7 @@ const PathFinding = () => {
   }, []);
 
   const handleClose = () => {
+    StartInformation();
     setOpen(false);
   };
 

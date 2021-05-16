@@ -11,6 +11,7 @@ import { ColorIndicator } from "../colorIndicator/colorIndicator";
 import { Controller } from "../controller/controller";
 import "./insertion-sort-style.css";
 import codeData from "./../../../data";
+import StartInformation from "./../../startInformation/startInformation";
 
 const randonIntFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -60,6 +61,7 @@ const InsertionSort = forwardRef(({ size = 25, noController = false }, ref) => {
   }, []);
 
   const handleClose = () => {
+    StartInformation();
     setOpen(false);
   };
 

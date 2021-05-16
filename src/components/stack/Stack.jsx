@@ -1,13 +1,13 @@
 // import { SignalCellularConnectedNoInternet4BarTwoTone } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import AlertDialog from "../../material-ui-components/alertDialog";
-import { ColorIndicator } from "../sorting-algorithm/colorIndicator/colorIndicator";
 import Button from "@material-ui/core/Button";
 
 import Information from "../../material-ui-components/information";
 import "./stack.css";
 import Warning from "../errorMessage/Warning";
 import codeData from "./../../data";
+import StartInformation from "./../startInformation/startInformation";
 
 const InitialElements = 5;
 const maxElements = 10;
@@ -48,6 +48,7 @@ const Stack = () => {
   }, []);
 
   const handleClose = () => {
+    StartInformation();
     setOpen(false);
   };
 

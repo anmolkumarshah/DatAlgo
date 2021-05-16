@@ -8,6 +8,7 @@ import AlertDialog from "../../material-ui-components/alertDialog";
 import Information from "../../material-ui-components/information";
 import { toast } from "react-toastify";
 import codeData from "./../../data";
+import StartInformation from "./../startInformation/startInformation";
 
 const BinaryTree = () => {
   const t1 = new BTree([
@@ -30,6 +31,7 @@ const BinaryTree = () => {
   }, []);
 
   const handleClose = () => {
+    StartInformation();
     setOpen(false);
   };
 
