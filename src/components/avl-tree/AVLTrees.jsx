@@ -75,7 +75,9 @@ const AVLTrees = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    insert(value);
+    if (value !== "") {
+      insert(value);
+    }
     setValue("");
   };
 
@@ -84,14 +86,19 @@ const AVLTrees = () => {
   };
 
   const deleteValHandler = (e) => {
-    setToDel(e.target.value);
+    if (e.target.value !== "") {
+      setValue(e.target.value);
+      setToDel(e.target.value);
+    }
   };
 
   const handleDelete = (e) => {
     e.preventDefault();
-    let v = considerTree.Delete(considerTree.getRoot(), parseInt(toDel));
-    let result = refactor(v);
-    setData(result);
+    if (toDel !== "") {
+      let v = considerTree.Delete(considerTree.getRoot(), parseInt(toDel));
+      let result = refactor(v);
+      setData(result);
+    }
     setToDel("");
   };
 
