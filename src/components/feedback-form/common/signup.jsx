@@ -2,6 +2,14 @@ import React, { useState, useEffect } from "react";
 import AlertDialog from "../../../material-ui-components/alertDialog";
 import { toast } from "react-toastify";
 import { CircularProgress } from "@material-ui/core";
+import {
+  FaEnvelope,
+  FaLock,
+  FaUserAlt,
+  FaUserTie,
+  FaUserLock,
+} from "react-icons/fa";
+import "./form.css";
 
 const SignupForm = (props) => {
   const backend = "https://datalgo.herokuapp.com/";
@@ -74,15 +82,7 @@ const SignupForm = (props) => {
   };
 
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        backgroundImage: `url(${"https://cdn.pixabay.com/photo/2018/09/08/09/48/tulips-3662183_1280.jpg"})`,
-        overflow: "hidden",
-        backgroundSize: "cover",
-      }}
-    >
+    <div className="login-container d-flex align-items-center justify-content-center h-100 w-100">
       {err.length > 0 && (
         <AlertDialog
           open={open}
@@ -92,60 +92,73 @@ const SignupForm = (props) => {
         />
       )}
 
-      <form onSubmit={handleSubmit} style={{ padding: "300px 500px" }}>
-        <div className="form-group">
-          <label className="text-light h2" htmlFor="email">
-            Email Address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            placeholder="name@example.com"
-            value={email}
-            onChange={handleEmailChange}
-            autoComplete={false}
-          />
+      <div className="form-holder">
+        <div className="text-center">
+          <FaUserTie size={80} className="main-color" />
         </div>
+        <form onSubmit={handleSubmit} className="mt-5">
+          <div className="form-group">
+            <label className="text-dark ml-4 pl-2" htmlFor="email">
+              Email Address
+            </label>
+            <div className="d-flex align-items-center w-100">
+              <FaEnvelope size={20} className="main-color m-0 p-0" />
+              <input
+                type="email"
+                className="form-input ml-2 w-100"
+                id="email"
+                placeholder="name@example.com"
+                value={email}
+                onChange={handleEmailChange}
+                autoComplete={false}
+              />
+            </div>
+          </div>
+          <div className="form-group">
+            <label className="text-dark ml-4 pl-2" htmlFor="name">
+              Full Name
+            </label>
+            <div className="d-flex align-items-center w-100">
+              <FaUserAlt size={20} className="main-color m-0 p-0" />
+              <input
+                type="text"
+                className="form-input ml-2 w-100"
+                id="name"
+                value={name}
+                onChange={handleNameChange}
+              />
+            </div>
+          </div>
 
-        <div className="form-group">
-          <label className="text-light h2" htmlFor="name">
-            Full Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            value={name}
-            onChange={handleNameChange}
-          />
-        </div>
+          <div className="form-group">
+            <label className="text-dark ml-4 pl-2" htmlFor="password">
+              Password
+            </label>
+            <div className="d-flex align-items-center w-100">
+              <FaLock size={20} className="main-color m-0 p-0" />
+              <input
+                type="password"
+                className="form-input ml-2  w-100"
+                id="password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+            </div>
+          </div>
 
-        <div className="form-group">
-          <label className="text-light h2" htmlFor="password">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </div>
-
-        <button type="submit" className="btn btn-primary">
-          {wait ? <CircularProgress color="secondary" /> : "Signup"}
-        </button>
-        <button
-          onClick={() => {
-            props.history.push("/login");
-          }}
-          className="ml-2 btn btn-info"
-        >
-          Already have an account
-        </button>
-      </form>
+          <button type="submit" className="btn btn-primary mt-2">
+            {wait ? <CircularProgress color="secondary" /> : "Sign up"}
+          </button>
+          <button
+            onClick={() => {
+              props.history.push("/login");
+            }}
+            className="ml-2 btn btn-info mt-2"
+          >
+            Already have an account ...?
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

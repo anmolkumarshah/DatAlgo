@@ -5,7 +5,6 @@
 }
 
 main {
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   min-height: calc(100vh - 70px) !important;
   margin: 0;
   padding: 0;
@@ -17,4 +16,12 @@ label {
 
 ul {
   list-style-type: none;
+}
+
+.main-bg {
+  background-color: #0c6170 !important;
+}
+
+.main-color {
+  color: #0c6170;
 }

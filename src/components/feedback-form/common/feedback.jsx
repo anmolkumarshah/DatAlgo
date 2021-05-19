@@ -1,7 +1,10 @@
 import { CircularProgress } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import AlertDialog from "../../../material-ui-components/alertDialog";
-
+import "./form.css";
+import { VscFeedback } from "react-icons/vsc";
+import { FaEnvelope, FaUserEdit } from "react-icons/fa";
+import { MdMessage } from "react-icons/md";
 const FeedbackForm = () => {
   const backend = "https://datalgo.herokuapp.com/";
   const [email, setEmail] = useState("");
@@ -72,15 +75,7 @@ const FeedbackForm = () => {
   };
 
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        backgroundImage: `url(${"https://cdn.pixabay.com/photo/2020/02/27/08/47/sunset-4883881_1280.jpg"})`,
-        overflow: "hidden",
-        backgroundSize: "cover",
-      }}
-    >
+    <div className="login-container d-flex align-items-center justify-content-center h-100 w-100">
       {err.length > 0 && (
         <AlertDialog
           open={open}
@@ -97,38 +92,52 @@ const FeedbackForm = () => {
           content={"feedback"}
         />
       )}
-      <form onSubmit={handleSubmit} style={{ padding: "300px 500px" }}>
-        <div className="form-group">
-          <label className="text-light h2" htmlFor="email">
-            Email address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            placeholder="name@example.com"
-            value={email}
-            onChange={handleEmailChange}
-          />
-        </div>
 
-        <div className="form-group">
-          <label className="text-light h2" htmlFor="description">
-            How we can improve ?
-          </label>
-          <textarea
-            onChange={handleDesChange}
-            className="form-control"
-            id="description"
-            rows="3"
-            value={description}
-          ></textarea>
+      <div className="form-holder w-50">
+        <div className="text-center">
+          <VscFeedback size={80} className="main-color" />
         </div>
+        <form onSubmit={handleSubmit} className="mt-5">
+          <div className="form-group">
+            <label className="text-dark ml-4 pl-2" htmlFor="email">
+              Email address
+            </label>
+            <div className="d-flex align-items-center">
+              <FaEnvelope size={20} className="main-color m-0 p-0" />
+              <input
+                type="email"
+                className="form-input ml-2 w-100"
+                id="email"
+                placeholder="name@example.com"
+                value={email}
+                onChange={handleEmailChange}
+              />
+            </div>
+          </div>
 
-        <button type="submit" className="btn btn-primary">
-          {wait ? <CircularProgress color="secondary" /> : "Send"}
-        </button>
-      </form>
+          <div className="form-group">
+            <label className="text-dark ml-4 pl-2" htmlFor="description">
+              How we can improve ?
+            </label>
+            <div className="d-flex align-items-md-start">
+              <FaUserEdit size={20} className="main-color m-0 p-0" />
+              <textarea
+                onChange={handleDesChange}
+                className="form-input ml-2 w-100"
+                id="description"
+                rows="4"
+                value={description}
+                placeholder="Write Something ..."
+                style={{ outline: "none", border: "none" }}
+              />
+            </div>
+          </div>
+
+          <button type="submit" className="btn btn-primary ml-4 mt-1">
+            {wait ? <CircularProgress color="secondary" /> : "Send"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
