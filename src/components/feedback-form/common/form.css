@@ -1,0 +1,25 @@
+.form-holder {
+    background-color: white;
+    box-shadow: 0px 0px 4px -1px rgb(0 0 0 / 20%),
+        2px 0px 5px 0px rgb(0 0 0 / 14%), 0px 5px 10px 0px rgb(0 0 0 / 12%);
+    border-radius: 10px;
+    padding: 30px;
+    border-top: 2px solid red;
+    border-left: 2px solid blue;
+    border-bottom: 2px solid #f7b301;
+    border-right: 2px solid #eb773e;
+}
+
+.form-input {
+    border-bottom: 1px solid #0c6170 !important;
+    outline: none;
+    padding: 8px 10px !important;
+    height: auto;
+    margin: 2px;
+    background-color: #fafafa;
+}
+
+.form-input:focus {
+    border-bottom: 2px solid #f7b301 !important;
+    /* padding: 10px 10px !important; */
+}

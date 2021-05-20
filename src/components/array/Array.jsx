@@ -103,7 +103,7 @@ const Arr = () => {
     }
     setTimeout(() => {
       if (i === idx) {
-        heighlightAction(idx, delay--, "#32CD30");
+        heighlightAction(idx, 4, "#32CD30");
         // Insert;
         setNoElement(noElement + 1);
         setElements((oldItems) => {
