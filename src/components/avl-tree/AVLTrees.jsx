@@ -39,7 +39,7 @@ const AVLTrees = () => {
   };
 
   const insert = (data) => {
-    const v = considerTree.insert(considerTree.getRoot(), data);
+    const v = considerTree.insert(considerTree.getRoot(), parseInt(data));
     let result = refactor(v);
     setData(result);
   };
@@ -75,8 +75,10 @@ const AVLTrees = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (value !== "") {
+    if (value !== "" && !value.isNaN) {
       insert(value);
+    } else {
+      alert("Please Enter some value");
     }
     setValue("");
   };
@@ -87,17 +89,18 @@ const AVLTrees = () => {
 
   const deleteValHandler = (e) => {
     if (e.target.value !== "") {
-      setValue(e.target.value);
       setToDel(e.target.value);
     }
   };
 
   const handleDelete = (e) => {
     e.preventDefault();
-    if (toDel !== "") {
+    if (toDel !== "" && !toDel.isNaN) {
       let v = considerTree.Delete(considerTree.getRoot(), parseInt(toDel));
       let result = refactor(v);
       setData(result);
+    } else {
+      alert("Please enter a Numeric value");
     }
     setToDel("");
   };
@@ -187,7 +190,7 @@ const AVLTrees = () => {
                   <div className="row">
                     <div className="col">
                       <input
-                        placeholder="value"
+                        placeholder="Node to Delete"
                         onChange={deleteValHandler}
                         className="form-control"
                         value={toDel}

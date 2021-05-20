@@ -116,17 +116,17 @@ const Arr = () => {
     }, 150 * delay);
   };
   const handleNewInput = () => {
-    if (isNaN(newElement) && isNaN(index)) {
+    if (newElement.isNaN && index.isNaN) {
       setErrorMessage("Incorrect Element & Incorrect Index");
       setWarningOpen(!warningOpen);
       setNewElement("");
       setIndex("");
-    } else if (isNaN(index) || index > elements.length) {
+    } else if (index.isNaN || index > elements.length) {
       setErrorMessage("Incorrect Index");
       setWarningOpen(!warningOpen);
       setNewElement("");
       setIndex("");
-    } else if (isNaN(newElement)) {
+    } else if (newElement.isNaN) {
       setErrorMessage("Please Enter Numbers");
       setWarningOpen(!warningOpen);
       setNewElement("");

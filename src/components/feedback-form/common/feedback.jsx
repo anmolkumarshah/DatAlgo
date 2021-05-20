@@ -4,7 +4,6 @@ import AlertDialog from "../../../material-ui-components/alertDialog";
 import "./form.css";
 import { VscFeedback } from "react-icons/vsc";
 import { FaEnvelope, FaUserEdit } from "react-icons/fa";
-import { MdMessage } from "react-icons/md";
 const FeedbackForm = () => {
   const backend = "https://datalgo.herokuapp.com/";
   const [email, setEmail] = useState("");
