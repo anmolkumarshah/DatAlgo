@@ -105,14 +105,10 @@ const Arr = () => {
       if (i === idx) {
         heighlightAction(idx, 4, "#32CD30");
         // Insert;
+        elements.splice(idx, 0, parseInt(newElement));
+        // console.log(elements);
         setNoElement(noElement + 1);
-        console.log(elements, newElement);
-        setElements((oldItems) => {
-          return [
-            ...oldItems,
-            elements.splice(idx, 0, parseInt(newElement)).pop(),
-          ];
-        });
+        setElements([...elements]);
       }
     }, 150 * delay);
   };
@@ -278,14 +274,12 @@ const Arr = () => {
           {elements.map((value, idx) => {
             if (value != null)
               return (
-                <>
-                  <ArrayElement
-                    elementClass="array-element"
-                    key={idx}
-                    value={value}
-                    elementIndex={idx}
-                  />
-                </>
+                <ArrayElement
+                  elementClass="array-element"
+                  key={idx}
+                  value={value}
+                  elementIndex={idx}
+                />
               );
           })}
         </div>
