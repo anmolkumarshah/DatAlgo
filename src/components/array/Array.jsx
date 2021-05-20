@@ -14,6 +14,10 @@ import StartInformation from "./../startInformation/startInformation";
 
 const InitialElements = 15;
 
+Array.prototype.insert = function (index, item) {
+  this.splice(index, 0, item);
+};
+
 const Arr = () => {
   const initialColor = "rgb(63, 81, 181)";
   const considerColor = "#ff931e";
@@ -106,15 +110,18 @@ const Arr = () => {
         heighlightAction(idx, 4, "#32CD30");
         // Insert;
         setNoElement(noElement + 1);
+
         setElements((oldItems) => {
           return [
             ...oldItems,
-            elements.splice(idx, 0, parseInt(newElement)).pop(),
+            elements.splice(parseInt(idx), 0, parseInt(newElement)).pop(),
           ];
         });
       }
     }, 150 * delay);
   };
+
+  // new element at index
   const handleNewInput = () => {
     if (newElement.isNaN && index.isNaN) {
       setErrorMessage("Incorrect Element & Incorrect Index");
