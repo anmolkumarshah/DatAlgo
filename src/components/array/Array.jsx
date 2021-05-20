@@ -14,10 +14,6 @@ import StartInformation from "./../startInformation/startInformation";
 
 const InitialElements = 15;
 
-Array.prototype.insert = function (index, item) {
-  this.splice(index, 0, item);
-};
-
 const Arr = () => {
   const initialColor = "rgb(63, 81, 181)";
   const considerColor = "#ff931e";
@@ -110,11 +106,11 @@ const Arr = () => {
         heighlightAction(idx, 4, "#32CD30");
         // Insert;
         setNoElement(noElement + 1);
-
+        console.log(elements, newElement);
         setElements((oldItems) => {
           return [
             ...oldItems,
-            elements.splice(parseInt(idx), 0, parseInt(newElement)).pop(),
+            elements.splice(idx, 0, parseInt(newElement)).pop(),
           ];
         });
       }
@@ -298,6 +294,7 @@ const Arr = () => {
         <div className="controlls-container">
           <div className="d-flex align-items-center col-sm-4 controlHandler">
             <input
+              key={1}
               type="text"
               name="index"
               id="index"
@@ -325,6 +322,7 @@ const Arr = () => {
           </div>
           <div className="col-sm-3 controlHandler">
             <input
+              key={2}
               type="text"
               name="index"
               id="index"
