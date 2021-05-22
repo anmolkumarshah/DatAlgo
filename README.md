@@ -1,6 +1,6 @@
 # DatAlgo - A tool to Visualize Data Structure & Algorithm
 
-**“DatAlgo: An Algorithm Visualizer”** _is one of its kind which has its aim to provide systematic conversions of sorting algorithms for better understanding of the concept. Since the beginning of Data Structures, it has been the hardest challenge to create a platform that would not only do the real time conversion of Algorithms but also to compare different Algorithms side by side. There have been many efforts to make such an application but there is no such application as of yet in the market. It’s is a web-based approach that provides a single and most effective platform to visualize the Data Structure Algorithms._
+**“DatAlgo: An Algorithm Visualizer”** _is one of its kind which has its aim to provide systematic visualization of algorithms and data stractures for better understanding of the concept. Since the beginning of learning process Data Structures, it has been the hardest challenge to visualize  DSA. There have been many efforts to make such an application but there is no such application, as of yet in the market. It’s is a web-based approach that provides a single and most effective platform to visualize the Data Structure and Algorithms._
 
 ## Flow of DatAlgo:
 
