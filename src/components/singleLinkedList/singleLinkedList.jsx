@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SLinkedList from "./singleLinkedListClass";
-import Tree from "react-tree-graph";
+// import Tree from "react-tree-graph";
+import Tree from "react-d3-tree";
 import Button from "@material-ui/core/Button";
 
 import "./llstyle.css";
@@ -8,6 +9,7 @@ import AlertDialog from "../../material-ui-components/alertDialog";
 import Information from "../../material-ui-components/information";
 import codeData from "./../../data";
 import StartInformation from "./../startInformation/startInformation";
+import { ColorIndicator } from "../sorting-algorithm/colorIndicator/colorIndicator";
 
 const SingleLinkedList = () => {
   const [sll, setSll] = useState();
@@ -54,6 +56,7 @@ const SingleLinkedList = () => {
     if (e) e.preventDefault();
     sll.insertBack(insertBack);
     updateData();
+    forceRerender();
   };
 
   // ---------------------------------------------
@@ -80,7 +83,7 @@ const SingleLinkedList = () => {
   };
   const insertAfterHandler = (e) => {
     e.preventDefault();
-    sll.insertAfter(insertAfterIdx, insertAfterValue);
+    sll.insertAt(insertAfterIdx, insertAfterValue);
     updateData();
   };
 
@@ -90,12 +93,35 @@ const SingleLinkedList = () => {
     setDeleteIndex(data);
   };
   const deleteIndexHandler = (e) => {
-    e.preventDefault();
-    sll.delete(deleteIndex);
-    updateData();
+    try {
+      e.preventDefault();
+      sll.delete(parseInt(deleteIndex));
+      updateData();
+    } catch (e) {
+      alert("An Error Occured, please perform another operation");
+    }
   };
 
   // ---------------------------------------------
+  // ------------------------------------------------------------------------------------
+  class rNode {
+    constructor(data) {
+      this.name = data;
+      this.children = [];
+    }
+  }
+
+  const refactor = (tree) => {
+    if (tree) {
+      let t = new rNode(tree.name);
+      t.children.push(refactor(tree.next));
+      return t;
+    } else {
+      return new rNode("Tail");
+    }
+  };
+
+  // ------------------------------------------------------------------------------------
 
   const updateData = () => {
     setInsertBack("");
@@ -103,11 +129,12 @@ const SingleLinkedList = () => {
     setInsertAfterValue("");
     setInsertAfterIdx("");
     setDeleteIndex("");
-    setData(sll.display());
+    setData(refactor(sll.display()));
+    // forceRerender();
   };
 
   const reverse = () => {
-    sll.Reverse();
+    sll.reverse(null, sll.display()); // display since it return head;
     updateData();
   };
 
@@ -115,10 +142,11 @@ const SingleLinkedList = () => {
     setData(null);
     setIsStart(false);
   };
+
   return (
     <div
-      className="container  d-flex align-items-center justify-content-center"
-      style={{ height: "90vh" }}
+      className="d-flex align-items-center justify-content-center"
+      style={{ height: "100vh", width: "100vw" }}
     >
       <AlertDialog
         open={open}
@@ -130,15 +158,17 @@ const SingleLinkedList = () => {
       {sll && data && (
         <Tree
           data={data}
-          height={200}
-          width={1200}
-          animated={true}
-          nodeShape="rect"
-          nodeProps={{ rx: 2 }}
-          duration={500}
-          svgProps={{
-            transform: "rotate(0)",
-          }}
+          svgClassName="style"
+          zoomable="true"
+          enableLegacyTransitions="true"
+          transitionDuration="1000"
+          translate={{ x: "282", y: "302" }}
+          zoom="1"
+          orientation="horizontal"
+          nodeSize={{ x: "100", y: "20" }}
+          rootNodeClassName="node__root"
+          leafNodeClassName="node__leaf"
+          branchNodeClassName="node__branch"
         />
       )}
 
@@ -235,7 +265,7 @@ const SingleLinkedList = () => {
                         variant="outlined"
                         type="submit"
                       >
-                        Insert After
+                        Insert At
                       </Button>
                     </div>
                   </div>
@@ -252,7 +282,7 @@ const SingleLinkedList = () => {
                         onChange={deleteIndexChangeHandler}
                         value={deleteIndex}
                         className="pl-2"
-                        placeholder="Index"
+                        placeholder="Value"
                       ></input>
                     </div>
                     <div className="col-2">

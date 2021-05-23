@@ -1,25 +1,13 @@
-.link {
-  stroke-width: 3.5px;
-  margin-top: 10px;
+.node__root > circle {
+  fill: red;
+  r: 20;
 }
 
-.controller-sll {
-  position: absolute;
-  bottom: 0px;
-  left: 0%;
-  background-color: burlywood;
-  width: 100vw;
-  padding: 10px;
-  border-top: 5px solid rgb(73, 73, 245);
+.node__leaf > circle {
+  fill: green;
 }
 
-.node-style {
-  fill: rgb(23, 206, 54);
-  stroke-width: 0.5px;
-  width: 50px;
-  height: 30px;
-}
-
-.node-text-style {
-  transform: rotate(10);
+.node__branch > circle {
+  fill: yellow;
+  r: 20;
 }

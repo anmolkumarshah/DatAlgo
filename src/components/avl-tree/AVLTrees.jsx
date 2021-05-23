@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AVLTree from "./avl-tree";
-import Tree from "react-tree-graph";
+// import Tree from "react-tree-graph";
+import Tree from "react-d3-tree";
 import "./style.css";
 import AlertDialog from "../../material-ui-components/alertDialog";
 import Information from "../../material-ui-components/information";
@@ -41,6 +42,7 @@ const AVLTrees = () => {
   const insert = (data) => {
     const v = considerTree.insert(considerTree.getRoot(), parseInt(data));
     let result = refactor(v);
+    console.log(result);
     setData(result);
   };
 
@@ -48,10 +50,6 @@ const AVLTrees = () => {
     constructor(data) {
       this.name = data;
       this.children = [];
-      this.gProps = {
-        className: "node",
-        onClick: (event, node) => alert(`Clicked ${node}!`),
-      };
     }
   }
 
@@ -59,8 +57,8 @@ const AVLTrees = () => {
     if (tree) {
       let t = new rNode(tree.name);
       if (tree.lchild && tree.rchild) {
-        t.children.push(refactor(tree.rchild));
         t.children.push(refactor(tree.lchild));
+        t.children.push(refactor(tree.rchild));
       }
       if (tree.lchild && !tree.rchild) {
         t.children.push(refactor(tree.lchild));
@@ -68,7 +66,9 @@ const AVLTrees = () => {
       if (tree.rchild && !tree.lchild) {
         t.children.push(refactor(tree.rchild));
       }
-
+      if (!tree.rchild && !tree.lchild) {
+        t.children = [];
+      }
       return t;
     }
   };
@@ -84,24 +84,36 @@ const AVLTrees = () => {
   };
 
   const changeHandler = (e) => {
+    if (e.target.value.indexOf(".") !== -1) {
+      return alert("Please only enter Integer literals, not Double");
+    }
     setValue(e.target.value);
   };
 
   const deleteValHandler = (e) => {
-    if (e.target.value !== "") {
-      setToDel(e.target.value);
+    if (e.target.value.indexOf(".") !== -1) {
+      return alert("Please only enter Integer literals, not Double");
     }
+    setToDel(e.target.value);
   };
 
   const handleDelete = (e) => {
-    e.preventDefault();
-    if (toDel !== "" && !toDel.isNaN) {
-      let v = considerTree.Delete(considerTree.getRoot(), parseInt(toDel));
-      let result = refactor(v);
-      setData(result);
-    } else {
-      alert("Please enter a Numeric value");
+    try {
+      e.preventDefault();
+      if (toDel !== "" && !toDel.isNaN) {
+        let v = considerTree.Delete(considerTree.getRoot(), parseInt(toDel));
+        let result = refactor(v);
+        setData(result);
+      } else {
+        alert("Please enter a Numeric value");
+      }
+    } catch (e) {
+      alert(
+        "An Algorithamic Error Occured, please perform another operation : Error discription :" +
+          e
+      );
     }
+
     setToDel("");
   };
 
@@ -110,9 +122,16 @@ const AVLTrees = () => {
     setCreated(false);
   };
 
+  if (considerTree && !considerTree.getRoot()) {
+    handleClear();
+  }
+
   return (
-    <div className="container mt-5 d-flex align-items-center justify-content-center">
-      <div className="top ">
+    <div
+      style={{ height: "100vh", width: "100vw" }}
+      className="d-flex align-items-center justify-content-center"
+    >
+      <div className="top " style={{ height: "50em", width: "100vw" }}>
         <AlertDialog
           open={open}
           handleClose={handleClose}
@@ -122,16 +141,15 @@ const AVLTrees = () => {
         {considerTree && (
           <Tree
             data={data}
-            height={600}
-            width={400}
-            animated={true}
-            duration={500}
-            svgProps={{
-              transform: "rotate(90)",
-            }}
-            textProps={{
-              transform: "rotate(270)",
-            }}
+            zoomable="true"
+            enableLegacyTransitions="true"
+            transitionDuration="800"
+            translate={{ x: "782", y: "52" }}
+            zoom="1"
+            rootNodeClassName="node__root"
+            leafNodeClassName="node__leaf"
+            branchNodeClassName="node__branch"
+            orientation="vertical"
           />
         )}
 

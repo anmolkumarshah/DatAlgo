@@ -31,7 +31,6 @@ export default class AVLTree {
   }
 
   Delete(p, key) {
-    console.log(key);
     let q;
     if (!p) {
       return null;
